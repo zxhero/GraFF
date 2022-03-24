@@ -51,6 +51,8 @@ bfs_top u(
     .gt_txusrclk(gt_txusrclk),
     .peripheral_reset(peripheral_reset)
 );
+
+
     initial
     begin
         gt_txusrclk = 0;

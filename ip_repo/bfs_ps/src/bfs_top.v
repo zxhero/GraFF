@@ -40,7 +40,18 @@ module bfs_top(
   input          io_config_rready,
   output [1:0]   io_config_bresp,
   output         io_config_bvalid,
-  input          io_config_bready
+  input          io_config_bready,
+
+  input [127:0]doce_axis_rxd_tdata,
+  input [15:0]doce_axis_rxd_tkeep,
+  input doce_axis_rxd_tlast,
+  output doce_axis_rxd_tready,
+  input doce_axis_rxd_tvalid,
+  output [127:0]doce_axis_txd_tdata,
+  output [15:0]doce_axis_txd_tkeep,
+  output doce_axis_txd_tlast,
+  input doce_axis_txd_tready,
+  output doce_axis_txd_tvalid
     );
     
     wire [63:0]  io_PLmemory_0_awaddr;
@@ -144,42 +155,6 @@ module bfs_top(
     wire M00_AXI_RLAST;
     wire M00_AXI_RVALID;
      wire M00_AXI_RREADY;
-
- wire [63 : 0] m_axi_awaddr;
- wire [7 : 0] m_axi_awlen;
- wire [2 : 0] m_axi_awsize;
- wire [1 : 0] m_axi_awburst;
- wire [0 : 0] m_axi_awlock;
- wire [3 : 0] m_axi_awcache;
- wire [2 : 0] m_axi_awprot;
- wire [3 : 0] m_axi_awregion;
- wire [3 : 0] m_axi_awqos;
- wire m_axi_awvalid;
-wire m_axi_awready;
- wire [63 : 0] m_axi_wdata;
- wire [7 : 0] m_axi_wstrb;
- wire m_axi_wlast;
- wire m_axi_wvalid;
-wire m_axi_wready;
-wire [1 : 0] m_axi_bresp;
-wire m_axi_bvalid;
- wire m_axi_bready;
- wire [63 : 0] m_axi_araddr;
- wire [7 : 0] m_axi_arlen;
- wire [2 : 0] m_axi_arsize;
- wire [1 : 0] m_axi_arburst;
- wire [0 : 0] m_axi_arlock;
- wire [3 : 0] m_axi_arcache;
- wire [2 : 0] m_axi_arprot;
- wire [3 : 0] m_axi_arregion;
- wire [3 : 0] m_axi_arqos;
- wire m_axi_arvalid;
-wire m_axi_arready;
-wire [63 : 0] m_axi_rdata;
-wire [1 : 0] m_axi_rresp;
-wire m_axi_rlast;
-wire m_axi_rvalid;
- wire m_axi_rready;
 
     wire clka;
     wire rsta;
@@ -512,9 +487,101 @@ wire m_axi_rvalid;
   wire [1:0]   io_PSmempory_3_b_bits_bresp;
   wire [5:0]   io_PSmempory_3_b_bits_bid;
 
+  wire         io_Re_memory_out_aw_ready;
+  wire         io_Re_memory_out_aw_valid;
+  wire [63:0]  io_Re_memory_out_aw_bits_awaddr;
+  wire [5:0]   io_Re_memory_out_aw_bits_awid;
+  wire [7:0]   io_Re_memory_out_aw_bits_awlen;
+  wire [2:0]   io_Re_memory_out_aw_bits_awsize;
+  wire [1:0]   io_Re_memory_out_aw_bits_awburst;
+  wire         io_Re_memory_out_aw_bits_awlock;
+  wire         io_Re_memory_out_ar_ready;
+  wire         io_Re_memory_out_ar_valid;
+  wire [63:0]  io_Re_memory_out_ar_bits_araddr;
+  wire [5:0]   io_Re_memory_out_ar_bits_arid;
+  wire [7:0]   io_Re_memory_out_ar_bits_arlen;
+  wire [2:0]   io_Re_memory_out_ar_bits_arsize;
+  wire [1:0]   io_Re_memory_out_ar_bits_arburst;
+  wire         io_Re_memory_out_ar_bits_arlock;
+  wire         io_Re_memory_out_w_ready;
+  wire         io_Re_memory_out_w_valid;
+  wire [511:0] io_Re_memory_out_w_bits_wdata;
+  wire [63:0]  io_Re_memory_out_w_bits_wstrb;
+  wire         io_Re_memory_out_w_bits_wlast;
+  wire         io_Re_memory_out_r_ready;
+  wire         io_Re_memory_out_r_valid;
+  wire [511:0] io_Re_memory_out_r_bits_rdata;
+  wire [5:0]   io_Re_memory_out_r_bits_rid;
+  wire         io_Re_memory_out_r_bits_rlast;
+  wire         io_Re_memory_out_b_ready;
+  wire         io_Re_memory_out_b_valid;
+  wire [1:0]   io_Re_memory_out_b_bits_bresp;
+  wire [5:0]   io_Re_memory_out_b_bits_bid;
+
+  wire         io_Re_memory_in_aw_ready;
+  wire         io_Re_memory_in_aw_valid;
+  wire [63:0]  io_Re_memory_in_aw_bits_awaddr;
+  wire [5:0]   io_Re_memory_in_aw_bits_awid;
+  wire [7:0]   io_Re_memory_in_aw_bits_awlen;
+  wire [2:0]   io_Re_memory_in_aw_bits_awsize;
+  wire [1:0]   io_Re_memory_in_aw_bits_awburst;
+  wire         io_Re_memory_in_aw_bits_awlock;
+  wire         io_Re_memory_in_ar_ready;
+  wire         io_Re_memory_in_ar_valid;
+  wire [63:0]  io_Re_memory_in_ar_bits_araddr;
+  wire [5:0]   io_Re_memory_in_ar_bits_arid;
+  wire [7:0]   io_Re_memory_in_ar_bits_arlen;
+  wire [2:0]   io_Re_memory_in_ar_bits_arsize;
+  wire [1:0]   io_Re_memory_in_ar_bits_arburst;
+  wire         io_Re_memory_in_ar_bits_arlock;
+  wire         io_Re_memory_in_w_ready;
+  wire         io_Re_memory_in_w_valid;
+  wire [511:0] io_Re_memory_in_w_bits_wdata;
+  wire [63:0]  io_Re_memory_in_w_bits_wstrb;
+  wire         io_Re_memory_in_w_bits_wlast;
+  wire         io_Re_memory_in_r_ready;
+  wire         io_Re_memory_in_r_valid;
+  wire [511:0] io_Re_memory_in_r_bits_rdata;
+  wire [5:0]   io_Re_memory_in_r_bits_rid;
+  wire         io_Re_memory_in_r_bits_rlast;
+  wire         io_Re_memory_in_b_ready;
+  wire         io_Re_memory_in_b_valid;
+  wire [1:0]   io_Re_memory_in_b_bits_bresp;
+  wire [5:0]   io_Re_memory_in_b_bits_bid;
+
+  wire [63:0]  bfs_io_config_awaddr;
+  wire         bfs_io_config_awvalid;
+  wire         bfs_io_config_awready;
+  wire [63:0]  bfs_io_config_araddr;
+  wire         bfs_io_config_arvalid;
+  wire         bfs_io_config_arready;
+  wire [31:0]  bfs_io_config_wdata;
+  wire [3:0]   bfs_io_config_wstrb;
+  wire         bfs_io_config_wvalid;
+  wire         bfs_io_config_wready;
+  wire [31:0]  bfs_io_config_rdata;
+  wire [1:0]   bfs_io_config_rresp;
+  wire         bfs_io_config_rvalid;
+  wire         bfs_io_config_rready;
+  wire [1:0]   bfs_io_config_bresp;
+  wire         bfs_io_config_bvalid;
+  wire         bfs_io_config_bready;
+
     design_1 u_xbar(
       .INTERCONNECT_ACLK      (gt_txusrclk),
       .INTERCONNECT_ARESETN   (~peripheral_reset),
+
+      .doce_axis_rxd_tdata    (doce_axis_rxd_tdata),
+      .doce_axis_rxd_tkeep    (doce_axis_rxd_tkeep),
+      .doce_axis_rxd_tlast    (doce_axis_rxd_tlast),
+      .doce_axis_rxd_tready   (doce_axis_rxd_tready),
+      .doce_axis_rxd_tvalid   (doce_axis_rxd_tvalid),
+      .doce_axis_txd_tdata    (doce_axis_txd_tdata),
+      .doce_axis_txd_tkeep    (doce_axis_txd_tkeep),
+      .doce_axis_txd_tlast    (doce_axis_txd_tlast),
+      .doce_axis_txd_tready   (doce_axis_txd_tready),
+      .doce_axis_txd_tvalid   (doce_axis_txd_tvalid),
+
       .io_PLmemory_0_awid           ({1'b0, io_PLmemory_0_awid[5:0]}),
       .io_PLmemory_0_awaddr         (io_PLmemory_0_awaddr),
       .io_PLmemory_0_awlen          (io_PLmemory_0_awlen),
@@ -784,29 +851,130 @@ wire m_axi_rvalid;
       .io_PSMemory_3_wlast          (io_PSmempory_3_w_bits_wlast),
       .io_PSMemory_3_wready         (io_PSmempory_3_w_ready),
       .io_PSMemory_3_wstrb          (io_PSmempory_3_w_bits_wstrb),
-      .io_PSMemory_3_wvalid         (io_PSmempory_3_w_valid)
+      .io_PSMemory_3_wvalid         (io_PSmempory_3_w_valid),
+
+      .io_Re_memory_out_araddr         (io_Re_memory_out_ar_bits_araddr),
+      .io_Re_memory_out_arburst        (io_Re_memory_out_ar_bits_arburst),
+      .io_Re_memory_out_arid           ({2'd3, io_Re_memory_out_ar_bits_arid}),
+      .io_Re_memory_out_arlen          (io_Re_memory_out_ar_bits_arlen),
+      .io_Re_memory_out_arlock         (io_Re_memory_out_ar_bits_arlock),
+      .io_Re_memory_out_arready        (io_Re_memory_out_ar_ready),
+      .io_Re_memory_out_arsize         (io_Re_memory_out_ar_bits_arsize),
+      .io_Re_memory_out_arvalid        (io_Re_memory_out_ar_valid),
+      .io_Re_memory_out_awaddr         (io_Re_memory_out_aw_bits_awaddr),
+      .io_Re_memory_out_awburst        (io_Re_memory_out_aw_bits_awburst),
+      .io_Re_memory_out_awid           ({2'd3, io_Re_memory_out_aw_bits_awid}),
+      .io_Re_memory_out_awlen          (io_Re_memory_out_aw_bits_awlen),
+      .io_Re_memory_out_awlock         (io_Re_memory_out_aw_bits_awlock),
+      .io_Re_memory_out_awready        (io_Re_memory_out_aw_ready),
+      .io_Re_memory_out_awsize         (io_Re_memory_out_aw_bits_awsize),
+      .io_Re_memory_out_awvalid        (io_Re_memory_out_aw_valid),
+      .io_Re_memory_out_bid            (io_Re_memory_out_b_bits_bid),
+      .io_Re_memory_out_bready         (io_Re_memory_out_b_ready),
+      .io_Re_memory_out_bresp          (io_Re_memory_out_b_bits_bresp),
+      .io_Re_memory_out_bvalid         (io_Re_memory_out_b_valid),
+      .io_Re_memory_out_rdata          (io_Re_memory_out_r_bits_rdata),
+      .io_Re_memory_out_rid            (io_Re_memory_out_r_bits_rid),
+      .io_Re_memory_out_rlast          (io_Re_memory_out_r_bits_rlast),
+      .io_Re_memory_out_rready         (io_Re_memory_out_r_ready),
+      .io_Re_memory_out_rvalid         (io_Re_memory_out_r_valid),
+      .io_Re_memory_out_wdata          (io_Re_memory_out_w_bits_wdata),
+      .io_Re_memory_out_wlast          (io_Re_memory_out_w_bits_wlast),
+      .io_Re_memory_out_wready         (io_Re_memory_out_w_ready),
+      .io_Re_memory_out_wstrb          (io_Re_memory_out_w_bits_wstrb),
+      .io_Re_memory_out_wvalid         (io_Re_memory_out_w_valid),
+
+      .io_Re_memory_in_araddr         (io_Re_memory_in_ar_bits_araddr),
+      .io_Re_memory_in_arburst        (io_Re_memory_in_ar_bits_arburst),
+      //.io_Re_memory_in_arid           ({2'd3, io_Re_memory_in_ar_bits_arid}),
+      .io_Re_memory_in_arlen          (io_Re_memory_in_ar_bits_arlen),
+      .io_Re_memory_in_arlock         (io_Re_memory_in_ar_bits_arlock),
+      .io_Re_memory_in_arready        (io_Re_memory_in_ar_ready),
+      .io_Re_memory_in_arsize         (io_Re_memory_in_ar_bits_arsize),
+      .io_Re_memory_in_arvalid        (io_Re_memory_in_ar_valid),
+      .io_Re_memory_in_awaddr         (io_Re_memory_in_aw_bits_awaddr),
+      .io_Re_memory_in_awburst        (io_Re_memory_in_aw_bits_awburst),
+      //.io_Re_memory_in_awid           ({2'd3, io_Re_memory_in_aw_bits_awid}),
+      .io_Re_memory_in_awlen          (io_Re_memory_in_aw_bits_awlen),
+      .io_Re_memory_in_awlock         (io_Re_memory_in_aw_bits_awlock),
+      .io_Re_memory_in_awready        (io_Re_memory_in_aw_ready),
+      .io_Re_memory_in_awsize         (io_Re_memory_in_aw_bits_awsize),
+      .io_Re_memory_in_awvalid        (io_Re_memory_in_aw_valid),
+      //.io_Re_memory_in_bid            (io_Re_memory_in_b_bits_bid),
+      .io_Re_memory_in_bready         (io_Re_memory_in_b_ready),
+      .io_Re_memory_in_bresp          (io_Re_memory_in_b_bits_bresp),
+      .io_Re_memory_in_bvalid         (io_Re_memory_in_b_valid),
+      .io_Re_memory_in_rdata          (io_Re_memory_in_r_bits_rdata),
+      //.io_Re_memory_in_rid            (io_Re_memory_in_r_bits_rid),
+      .io_Re_memory_in_rlast          (io_Re_memory_in_r_bits_rlast),
+      .io_Re_memory_in_rready         (io_Re_memory_in_r_ready),
+      .io_Re_memory_in_rvalid         (io_Re_memory_in_r_valid),
+      .io_Re_memory_in_wdata          (io_Re_memory_in_w_bits_wdata),
+      .io_Re_memory_in_wlast          (io_Re_memory_in_w_bits_wlast),
+      .io_Re_memory_in_wready         (io_Re_memory_in_w_ready),
+      .io_Re_memory_in_wstrb          (io_Re_memory_in_w_bits_wstrb),
+      .io_Re_memory_in_wvalid         (io_Re_memory_in_w_valid),
+
+      .io_config_in_awaddr     (io_config_awaddr),
+      .io_config_in_awvalid    (io_config_awvalid),
+      .io_config_in_awready    (io_config_awready),
+      .io_config_in_awlen      ('d0),
+      .io_config_in_awsize     ('d2),
+      .io_config_in_araddr     (io_config_araddr),
+      .io_config_in_arvalid    (io_config_arvalid),
+      .io_config_in_arready    (io_config_arready),
+      .io_config_in_wdata      (io_config_wdata),
+      .io_config_in_wstrb      (io_config_wstrb),
+      .io_config_in_wlast      (1'b1),
+      .io_config_in_wvalid     (io_config_wvalid),
+      .io_config_in_wready     (io_config_wready),
+      .io_config_in_rdata      (io_config_rdata),
+      .io_config_in_rresp      (io_config_rresp),
+      .io_config_in_rvalid     (io_config_rvalid),
+      .io_config_in_rready     (io_config_rready),
+      .io_config_in_bresp      (io_config_bresp),
+      .io_config_in_bvalid     (io_config_bvalid),
+      .io_config_in_bready     (io_config_bready),
+
+      .io_config_out_awaddr     (bfs_io_config_awaddr),
+      .io_config_out_awvalid    (bfs_io_config_awvalid),
+      .io_config_out_awready    (bfs_io_config_awready),
+      .io_config_out_araddr     (bfs_io_config_araddr),
+      .io_config_out_arvalid    (bfs_io_config_arvalid),
+      .io_config_out_arready    (bfs_io_config_arready),
+      .io_config_out_wdata      (bfs_io_config_wdata),
+      .io_config_out_wstrb      (bfs_io_config_wstrb),
+      .io_config_out_wvalid     (bfs_io_config_wvalid),
+      .io_config_out_wready     (bfs_io_config_wready),
+      .io_config_out_rdata      (bfs_io_config_rdata),
+      .io_config_out_rresp      (bfs_io_config_rresp),
+      .io_config_out_rvalid     (bfs_io_config_rvalid),
+      .io_config_out_rready     (bfs_io_config_rready),
+      .io_config_out_bresp      (bfs_io_config_bresp),
+      .io_config_out_bvalid     (bfs_io_config_bvalid),
+      .io_config_out_bready     (bfs_io_config_bready)
     );
 
     BFS_ps u_BFS(
       .clock                (gt_txusrclk),
       .reset                (peripheral_reset),
-      .io_config_awaddr     (io_config_awaddr),
-      .io_config_awvalid    (io_config_awvalid),
-      .io_config_awready    (io_config_awready),
-      .io_config_araddr     (io_config_araddr),
-      .io_config_arvalid    (io_config_arvalid),
-      .io_config_arready    (io_config_arready),
-      .io_config_wdata      (io_config_wdata),
-      .io_config_wstrb      (io_config_wstrb),
-      .io_config_wvalid     (io_config_wvalid),
-      .io_config_wready     (io_config_wready),
-      .io_config_rdata      (io_config_rdata),
-      .io_config_rresp      (io_config_rresp),
-      .io_config_rvalid     (io_config_rvalid),
-      .io_config_rready     (io_config_rready),
-      .io_config_bresp      (io_config_bresp),
-      .io_config_bvalid     (io_config_bvalid),
-      .io_config_bready     (io_config_bready),
+      .io_config_awaddr     (bfs_io_config_awaddr),
+      .io_config_awvalid    (bfs_io_config_awvalid),
+      .io_config_awready    (bfs_io_config_awready),
+      .io_config_araddr     (bfs_io_config_araddr),
+      .io_config_arvalid    (bfs_io_config_arvalid),
+      .io_config_arready    (bfs_io_config_arready),
+      .io_config_wdata      (bfs_io_config_wdata),
+      .io_config_wstrb      (bfs_io_config_wstrb),
+      .io_config_wvalid     (bfs_io_config_wvalid),
+      .io_config_wready     (bfs_io_config_wready),
+      .io_config_rdata      (bfs_io_config_rdata),
+      .io_config_rresp      (bfs_io_config_rresp),
+      .io_config_rvalid     (bfs_io_config_rvalid),
+      .io_config_rready     (bfs_io_config_rready),
+      .io_config_bresp      (bfs_io_config_bresp),
+      .io_config_bvalid     (bfs_io_config_bvalid),
+      .io_config_bready     (bfs_io_config_bready),
       .io_PLmemory_0_aw_bits_awaddr   (io_PLmemory_0_awaddr),
       .io_PLmemory_0_aw_bits_awid     (io_PLmemory_0_awid),
       .io_PLmemory_0_aw_bits_awlen    (io_PLmemory_0_awlen),
@@ -992,6 +1160,68 @@ wire m_axi_rvalid;
       .io_PSmemory_3_b_ready           (io_PSmempory_3_b_ready),
       .io_PSmemory_3_b_valid           (io_PSmempory_3_b_valid),
       .io_PSmemory_3_b_bits_bresp      (io_PSmempory_3_b_bits_bresp),
-      .io_PSmemory_3_b_bits_bid        (io_PSmempory_3_b_bits_bid)
+      .io_PSmemory_3_b_bits_bid        (io_PSmempory_3_b_bits_bid),
+
+      .io_Re_memory_out_aw_ready           (io_Re_memory_out_aw_ready),
+      .io_Re_memory_out_aw_valid           (io_Re_memory_out_aw_valid),
+      .io_Re_memory_out_aw_bits_awaddr     (io_Re_memory_out_aw_bits_awaddr),
+      .io_Re_memory_out_aw_bits_awid       (io_Re_memory_out_aw_bits_awid),
+      .io_Re_memory_out_aw_bits_awlen      (io_Re_memory_out_aw_bits_awlen),
+      .io_Re_memory_out_aw_bits_awsize     (io_Re_memory_out_aw_bits_awsize),
+      .io_Re_memory_out_aw_bits_awburst    (io_Re_memory_out_aw_bits_awburst),
+      .io_Re_memory_out_aw_bits_awlock     (io_Re_memory_out_aw_bits_awlock),
+      .io_Re_memory_out_ar_ready           (io_Re_memory_out_ar_ready),
+      .io_Re_memory_out_ar_valid           (io_Re_memory_out_ar_valid),
+      .io_Re_memory_out_ar_bits_araddr     (io_Re_memory_out_ar_bits_araddr),
+      .io_Re_memory_out_ar_bits_arid       (io_Re_memory_out_ar_bits_arid),
+      .io_Re_memory_out_ar_bits_arlen      (io_Re_memory_out_ar_bits_arlen),
+      .io_Re_memory_out_ar_bits_arsize     (io_Re_memory_out_ar_bits_arsize),
+      .io_Re_memory_out_ar_bits_arburst    (io_Re_memory_out_ar_bits_arburst),
+      .io_Re_memory_out_ar_bits_arlock     (io_Re_memory_out_ar_bits_arlock),
+      .io_Re_memory_out_w_ready            (io_Re_memory_out_w_ready),
+      .io_Re_memory_out_w_valid            (io_Re_memory_out_w_valid),
+      .io_Re_memory_out_w_bits_wdata       (io_Re_memory_out_w_bits_wdata),
+      .io_Re_memory_out_w_bits_wstrb       (io_Re_memory_out_w_bits_wstrb),
+      .io_Re_memory_out_w_bits_wlast       (io_Re_memory_out_w_bits_wlast),
+      .io_Re_memory_out_r_ready            (io_Re_memory_out_r_ready),
+      .io_Re_memory_out_r_valid            (io_Re_memory_out_r_valid),
+      .io_Re_memory_out_r_bits_rdata       (io_Re_memory_out_r_bits_rdata),
+      .io_Re_memory_out_r_bits_rid         (io_Re_memory_out_r_bits_rid),
+      .io_Re_memory_out_r_bits_rlast       (io_Re_memory_out_r_bits_rlast),
+      .io_Re_memory_out_b_ready            (io_Re_memory_out_b_ready),
+      .io_Re_memory_out_b_valid            (io_Re_memory_out_b_valid),
+      .io_Re_memory_out_b_bits_bresp       (io_Re_memory_out_b_bits_bresp),
+      .io_Re_memory_out_b_bits_bid         (io_Re_memory_out_b_bits_bid),
+
+      .io_Re_memory_in_aw_ready            (io_Re_memory_in_aw_ready),
+      .io_Re_memory_in_aw_valid            (io_Re_memory_in_aw_valid),
+      .io_Re_memory_in_aw_bits_awaddr      (io_Re_memory_in_aw_bits_awaddr),
+      .io_Re_memory_in_aw_bits_awid        (io_Re_memory_in_aw_bits_awid),
+      .io_Re_memory_in_aw_bits_awlen       (io_Re_memory_in_aw_bits_awlen),
+      .io_Re_memory_in_aw_bits_awsize      (io_Re_memory_in_aw_bits_awsize),
+      .io_Re_memory_in_aw_bits_awburst     (io_Re_memory_in_aw_bits_awburst),
+      .io_Re_memory_in_aw_bits_awlock      (io_Re_memory_in_aw_bits_awlock),
+      .io_Re_memory_in_ar_ready            (io_Re_memory_in_ar_ready),
+      .io_Re_memory_in_ar_valid            (io_Re_memory_in_ar_valid),
+      .io_Re_memory_in_ar_bits_araddr      (io_Re_memory_in_ar_bits_araddr),
+      .io_Re_memory_in_ar_bits_arid        (io_Re_memory_in_ar_bits_arid),
+      .io_Re_memory_in_ar_bits_arlen       (io_Re_memory_in_ar_bits_arlen),
+      .io_Re_memory_in_ar_bits_arsize      (io_Re_memory_in_ar_bits_arsize),
+      .io_Re_memory_in_ar_bits_arburst     (io_Re_memory_in_ar_bits_arburst),
+      .io_Re_memory_in_ar_bits_arlock      (io_Re_memory_in_ar_bits_arlock),
+      .io_Re_memory_in_w_ready             (io_Re_memory_in_w_ready),
+      .io_Re_memory_in_w_valid             (io_Re_memory_in_w_valid),
+      .io_Re_memory_in_w_bits_wdata        (io_Re_memory_in_w_bits_wdata),
+      .io_Re_memory_in_w_bits_wstrb        (io_Re_memory_in_w_bits_wstrb),
+      .io_Re_memory_in_w_bits_wlast        (io_Re_memory_in_w_bits_wlast),
+      .io_Re_memory_in_r_ready             (io_Re_memory_in_r_ready),
+      .io_Re_memory_in_r_valid             (io_Re_memory_in_r_valid),
+      .io_Re_memory_in_r_bits_rdata        (io_Re_memory_in_r_bits_rdata),
+      .io_Re_memory_in_r_bits_rid          (io_Re_memory_in_r_bits_rid),
+      .io_Re_memory_in_r_bits_rlast        (io_Re_memory_in_r_bits_rlast),
+      .io_Re_memory_in_b_ready             (io_Re_memory_in_b_ready),
+      .io_Re_memory_in_b_valid             (io_Re_memory_in_b_valid),
+      .io_Re_memory_in_b_bits_bresp        (io_Re_memory_in_b_bits_bresp),
+      .io_Re_memory_in_b_bits_bid          (io_Re_memory_in_b_bits_bid)
     );
 endmodule

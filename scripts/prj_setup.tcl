@@ -4,7 +4,11 @@
 # Set IP repository paths
 set obj [get_filesets sources_1]
 if { $obj != {} } {
-   set_property "ip_repo_paths" "[file normalize "${script_dir}/../design/${prj}/ip_repo/bfs_ps"]" $obj
+   set_property "ip_repo_paths" "[file normalize "${script_dir}/../design/${prj}/ip_repo/bfs_ps"] \
+   [file normalize "${script_dir}/../design/${prj}/ip_repo/doce"] \
+   [file normalize "${script_dir}/../design/${prj}/ip_repo/mac_addr"] \
+   [file normalize "${script_dir}/../design/${prj}/ip_repo/reset"] \
+   [file normalize "${script_dir}/../design/${prj}/ip_repo/padding"]" $obj
 
    # Rebuild user ip_repo's index before adding any source files
    update_ip_catalog -rebuild

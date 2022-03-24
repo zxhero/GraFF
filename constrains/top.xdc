@@ -17,6 +17,8 @@ set_property PACKAGE_PIN AV21 [get_ports {ddr4_mig_sys_clk_clk_n[0]}]
 
 set_property CLOCK_DEDICATED_ROUTE BACKBONE [get_pins -hier -filter {NAME =~ */u_ddr4_infrastructure/gen_mmcme4.u_mmcme_adv_inst/CLKIN1}]
 
+create_clock -period 6.400 -name cmac_gt_ref_clk -waveform {0.000 3.200} [get_ports gt_ref_clk_clk_p]
+set_property PACKAGE_PIN R32 [get_ports gt_ref_clk_clk_p]
 
 
 

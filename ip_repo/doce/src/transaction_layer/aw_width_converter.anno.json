@@ -1,0 +1,28 @@
+[
+  {
+    "class":"firrtl.transforms.CombinationalPath",
+    "sink":"~aw_width_converter|aw_width_converter>io_w_channel_ready",
+    "sources":[
+      "~aw_width_converter|aw_width_converter>io_w_channel_valid",
+      "~aw_width_converter|aw_width_converter>io_dout_channel_ready",
+      "~aw_width_converter|aw_width_converter>io_aw_channel_valid"
+    ]
+  },
+  {
+    "class":"firrtl.transforms.CombinationalPath",
+    "sink":"~aw_width_converter|aw_width_converter>io_aw_channel_ready",
+    "sources":[
+      "~aw_width_converter|aw_width_converter>io_w_channel_valid",
+      "~aw_width_converter|aw_width_converter>io_aw_channel_valid",
+      "~aw_width_converter|aw_width_converter>io_dout_channel_ready"
+    ]
+  },
+  {
+    "class":"firrtl.EmitCircuitAnnotation",
+    "emitter":"firrtl.VerilogEmitter"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxTargetDirAnno",
+    "targetDir":"/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/doce/src/transaction_layer/"
+  }
+]
