@@ -1,19 +1,5 @@
 [
   {
-    "class":"firrtl.transforms.CombinationalPath",
-    "sink":"~BFS_ps|BFS_ps>io_config_awready",
-    "sources":[
-      "~BFS_ps|BFS_ps>io_config_wvalid"
-    ]
-  },
-  {
-    "class":"firrtl.transforms.CombinationalPath",
-    "sink":"~BFS_ps|BFS_ps>io_config_wready",
-    "sources":[
-      "~BFS_ps|BFS_ps>io_config_wvalid"
-    ]
-  },
-  {
     "class":"firrtl.transforms.DedupedResult",
     "original":"~BFS_ps|collector_fifo_0",
     "duplicate":"~BFS_ps|BFS_ps/MemController:multi_port_mc/tier_fifo_0:multi_channel_fifo/collector_fifos_0:collector_fifo_0",
@@ -1800,6 +1786,14 @@
     "emitter":"firrtl.VerilogEmitter"
   },
   {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~BFS_ps|Remote_Scatter>packet_recv"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~BFS_ps|Remote_Apply>packet_sent"
+  },
+  {
     "class":"chisel3.experimental.EnumAnnotations$EnumComponentAnnotation",
     "target":"BFS_ps.Remote_Apply.send_status",
     "enumTypeName":"remote.Remote_Apply$sm"
@@ -1965,6 +1959,10 @@
     "enumTypeName":"bfs.multi_port_mc$sm"
   },
   {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~BFS_ps|controller>performanceValue_0"
+  },
+  {
     "class":"chisel3.experimental.EnumAnnotations$EnumDefAnnotation",
     "typeName":"bfs.controller$sm",
     "definition":{
@@ -1981,6 +1979,23 @@
     "class":"chisel3.experimental.EnumAnnotations$EnumComponentAnnotation",
     "target":"BFS_ps.controller.status",
     "enumTypeName":"bfs.controller$sm"
+  },
+  {
+    "class":"chisel3.experimental.EnumAnnotations$EnumDefAnnotation",
+    "typeName":"utils.LookupTable$sm",
+    "definition":{
+      "get_aw":1,
+      "idole":0,
+      "get_w":2,
+      "r_done":5,
+      "w_done":3,
+      "get_ar":4
+    }
+  },
+  {
+    "class":"chisel3.experimental.EnumAnnotations$EnumComponentAnnotation",
+    "target":"BFS_ps.LookupTable.status",
+    "enumTypeName":"utils.LookupTable$sm"
   },
   {
     "class":"firrtl.transforms.BlackBoxTargetDirAnno",

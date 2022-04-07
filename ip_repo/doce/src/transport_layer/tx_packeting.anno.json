@@ -24,14 +24,19 @@
     "class":"firrtl.transforms.CombinationalPath",
     "sink":"~tx_packeting|tx_packeting>io_axi_str_to_router_bits_tlast",
     "sources":[
-      "~tx_packeting|tx_packeting>io_axis_rd_from_fsm_bits_tlast"
+      "~tx_packeting|tx_packeting>io_axis_rd_from_fsm_bits_tlast",
+      "~tx_packeting|tx_packeting>io_axis_rd_from_fsm_bits_tkeep"
     ]
   },
   {
     "class":"firrtl.transforms.CombinationalPath",
     "sink":"~tx_packeting|tx_packeting>io_axis_rd_from_fsm_ready",
     "sources":[
-      "~tx_packeting|tx_packeting>io_axi_str_to_router_ready"
+      "~tx_packeting|tx_packeting>io_axis_rd_from_fsm_bits_tlast",
+      "~tx_packeting|tx_packeting>io_axi_str_to_router_valid",
+      "~tx_packeting|tx_packeting>io_axi_str_to_router_ready",
+      "~tx_packeting|tx_packeting>io_axis_rd_from_fsm_bits_tkeep",
+      "~tx_packeting|tx_packeting>io_axis_rd_from_fsm_valid"
     ]
   },
   {

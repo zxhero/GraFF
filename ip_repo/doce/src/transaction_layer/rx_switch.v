@@ -1,17 +1,19 @@
 `timescale 1ns / 1ps
 
-module rx_switch
+module rx_switch#(
+    parameter DATA_WIDTH       = 16   //Byte
+)
 (
     input  wire           reset,
     input  wire           clk,
    
-    input  wire [127:0]   rx_data,
+    input  wire [DATA_WIDTH*8-1:0]   rx_data,
     input  wire [3:0]     rx_connection_id,
     input  wire           rx_last,
     input  wire           rx_valid,
     output wire           rx_ready,
    
-    output reg  [127:0]   dout = 129'b 0,
+    output reg  [DATA_WIDTH*8-1:0]   dout = 'b 0,
     output reg            dout_last = 1'b 0,
     output reg            aw_valid = 1'b 0,
     output reg            ar_valid = 1'b 0,
@@ -40,7 +42,7 @@ reg              next_ar_valid = 1'b 0;
 reg              next_r_valid = 1'b 0;
 reg              next_b_valid = 1'b 0;
 reg              next_barrier_valid = 1'b 0;
-reg [127:0]      next_dout = 128'b 0;
+reg [DATA_WIDTH*8-1:0]      next_dout = 'b 0;
 reg              next_dout_last = 1'b 0;
 
 
@@ -58,7 +60,7 @@ begin
         r_valid             <= 1'b 0;
         b_valid             <= 1'b 0;
         barrier_valid       <= 1'b 0;
-        dout                <= 128'b 0;
+        dout                <= 'b 0;
         dout_last           <= 1'b 0;
         state               <= st0;
     end
@@ -115,7 +117,7 @@ begin
         next_r_valid             <= 1'b 0;
         next_b_valid             <= 1'b 0;
         next_barrier_valid       <= 1'b 0;
-        next_dout                <= 128'b 0;
+        next_dout                <= 'b 0;
         next_dout_last           <= 1'b 0;
         next_state               <= st0;
     end
@@ -128,31 +130,31 @@ begin
         begin
             if (rx_data[3:0]==3'b001)  //aw
             begin
-                next_dout         <= {rx_data[127:4],rx_connection_id};
+                next_dout         <= {rx_data[DATA_WIDTH*8-1:4],rx_connection_id};
                 next_aw_valid     <= 1'b 1;
                 next_state        <= st1;
             end
             else if (rx_data[3:0]==3'b010)  //ar
             begin
-                next_dout        <= {rx_data[127:4],rx_connection_id};
+                next_dout        <= {rx_data[DATA_WIDTH*8-1:4],rx_connection_id};
                 next_ar_valid    <= 1'b 1;
                 next_state       <= st0;
             end
             else if (rx_data[3:0]==3'b011)   //r
             begin
-                next_dout        <= {rx_data[127:4],rx_connection_id};
+                next_dout        <= {rx_data[DATA_WIDTH*8-1:4],rx_connection_id};
                 next_r_valid     <= 1'b 1;
                 next_state       <= st2;
             end
             else if (rx_data[3:0]==3'b100)   //b
             begin
-                next_dout        <= {rx_data[127:4],rx_connection_id};
+                next_dout        <= {rx_data[DATA_WIDTH*8-1:4],rx_connection_id};
                 next_b_valid     <= 1'b 1;
                 next_state       <= st0;
             end
             else if ((rx_data[3:0]==3'b101) | (rx_data[3:0]==3'b110))
             begin
-                next_dout            <= {rx_data[127:9],rx_data[0],rx_data[7:4],rx_connection_id};
+                next_dout            <= {rx_data[DATA_WIDTH*8-1:9],rx_data[0],rx_data[7:4],rx_connection_id};
                 next_barrier_valid   <= 1'b 1;
                 next_state           <= st0;
             end

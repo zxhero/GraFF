@@ -1,20 +1,6 @@
 [
   {
     "class":"firrtl.transforms.CombinationalPath",
-    "sink":"~rx_depacketing|rx_depacketing>io_axi_str_from_router_ready",
-    "sources":[
-      "~rx_depacketing|rx_depacketing>io_axis_str_to_trans_ready"
-    ]
-  },
-  {
-    "class":"firrtl.transforms.CombinationalPath",
-    "sink":"~rx_depacketing|rx_depacketing>io_axis_str_to_trans_bits_tlast",
-    "sources":[
-      "~rx_depacketing|rx_depacketing>io_axi_str_from_router_bits_tlast"
-    ]
-  },
-  {
-    "class":"firrtl.transforms.CombinationalPath",
     "sink":"~rx_depacketing|rx_depacketing>io_axis_str_to_trans_valid",
     "sources":[
       "~rx_depacketing|rx_depacketing>io_axi_str_from_router_valid"
@@ -32,6 +18,15 @@
     "sink":"~rx_depacketing|rx_depacketing>io_axis_str_to_trans_bits_tdata",
     "sources":[
       "~rx_depacketing|rx_depacketing>io_axi_str_from_router_bits_tdata"
+    ]
+  },
+  {
+    "class":"firrtl.transforms.CombinationalPath",
+    "sink":"~rx_depacketing|rx_depacketing>io_axi_str_from_router_ready",
+    "sources":[
+      "~rx_depacketing|rx_depacketing>io_axis_str_to_trans_valid",
+      "~rx_depacketing|rx_depacketing>io_axis_str_to_trans_ready",
+      "~rx_depacketing|rx_depacketing>io_axi_str_from_router_valid"
     ]
   },
   {

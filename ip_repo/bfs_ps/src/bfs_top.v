@@ -23,6 +23,8 @@
 module bfs_top(
     input gt_txusrclk,
     input peripheral_reset,
+    input doceclk,
+    input cmacclk,
     
     input  [63:0]  io_config_awaddr,
   input          io_config_awvalid,
@@ -42,13 +44,13 @@ module bfs_top(
   output         io_config_bvalid,
   input          io_config_bready,
 
-  input [127:0]doce_axis_rxd_tdata,
-  input [15:0]doce_axis_rxd_tkeep,
+  input [511:0]doce_axis_rxd_tdata,
+  input [63:0]doce_axis_rxd_tkeep,
   input doce_axis_rxd_tlast,
   output doce_axis_rxd_tready,
   input doce_axis_rxd_tvalid,
-  output [127:0]doce_axis_txd_tdata,
-  output [15:0]doce_axis_txd_tkeep,
+  output [511:0]doce_axis_txd_tdata,
+  output [63:0]doce_axis_txd_tkeep,
   output doce_axis_txd_tlast,
   input doce_axis_txd_tready,
   output doce_axis_txd_tvalid
@@ -521,7 +523,7 @@ module bfs_top(
   wire         io_Re_memory_in_aw_ready;
   wire         io_Re_memory_in_aw_valid;
   wire [63:0]  io_Re_memory_in_aw_bits_awaddr;
-  wire [5:0]   io_Re_memory_in_aw_bits_awid;
+  wire [9:0]   io_Re_memory_in_aw_bits_awid;
   wire [7:0]   io_Re_memory_in_aw_bits_awlen;
   wire [2:0]   io_Re_memory_in_aw_bits_awsize;
   wire [1:0]   io_Re_memory_in_aw_bits_awburst;
@@ -529,7 +531,7 @@ module bfs_top(
   wire         io_Re_memory_in_ar_ready;
   wire         io_Re_memory_in_ar_valid;
   wire [63:0]  io_Re_memory_in_ar_bits_araddr;
-  wire [5:0]   io_Re_memory_in_ar_bits_arid;
+  wire [9:0]   io_Re_memory_in_ar_bits_arid;
   wire [7:0]   io_Re_memory_in_ar_bits_arlen;
   wire [2:0]   io_Re_memory_in_ar_bits_arsize;
   wire [1:0]   io_Re_memory_in_ar_bits_arburst;
@@ -542,12 +544,12 @@ module bfs_top(
   wire         io_Re_memory_in_r_ready;
   wire         io_Re_memory_in_r_valid;
   wire [511:0] io_Re_memory_in_r_bits_rdata;
-  wire [5:0]   io_Re_memory_in_r_bits_rid;
+  wire [9:0]   io_Re_memory_in_r_bits_rid;
   wire         io_Re_memory_in_r_bits_rlast;
   wire         io_Re_memory_in_b_ready;
   wire         io_Re_memory_in_b_valid;
   wire [1:0]   io_Re_memory_in_b_bits_bresp;
-  wire [5:0]   io_Re_memory_in_b_bits_bid;
+  wire [9:0]   io_Re_memory_in_b_bits_bid;
 
   wire [63:0]  bfs_io_config_awaddr;
   wire         bfs_io_config_awvalid;
@@ -570,6 +572,10 @@ module bfs_top(
     design_1 u_xbar(
       .INTERCONNECT_ACLK      (gt_txusrclk),
       .INTERCONNECT_ARESETN   (~peripheral_reset),
+      .clk_doce                 (doceclk),
+      .doce_resetn              (~peripheral_reset),
+      .clk_cmac                  (cmacclk),
+      .cmac_resetn              (~peripheral_reset),
 
       .doce_axis_rxd_tdata    (doce_axis_rxd_tdata),
       .doce_axis_rxd_tkeep    (doce_axis_rxd_tkeep),
@@ -855,7 +861,7 @@ module bfs_top(
 
       .io_Re_memory_out_araddr         (io_Re_memory_out_ar_bits_araddr),
       .io_Re_memory_out_arburst        (io_Re_memory_out_ar_bits_arburst),
-      .io_Re_memory_out_arid           ({2'd3, io_Re_memory_out_ar_bits_arid}),
+      .io_Re_memory_out_arid           (io_Re_memory_out_ar_bits_arid),
       .io_Re_memory_out_arlen          (io_Re_memory_out_ar_bits_arlen),
       .io_Re_memory_out_arlock         (io_Re_memory_out_ar_bits_arlock),
       .io_Re_memory_out_arready        (io_Re_memory_out_ar_ready),
@@ -863,7 +869,7 @@ module bfs_top(
       .io_Re_memory_out_arvalid        (io_Re_memory_out_ar_valid),
       .io_Re_memory_out_awaddr         (io_Re_memory_out_aw_bits_awaddr),
       .io_Re_memory_out_awburst        (io_Re_memory_out_aw_bits_awburst),
-      .io_Re_memory_out_awid           ({2'd3, io_Re_memory_out_aw_bits_awid}),
+      .io_Re_memory_out_awid           (io_Re_memory_out_aw_bits_awid),
       .io_Re_memory_out_awlen          (io_Re_memory_out_aw_bits_awlen),
       .io_Re_memory_out_awlock         (io_Re_memory_out_aw_bits_awlock),
       .io_Re_memory_out_awready        (io_Re_memory_out_aw_ready),
@@ -886,7 +892,7 @@ module bfs_top(
 
       .io_Re_memory_in_araddr         (io_Re_memory_in_ar_bits_araddr),
       .io_Re_memory_in_arburst        (io_Re_memory_in_ar_bits_arburst),
-      //.io_Re_memory_in_arid           ({2'd3, io_Re_memory_in_ar_bits_arid}),
+      .io_Re_memory_in_arid           (io_Re_memory_in_ar_bits_arid),
       .io_Re_memory_in_arlen          (io_Re_memory_in_ar_bits_arlen),
       .io_Re_memory_in_arlock         (io_Re_memory_in_ar_bits_arlock),
       .io_Re_memory_in_arready        (io_Re_memory_in_ar_ready),
@@ -894,18 +900,18 @@ module bfs_top(
       .io_Re_memory_in_arvalid        (io_Re_memory_in_ar_valid),
       .io_Re_memory_in_awaddr         (io_Re_memory_in_aw_bits_awaddr),
       .io_Re_memory_in_awburst        (io_Re_memory_in_aw_bits_awburst),
-      //.io_Re_memory_in_awid           ({2'd3, io_Re_memory_in_aw_bits_awid}),
+      .io_Re_memory_in_awid           (io_Re_memory_in_aw_bits_awid),
       .io_Re_memory_in_awlen          (io_Re_memory_in_aw_bits_awlen),
       .io_Re_memory_in_awlock         (io_Re_memory_in_aw_bits_awlock),
       .io_Re_memory_in_awready        (io_Re_memory_in_aw_ready),
       .io_Re_memory_in_awsize         (io_Re_memory_in_aw_bits_awsize),
       .io_Re_memory_in_awvalid        (io_Re_memory_in_aw_valid),
-      //.io_Re_memory_in_bid            (io_Re_memory_in_b_bits_bid),
+      .io_Re_memory_in_bid            (io_Re_memory_in_b_bits_bid),
       .io_Re_memory_in_bready         (io_Re_memory_in_b_ready),
       .io_Re_memory_in_bresp          (io_Re_memory_in_b_bits_bresp),
       .io_Re_memory_in_bvalid         (io_Re_memory_in_b_valid),
       .io_Re_memory_in_rdata          (io_Re_memory_in_r_bits_rdata),
-      //.io_Re_memory_in_rid            (io_Re_memory_in_r_bits_rid),
+      .io_Re_memory_in_rid            (io_Re_memory_in_r_bits_rid),
       .io_Re_memory_in_rlast          (io_Re_memory_in_r_bits_rlast),
       .io_Re_memory_in_rready         (io_Re_memory_in_r_ready),
       .io_Re_memory_in_rvalid         (io_Re_memory_in_r_valid),

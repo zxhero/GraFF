@@ -1,12 +1,14 @@
 `timescale 1ns / 1ps
 
 
-module axi_rx
+module axi_rx#(
+    parameter DATA_WIDTH       = 16   //Byte
+)
 (
     input  wire                   reset,
     input  wire                   clk,
    
-    input  wire [127:0]           rx_data,
+    input  wire [DATA_WIDTH*8-1:0]           rx_data,
     input  wire [3:0]             rx_connection_id,
     input  wire                   rx_last,
     input  wire                   rx_valid,
@@ -24,7 +26,7 @@ module axi_rx
 
 
 /*********************slave interface**************************/    
-    output wire [127:0]           s_axi_rdata,
+    output wire [DATA_WIDTH*8-1:0]           s_axi_rdata,
     output wire [17:0]            s_axi_rid,
     output wire                   s_axi_rlast,
     output wire [1:0]             s_axi_rresp,
@@ -56,8 +58,8 @@ module axi_rx
     output wire                   m_axi_arvalid,
     input  wire                   m_axi_arready, 
        
-    output wire [127:0]           m_axi_wdata,
-    output wire [15:0]            m_axi_wstrb,
+    output wire [DATA_WIDTH*8-1:0]           m_axi_wdata,
+    output wire [DATA_WIDTH-1:0]            m_axi_wstrb,
     output wire                   m_axi_wlast,
     output wire                   m_axi_wvalid,
     input  wire                   m_axi_wready
@@ -66,7 +68,7 @@ module axi_rx
 );
 
 
-wire   [127:0]      rx_user;
+wire   [DATA_WIDTH*8-1:0]      rx_user;
 wire                rx_user_last;
 wire                rx_aw_valid;
 wire                rx_ar_valid;
@@ -84,13 +86,13 @@ wire [79:0]         aw_decode_fifo;
 wire                aw_decode_fifo_valid;
 wire                aw_decode_fifo_ready;
 
-wire [143:0]        w_decode_fifo;     //144bit
+wire [DATA_WIDTH*8+DATA_WIDTH-1:0]        w_decode_fifo;     //144bit
 wire                w_decode_fifo_last;
 wire                w_decode_fifo_valid;
 wire                w_decode_fifo_ready;
 
 
-wire [127:0]        r_fifo_decode;  //128bit
+wire [DATA_WIDTH*8-1:0]        r_fifo_decode;  //128bit
 wire                r_fifo_decode_last;
 wire                r_fifo_decode_valid;
 wire                r_fifo_decode_ready;
@@ -98,7 +100,7 @@ wire                r_fifo_decode_ready;
 
 wire [79:0]        aw_data;   //m_axi_awlock,m_axi_awburst,m_axi_awsize,m_axi_awlen,m_axi_awid,m_axi_awaddr,connect_id, 1+2+3+8+18+44+4=80
 wire [79:0]        ar_data;   //m_axi_arlock,m_axi_arburst,m_axi_arsize,m_axi_arlen,m_axi_arid,m_axi_araddr,connect_id, 1+2+3+8+18+44+4=80
-wire [144:0]       w_data;   //m_axi_last,m_axi_wstrb,m_axi_wdata
+wire [DATA_WIDTH*8+DATA_WIDTH+1-1:0]       w_data;   //m_axi_last,m_axi_wstrb,m_axi_wdata
 
 
 assign {m_axi_awlock,m_axi_awburst,m_axi_awsize,m_axi_awlen,m_axi_awid[17:0],m_axi_awaddr,m_axi_awid[21:18]} = aw_data;
@@ -109,7 +111,9 @@ wire [79:0]        ar_decode_fifo;   //80bit   include 4bit connection id
 wire               ar_decode_fifo_valid;
 wire               ar_decode_fifo_ready;
 
-rx_switch rx_switch_inst
+rx_switch #(
+    .DATA_WIDTH(DATA_WIDTH)
+)rx_switch_inst
 (
     .reset               ( reset ),
     .clk                 ( clk ),
@@ -241,7 +245,7 @@ m_ar_fifo m_ar_fifo_inst  //width is 80,depth is 64
 );
 
 
-wire [148:0]        r_data;
+wire [DATA_WIDTH*8+21-1:0]        r_data;
 assign {s_axi_rlast,s_axi_rid,s_axi_rresp,s_axi_rdata} = r_data;
 
 
@@ -264,7 +268,9 @@ s_r_fifo s_r_fifo_inst     //width is 129,depth is 256
    .empty             ( r_ept )
 );
 
-r_decode r_decode_inst
+r_decode #(
+    .DATA_WIDTH(DATA_WIDTH)
+)r_decode_inst
 (
     .reset            ( reset ),
     .clk              ( clk ),

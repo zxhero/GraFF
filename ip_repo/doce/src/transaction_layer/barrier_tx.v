@@ -1,6 +1,8 @@
 `timescale 1ns / 1ps
 
-module barrier_tx
+module barrier_tx#(
+    parameter DATA_WIDTH       = 16   //Byte
+)
 (
     input  wire             reset,
     input  wire             clk,
@@ -22,17 +24,17 @@ module barrier_tx
     input  wire             rx_valid,
     output reg              rx_ready=1'b0,
    
-    output reg  [127:0]     channel=128'b0,
+    output reg  [DATA_WIDTH*8-1:0]     channel='b0,
     output reg  [3:0]       channel_connection_id=4'b0,
     output wire [12:0]      channel_byte_num,
-    output wire [15:0]      channel_keep,
+    output wire [DATA_WIDTH-1:0]      channel_keep,
     output wire             channel_last,
     output reg              channel_valid=1'b0,
     input  wire             channel_ready
 );
 
 
-assign        channel_keep = 16'h1;
+assign        channel_keep = 'h1;
 assign        channel_last = 1'b1;
 assign        channel_byte_num = 13'b 1;
 
@@ -86,7 +88,7 @@ localparam st3        = ONE_HOT << 3;
 reg  [SW-1:0]    state=st0;
 reg  [SW-1:0]    next_state=st0;
 
-reg  [127:0]     next_channel = 128'b0;
+reg  [DATA_WIDTH*8-1:0]     next_channel = 'b0;
 reg  [3:0]       next_channel_connection_id = 4'b0;
 reg              next_channel_valid = 1'b0;
 
@@ -94,7 +96,7 @@ always @(posedge clk)
 begin
     if (reset)
     begin
-        channel                <= 128'b0;
+        channel                <= 'b0;
         channel_connection_id  <= 4'b0;
         channel_valid          <= 1'b0;
         state                  <= st0;
@@ -128,7 +130,7 @@ begin
     next_state                  <= state;
     if (reset)
     begin
-        next_channel                <= 128'b0;
+        next_channel                <= 'b0;
         next_channel_connection_id  <= 4'b0;
         next_channel_valid          <= 1'b0;
         next_state                  <= st0;
@@ -148,35 +150,35 @@ begin
                     ready_mid_0                   <= (~data_mid_0[4]) & (~data_mid_0[9]) & (~data_mid_0[14]);    // ready_mid_0 is high after deal with barrier sending 
                     if (data_mid_0[4])
                     begin
-                        next_channel                 <= {120'b0,data_mid_0[23:20],4'h5};
+                        next_channel                 <= {{(DATA_WIDTH*8-8){1'b0}},data_mid_0[23:20],4'h5};
                         next_channel_connection_id   <= data_mid_0[3:0];
                         next_channel_valid           <= 1'b 1;
                         next_state                   <= st1;
                     end
                     else if (data_mid_0[9])
                     begin
-                        next_channel                 <= {120'b0,data_mid_0[23:20],4'h5};
+                        next_channel                 <= {{(DATA_WIDTH*8-8){1'b0}},data_mid_0[23:20],4'h5};
                         next_channel_connection_id   <= data_mid_0[8:5];
                         next_channel_valid           <= 1'b 1;
                         next_state                   <= st2;
                     end
                     else if (data_mid_0[14])
                     begin
-                        next_channel                 <= {120'b0,data_mid_0[23:20],4'h5};
+                        next_channel                 <= {{(DATA_WIDTH*8-8){1'b0}},data_mid_0[23:20],4'h5};
                         next_channel_connection_id   <= data_mid_0[13:10];
                         next_channel_valid           <= 1'b 1;
                         next_state                   <= st3;
                     end
                     else if (data_mid_0[19])
                     begin
-                        next_channel                 <= {120'b0,data_mid_0[23:20],4'h5};
+                        next_channel                 <= {{(DATA_WIDTH*8-8){1'b0}},data_mid_0[23:20],4'h5};
                         next_channel_connection_id   <= data_mid_0[18:15];
                         next_channel_valid           <= 1'b 1;
                         next_state                   <= st0;
                     end
                     else
                     begin
-                        next_channel                 <= 128'b0;
+                        next_channel                 <= 'b0;
                         next_channel_connection_id   <= 4'b0;
                         next_channel_valid           <= 1'b 0;
                         next_state                   <= st0;
@@ -186,7 +188,7 @@ begin
                 begin
                     rx_ready                     <= 1'b1;
                     ready_mid_0                  <= 1'b0;
-                    next_channel                 <= {120'b0,rx_context_id,4'h6};
+                    next_channel                 <= {{(DATA_WIDTH*8-8){1'b0}},rx_context_id,4'h6};
                     next_channel_connection_id   <= rx_connection_id;
                     next_channel_valid           <= rx_broadcast_answer;    //high stand for broadcast message from other,low stand for answer message from other
                     next_state                   <= st0;
@@ -195,7 +197,7 @@ begin
                 begin
                     rx_ready                     <= 1'b0;
                     ready_mid_0                  <= 1'b0;
-                    next_channel                 <= 128'b0;
+                    next_channel                 <= 'b0;
                     next_channel_connection_id   <= 4'b0;
                     next_channel_valid           <= 1'b0;
                     next_state                   <= st0;
@@ -215,28 +217,28 @@ begin
                 ready_mid_0                   <= (~data_mid_0[9]) & (~data_mid_0[14]);
                 if (data_mid_0[9])
                 begin
-                    next_channel                 <= {120'b0,data_mid_0[23:20],4'h5};
+                    next_channel                 <= {{(DATA_WIDTH*8-8){1'b0}},data_mid_0[23:20],4'h5};
                     next_channel_connection_id   <= data_mid_0[8:5];
                     next_channel_valid           <= 1'b 1;
                     next_state                   <= st2;
                 end
                 else if (data_mid_0[14])
                 begin
-                    next_channel                 <= {120'b0,data_mid_0[23:20],4'h5};
+                    next_channel                 <= {{(DATA_WIDTH*8-8){1'b0}},data_mid_0[23:20],4'h5};
                     next_channel_connection_id   <= data_mid_0[13:10];
                     next_channel_valid           <= 1'b 1;
                     next_state                   <= st3;
                 end
                 else if (data_mid_0[19])
                 begin
-                    next_channel                 <= {120'b0,data_mid_0[23:20],4'h5};
+                    next_channel                 <= {{(DATA_WIDTH*8-8){1'b0}},data_mid_0[23:20],4'h5};
                     next_channel_connection_id   <= data_mid_0[18:15];
                     next_channel_valid           <= 1'b 1;
                     next_state                   <= st0;
                 end
                 else
                 begin
-                    next_channel                 <= 128'b0;
+                    next_channel                 <= 'b0;
                     next_channel_connection_id   <= 4'b0;
                     next_channel_valid           <= 1'b 0;
                     next_state                   <= st0;
@@ -256,21 +258,21 @@ begin
                 ready_mid_0                   <= ~data_mid_0[14];
                 if (data_mid_0[14])
                 begin
-                    next_channel                 <= {120'b0,data_mid_0[23:20],4'h5};
+                    next_channel                 <= {{(DATA_WIDTH*8-8){1'b0}},data_mid_0[23:20],4'h5};
                     next_channel_connection_id   <= data_mid_0[13:10];
                     next_channel_valid           <= 1'b 1;
                     next_state                   <= st3;
                 end
                 else if (data_mid_0[19])
                 begin
-                    next_channel                 <= {120'b0,data_mid_0[23:20],4'h5};
+                    next_channel                 <= {{(DATA_WIDTH*8-8){1'b0}},data_mid_0[23:20],4'h5};
                     next_channel_connection_id   <= data_mid_0[18:15];
                     next_channel_valid           <= 1'b 1;
                     next_state                   <= st0;
                 end
                 else
                 begin
-                    next_channel                 <= 128'b0;
+                    next_channel                 <= 'b0;
                     next_channel_connection_id   <= 4'b0;
                     next_channel_valid           <= 1'b 0;
                     next_state                   <= st0;
@@ -290,13 +292,13 @@ begin
                 next_state                   <= st0;
                 if (data_mid_0[19])
                 begin
-                    next_channel                 <= {120'b0,data_mid_0[23:20],4'h5};
+                    next_channel                 <= {{(DATA_WIDTH*8-8){1'b0}},data_mid_0[23:20],4'h5};
                     next_channel_connection_id   <= data_mid_0[18:15];
                     next_channel_valid           <= 1'b 1;
                 end
                 else
                 begin
-                    next_channel                 <= 128'b0;
+                    next_channel                 <= 'b0;
                     next_channel_connection_id   <= 4'b0;
                     next_channel_valid           <= 1'b 0;
                 end
@@ -308,7 +310,7 @@ begin
         end 
         default:
         begin
-            next_channel                <= 128'b0;
+            next_channel                <= 'b0;
             next_channel_connection_id  <= 4'b0;
             next_channel_valid          <= 1'b0;
             next_state                  <= st0;

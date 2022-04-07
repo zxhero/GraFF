@@ -9,17 +9,19 @@
 
 `timescale 1ps / 1ps
 
-module tx_fsm (
-    input [127:0]  axi_str_tdata_from_trans,
-    input [15:0]   axi_str_tkeep_from_trans,
+module tx_fsm #(
+    parameter DATA_WIDTH       = 16   //Byte
+)(
+    input [DATA_WIDTH*8-1:0]  axi_str_tdata_from_trans,
+    input [DATA_WIDTH-1:0]   axi_str_tkeep_from_trans,
     input          axi_str_tvalid_from_trans,
     input          axi_str_tlast_from_trans,
     input [16:0]   axi_str_tuser_from_trans,
 	output		   axi_str_tready_to_trans,
 
 	input          axi_str_tready_from_router,
-    output [127:0] axi_str_tdata_to_router,   
-    output [15:0]  axi_str_tkeep_to_router,   
+    output [DATA_WIDTH*8-1:0] axi_str_tdata_to_router,   
+    output [DATA_WIDTH-1:0]  axi_str_tkeep_to_router,   
     output         axi_str_tvalid_to_router,
     output         axi_str_tlast_to_router,
 		
@@ -35,12 +37,12 @@ module tx_fsm (
   //Wire declaration
   wire                       axis_rd_tlast;
   wire                       axis_rd_tvalid;
-  wire [127:0]               axis_rd_tdata;
-  wire [15:0]                axis_rd_tkeep;
+  wire [DATA_WIDTH*8-1:0]               axis_rd_tdata;
+  wire [DATA_WIDTH-1:0]                axis_rd_tkeep;
   wire                       axis_wr_tlast;
   wire                       axis_wr_tvalid;
-  wire [127:0]               axis_wr_tdata;
-  wire [15:0]                axis_wr_tkeep;
+  wire [DATA_WIDTH*8-1:0]               axis_wr_tdata;
+  wire [DATA_WIDTH-1:0]                axis_wr_tkeep;
 
   wire [127:0]               mac_header;
   wire                       axis_wr_tready;
@@ -51,8 +53,8 @@ module tx_fsm (
   wire  [15:0]  			 frame_len;
 
   //Reg declaration
-  reg  [127:0]	axi_str_tdata_from_trans_r;
-  reg  [15:0]	axi_str_tkeep_from_trans_r;
+  reg  [DATA_WIDTH*8-1:0]	axi_str_tdata_from_trans_r;
+  reg  [DATA_WIDTH-1:0]	axi_str_tkeep_from_trans_r;
   reg  [16:0]	axi_str_tuser_from_trans_r;
   reg			axi_str_tlast_from_trans_r; 
   reg  		   	axi_str_tvalid_from_trans_r;
@@ -61,8 +63,8 @@ module tx_fsm (
   reg          		cmd_rd_ready=1'b0;
   reg          		axis_rd_tready='d0 ;
   reg 				axis_rd_tvalid_from_fsm;
-  reg  [127:0]		axis_rd_tdata_from_fsm;
-  reg  [15:0]		axis_rd_tkeep_from_fsm;
+  reg  [512:0]		axis_rd_tdata_from_fsm;
+  reg  [64:0]		axis_rd_tkeep_from_fsm;
   reg				axis_rd_tlast_from_fsm;
   wire              axis_rd_tready_to_fsm;
  
@@ -72,6 +74,15 @@ module tx_fsm (
      BEGIN_READ    = 2'b10;
 
   reg  [1:0]   state_rd = READ_MAC_HEADER;
+  (*dont_touch = "true" *)reg   [2:0]  state_count;
+  always @(posedge user_clk) begin
+    if(reset | state_rd == READ_MAC_HEADER)
+      state_count <= 'd0;
+    else if(state_rd == BEGIN_READ)
+      state_count <= state_count + 'd1;
+    else
+      state_count <= state_count;
+  end
 
   assign trans_axis_txd_tuser = axi_str_tuser_from_trans[3:0] & {4{axi_str_tvalid_from_trans}};
 
@@ -81,15 +92,17 @@ module tx_fsm (
   assign axis_wr_tlast  = axi_str_tlast_from_trans_r; 
   assign axis_wr_tkeep  = axi_str_tkeep_from_trans_r; 
   assign axis_wr_tdata  = axi_str_tdata_from_trans_r;
-  assign axi_str_tready_to_trans  = (axis_wr_tready & cmd_wr_ready) | !axi_str_tvalid_from_trans_r;
+  assign axi_str_tready_to_trans  = (axis_wr_tready & cmd_wr_ready);
   
   always @(posedge user_clk)
   begin
-         axi_str_tdata_from_trans_r   <= axi_str_tdata_from_trans;
-         axi_str_tkeep_from_trans_r   <= axi_str_tkeep_from_trans;
-         axi_str_tvalid_from_trans_r  <= axi_str_tvalid_from_trans;
-         axi_str_tuser_from_trans_r	  <= axi_str_tuser_from_trans;
-		 axi_str_tlast_from_trans_r   <= axi_str_tlast_from_trans;
+    if(axi_str_tready_to_trans) begin
+      axi_str_tdata_from_trans_r   <= axi_str_tdata_from_trans;
+      axi_str_tkeep_from_trans_r   <= axi_str_tkeep_from_trans;
+      axi_str_tvalid_from_trans_r  <= axi_str_tvalid_from_trans;
+      axi_str_tuser_from_trans_r	 <= axi_str_tuser_from_trans;
+		  axi_str_tlast_from_trans_r   <= axi_str_tlast_from_trans;
+    end
   end
   
   reg pkt_firstbeat;
@@ -101,6 +114,16 @@ module tx_fsm (
 		  pkt_firstbeat <= axi_str_tlast_from_trans;
 	  else
 		  pkt_firstbeat <= pkt_firstbeat;
+  end
+
+  (*dont_touch = "true" *)reg [31: 0] packet_send;
+  always @(posedge user_clk) begin
+      if(reset)
+          packet_send <= 'd0;
+      else if(cmd_wr_valid && cmd_wr_ready)
+          packet_send <= packet_send + 'd1;
+      else
+          packet_send <= packet_send;
   end
 
    
@@ -153,8 +176,8 @@ module tx_fsm (
        begin 
 			axis_rd_tready          <= 1'b0;
 			axis_rd_tvalid_from_fsm <= cmd_rd_valid;
-			axis_rd_tdata_from_fsm	<= mac_header;
-			axis_rd_tkeep_from_fsm	<= 16'hffff;
+			axis_rd_tdata_from_fsm	<= {mac_header, {(513-128){1'b0}}};
+			axis_rd_tkeep_from_fsm	<= {16'hffff, {(65-16){1'b0}}};
 			axis_rd_tlast_from_fsm	<= 1'b0;
 			cmd_rd_ready			<= axis_rd_tready_to_fsm;
        end  
@@ -162,17 +185,17 @@ module tx_fsm (
        begin
 			axis_rd_tready          <= axis_rd_tready_to_fsm;
 			axis_rd_tvalid_from_fsm <= axis_rd_tvalid;
-			axis_rd_tdata_from_fsm	<= axis_rd_tdata;
-			axis_rd_tkeep_from_fsm	<= axis_rd_tkeep;
+			axis_rd_tdata_from_fsm	<= {axis_rd_tdata, {(513-DATA_WIDTH*8){1'b0}}};
+			axis_rd_tkeep_from_fsm	<= {axis_rd_tkeep, {(65-DATA_WIDTH){1'b0}}};
 			axis_rd_tlast_from_fsm	<= axis_rd_tlast;			
 			cmd_rd_ready			<= 1'b0;
        end 
        else
        begin
-			axis_rd_tdata_from_fsm	<= 128'd0;
+			axis_rd_tdata_from_fsm	<= 513'd0;
 			axis_rd_tready          <= 1'b0; 
 			axis_rd_tvalid_from_fsm <= 1'b0;
-			axis_rd_tkeep_from_fsm	<= 16'd0;
+			axis_rd_tkeep_from_fsm	<= 65'd0;
 			axis_rd_tlast_from_fsm	<= 1'b0;
 			cmd_rd_ready			<= 1'b0;
        end
@@ -198,7 +221,7 @@ module tx_fsm (
   axis_cmd_fifo cmd_fifo_inst (
 	.s_axis_aclk         (user_clk   	),
 	.s_axis_aresetn      (~reset      	),
-	.s_axis_tdata        ({16'd0, frame_len[7:0], frame_len[15:8], doce_mac_addr, tx_dst_mac_addr}), // Bus [127 : 0]  
+	.s_axis_tdata        ({packet_send[15:0], frame_len[7:0], frame_len[15:8], doce_mac_addr, tx_dst_mac_addr}), // Bus [127 : 0]  
 	.s_axis_tvalid       (cmd_wr_valid  ),
 	.s_axis_tready       (cmd_wr_ready  ),
 	.m_axis_tdata        (mac_header 	), // Bus [127 : 0]  
@@ -207,15 +230,15 @@ module tx_fsm (
   );
 
   tx_packeting tx_packeting_inst(
-    .clock                              (user_clk),                          
-    .reset                              (reset),                          
-    .io_axis_rd_from_fsm_ready          (axis_rd_tready_to_fsm),      
-    .io_axis_rd_from_fsm_valid          (axis_rd_tvalid_from_fsm),      
-    .io_axis_rd_from_fsm_bits_tdata     (axis_rd_tdata_from_fsm), 
-    .io_axis_rd_from_fsm_bits_tkeep     (axis_rd_tkeep_from_fsm), 
+    .clock                              (user_clk),
+    .reset                              (reset),
+    .io_axis_rd_from_fsm_ready          (axis_rd_tready_to_fsm),
+    .io_axis_rd_from_fsm_valid          (axis_rd_tvalid_from_fsm),
+    .io_axis_rd_from_fsm_bits_tdata     (axis_rd_tdata_from_fsm[512 : 513-DATA_WIDTH*8]), 
+    .io_axis_rd_from_fsm_bits_tkeep     (axis_rd_tkeep_from_fsm[64 : 65-DATA_WIDTH]), 
     .io_axis_rd_from_fsm_bits_tlast     (axis_rd_tlast_from_fsm), 
-    .io_axi_str_to_router_ready         (axi_str_tready_from_router),     
-    .io_axi_str_to_router_valid         (axi_str_tvalid_to_router),     
+    .io_axi_str_to_router_ready         (axi_str_tready_from_router),
+    .io_axi_str_to_router_valid         (axi_str_tvalid_to_router),
     .io_axi_str_to_router_bits_tdata    (axi_str_tdata_to_router),
     .io_axi_str_to_router_bits_tkeep    (axi_str_tkeep_to_router),
     .io_axi_str_to_router_bits_tlast    (axi_str_tlast_to_router)

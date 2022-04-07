@@ -3,9 +3,7 @@
     "class":"firrtl.transforms.CombinationalPath",
     "sink":"~aw_decode|aw_decode>io_din_channel_ready",
     "sources":[
-      "~aw_decode|aw_decode>io_din_channel_valid",
-      "~aw_decode|aw_decode>io_w_channel_ready",
-      "~aw_decode|aw_decode>io_aw_channel_ready"
+      "~aw_decode|aw_decode>io_din_channel_valid"
     ]
   },
   {

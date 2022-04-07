@@ -1757,7 +1757,9 @@
       <spirit:name>remote_out</spirit:name>
       <spirit:busType spirit:vendor="xilinx.com" spirit:library="interface" spirit:name="aximm" spirit:version="1.0"/>
       <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="interface" spirit:name="aximm_rtl" spirit:version="1.0"/>
-      <spirit:master/>
+      <spirit:master>
+        <spirit:addressSpaceRef spirit:addressSpaceRef="remote_out"/>
+      </spirit:master>
       <spirit:portMaps>
         <spirit:portMap>
           <spirit:logicalPort>
@@ -2015,7 +2017,9 @@
       <spirit:name>remote_in</spirit:name>
       <spirit:busType spirit:vendor="xilinx.com" spirit:library="interface" spirit:name="aximm" spirit:version="1.0"/>
       <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="interface" spirit:name="aximm_rtl" spirit:version="1.0"/>
-      <spirit:slave/>
+      <spirit:slave>
+        <spirit:memoryMapRef spirit:memoryMapRef="remote_in"/>
+      </spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
           <spirit:logicalPort>
@@ -2301,6 +2305,11 @@
       <spirit:range spirit:format="long">16777216T</spirit:range>
       <spirit:width spirit:format="long">128</spirit:width>
     </spirit:addressSpace>
+    <spirit:addressSpace>
+      <spirit:name>remote_out</spirit:name>
+      <spirit:range spirit:format="long" spirit:resolve="user" spirit:minimum="4096" spirit:rangeType="long">16777216T</spirit:range>
+      <spirit:width spirit:format="long" spirit:resolve="user">512</spirit:width>
+    </spirit:addressSpace>
   </spirit:addressSpaces>
   <spirit:memoryMaps>
     <spirit:memoryMap>
@@ -2310,6 +2319,16 @@
         <spirit:baseAddress spirit:format="bitString" spirit:resolve="user" spirit:bitStringLength="32">0</spirit:baseAddress>
         <spirit:range spirit:format="long" spirit:resolve="user" spirit:minimum="4096" spirit:rangeType="long">16777216T</spirit:range>
         <spirit:width spirit:format="long" spirit:resolve="user">32</spirit:width>
+        <spirit:usage>register</spirit:usage>
+      </spirit:addressBlock>
+    </spirit:memoryMap>
+    <spirit:memoryMap>
+      <spirit:name>remote_in</spirit:name>
+      <spirit:addressBlock>
+        <spirit:name>reg0</spirit:name>
+        <spirit:baseAddress spirit:format="bitString" spirit:resolve="user" spirit:bitStringLength="32">0</spirit:baseAddress>
+        <spirit:range spirit:format="long" spirit:resolve="user" spirit:minimum="4096" spirit:rangeType="long">16777216T</spirit:range>
+        <spirit:width spirit:format="long" spirit:resolve="user">512</spirit:width>
         <spirit:usage>register</spirit:usage>
       </spirit:addressBlock>
     </spirit:memoryMap>
@@ -2343,7 +2362,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>9f3b1205</spirit:value>
+            <spirit:value>263c9770</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -2374,7 +2393,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>9f3b1205</spirit:value>
+            <spirit:value>263c9770</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -5483,7 +5502,7 @@
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long">6</spirit:left>
+            <spirit:left spirit:format="long">5</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -5607,7 +5626,7 @@
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long">6</spirit:left>
+            <spirit:left spirit:format="long">5</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -5804,7 +5823,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long">6</spirit:left>
+            <spirit:left spirit:format="long">5</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -5877,7 +5896,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long">6</spirit:left>
+            <spirit:left spirit:format="long">5</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -5937,7 +5956,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long">6</spirit:left>
+            <spirit:left spirit:format="long">9</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -6061,7 +6080,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long">6</spirit:left>
+            <spirit:left spirit:format="long">9</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -6258,7 +6277,7 @@
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long">6</spirit:left>
+            <spirit:left spirit:format="long">9</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -6331,7 +6350,7 @@
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long">6</spirit:left>
+            <spirit:left spirit:format="long">9</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -6462,7 +6481,7 @@
       <spirit:file>
         <spirit:name>src/BFS_ps.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_d81a3f38</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_5e1bff74</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
@@ -6737,8 +6756,8 @@
         <xilinx:xpmLibrary>XPM_FIFO</xilinx:xpmLibrary>
         <xilinx:xpmLibrary>XPM_MEMORY</xilinx:xpmLibrary>
       </xilinx:xpmLibraries>
-      <xilinx:coreRevision>37</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2022-03-18T08:58:17Z</xilinx:coreCreationDateTime>
+      <xilinx:coreRevision>41</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2022-04-02T07:10:09Z</xilinx:coreCreationDateTime>
       <xilinx:tags>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@7d7dd911_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/DDR_BW/ip_repo/bfs_mig</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@70ab4c3d_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/DDR_BW/ip_repo/bfs_mig</xilinx:tag>
@@ -7413,15 +7432,83 @@
         <xilinx:tag xilinx:name="ui.data.coregen.dd@55ef22b6_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@3e505f41_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@cd8c7bd_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4793bbbc_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@28dc4c45_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@135d49bc_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@786d926b_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@69167e35_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@400882ce_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@52bf535a_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3aaf127f_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@470128ba_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3ffa13ea_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6052bb00_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@65f165a1_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@64bfdf4e_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@363f6a10_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@41489df4_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6e3e82fa_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7cb32d21_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@61d6f01a_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@24ef4a81_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@31b866a1_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@8b25aa2_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1cc9cec2_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@17b64003_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@707d6812_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@111a1deb_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@ff1d02f_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@25b71662_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@141f42f7_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@481f7038_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6956e57a_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@274d1481_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@639a710a_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@648b155d_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3b843223_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@14b96fcd_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@300e4536_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@467b6095_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@15d638ef_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4590607_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@46607b10_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1a167393_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3bdfc47a_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2833bd74_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@601518c8_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3aa66a10_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@cc4dddc_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1657bded_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@52ef5326_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@edac83b_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@45faeec9_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4bf6c3b_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@496bc29f_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@13ab253_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@497099e3_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6660ff8f_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6e64a3f2_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1fc05584_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3f4c8a11_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@67331d15_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6ad7b613_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@941e46a_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@a466df4_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@40e34648_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3fad5c20_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@175b6f88_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@117a8a2d_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@8646219_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@34c6e8bc_ARCHIVE_LOCATION">/home/zhangxu/NF_card_hw_sw_dev/fpga/design/bfs-ps/ip_repo/bfs_ps</xilinx:tag>
       </xilinx:tags>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2020.2_AR75986</xilinx:xilinxVersion>
-      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="5c5c4771"/>
-      <xilinx:checksum xilinx:scope="addressSpaces" xilinx:value="63384f46"/>
-      <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="ae77faf9"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="6c91a69a"/>
-      <xilinx:checksum xilinx:scope="ports" xilinx:value="a11ebab3"/>
+      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="3629f796"/>
+      <xilinx:checksum xilinx:scope="addressSpaces" xilinx:value="293f7051"/>
+      <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="053ca9fe"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="fab96fde"/>
+      <xilinx:checksum xilinx:scope="ports" xilinx:value="fe2441a8"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="ce23e835"/>
     </xilinx:packagingInfo>
   </spirit:vendorExtensions>

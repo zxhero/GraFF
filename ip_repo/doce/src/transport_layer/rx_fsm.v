@@ -9,17 +9,19 @@
 
 `timescale 1ps / 1ps
 
-module rx_fsm (
-    output reg [127:0] 	axi_str_tdata_to_trans,
-    output reg [15:0]  	axi_str_tkeep_to_trans,
+module rx_fsm #(
+    parameter DATA_WIDTH       = 16   //Byte
+)(
+    output reg [DATA_WIDTH*8-1:0] 	axi_str_tdata_to_trans,
+    output reg [DATA_WIDTH-1:0]  	axi_str_tkeep_to_trans,
     output reg        	axi_str_tvalid_to_trans,
     output reg        	axi_str_tlast_to_trans,
     output reg [3:0]   	axi_str_tuser_to_trans,
 	input		   		axi_str_tready_from_trans,   
 
 	output         		axi_str_tready_to_router,
-    input [127:0]  		axi_str_tdata_from_router,   
-    input [15:0]   		axi_str_tkeep_from_router,   
+    input [DATA_WIDTH*8-1:0]  		axi_str_tdata_from_router,   
+    input [DATA_WIDTH-1:0]   		axi_str_tkeep_from_router,   
     input          		axi_str_tvalid_from_router,
     input          		axi_str_tlast_from_router,
 			
@@ -47,8 +49,9 @@ module rx_fsm (
   //assign axi_str_tready_to_router = axi_str_tready_from_trans;
   
   wire         io_axis_str_to_trans_valid;     
-  wire [127:0] io_axis_str_to_trans_bits_tdata;
-  wire [3:0]   io_axis_str_to_trans_bits_tkeep;
+  wire [DATA_WIDTH*8-1:0] io_axis_str_to_trans_bits_tdata;
+  wire [DATA_WIDTH-1:0]   io_axis_str_to_trans_bits_tkeep;
+  wire [3:0]   io_axis_str_to_trans_bits_tuser;
   wire         io_axis_str_to_trans_bits_tlast;
   
   always @(posedge user_clk)
@@ -76,17 +79,18 @@ module rx_fsm (
 		                 if(io_axis_str_to_trans_valid & axi_str_tready_from_trans)
 						  pkt_firstbeat <= io_axis_str_to_trans_bits_tlast;
 						 if(pkt_firstbeat)
-							trans_axis_rxd_tuser_i <= trans_axis_rxd_tuser;
+							trans_axis_rxd_tuser_i <= io_axis_str_to_trans_bits_tuser;
 						 else
 							trans_axis_rxd_tuser_i <= trans_axis_rxd_tuser_i;
-						 if(io_axis_str_to_trans_bits_tlast & io_axis_str_to_trans_valid & axi_str_tready_from_trans)
+						 if(io_axis_str_to_trans_bits_tlast & io_axis_str_to_trans_valid & axi_str_tready_from_trans
+						 & !(axi_str_tvalid_from_router & axi_str_tready_to_router))
 						 begin
 							  state_rd                <= READ_MAC_HEADER;
 						 end 
 						 else
 						 begin
 							  state_rd                <= BEGIN_READ;
-						 end 
+						 end   
 					 end
 		  default    :   state_rd                <= READ_MAC_HEADER;
 	 endcase
@@ -99,26 +103,26 @@ module rx_fsm (
   begin
        if(state_rd==READ_MAC_HEADER)
        begin 
-			axi_str_tdata_to_trans	<= 128'd0;
+			axi_str_tdata_to_trans	<= 'd0;
 			axi_str_tuser_to_trans	<= 4'd0;
 			axi_str_tvalid_to_trans <= 1'b0;
-			axi_str_tkeep_to_trans 	<= 16'd0;
+			axi_str_tkeep_to_trans 	<= 'd0;
 			axi_str_tlast_to_trans  <= 1'b0;
        end  
        else if(state_rd==BEGIN_READ)
        begin
-			axi_str_tdata_to_trans	<= axi_str_tuser_to_trans[2] ? 128'd0 : io_axis_str_to_trans_bits_tdata;
-			axi_str_tuser_to_trans	<= pkt_firstbeat ? trans_axis_rxd_tuser : trans_axis_rxd_tuser_i;
+			axi_str_tdata_to_trans	<= axi_str_tuser_to_trans[2] ? 'd0 : io_axis_str_to_trans_bits_tdata;
+			axi_str_tuser_to_trans	<= pkt_firstbeat ? io_axis_str_to_trans_bits_tuser : trans_axis_rxd_tuser_i;
 			axi_str_tvalid_to_trans <= axi_str_tuser_to_trans[2] ? 1'd0 :io_axis_str_to_trans_valid;
-			axi_str_tkeep_to_trans 	<= axi_str_tuser_to_trans[2] ? 16'd0 :io_axis_str_to_trans_bits_tkeep;
+			axi_str_tkeep_to_trans 	<= axi_str_tuser_to_trans[2] ? 'd0 :io_axis_str_to_trans_bits_tkeep;
 			axi_str_tlast_to_trans  <= axi_str_tuser_to_trans[2] ? 1'd0 :io_axis_str_to_trans_bits_tlast;
        end 
        else
        begin
-			axi_str_tdata_to_trans	<= 128'd0;
+			axi_str_tdata_to_trans	<= 'd0;
 			axi_str_tuser_to_trans	<= 4'd0;
 			axi_str_tvalid_to_trans <= 1'b0;
-			axi_str_tkeep_to_trans 	<= 16'd0;
+			axi_str_tkeep_to_trans 	<= 'd0;
 			axi_str_tlast_to_trans  <= 1'b0;
        end
   end
@@ -129,12 +133,14 @@ module rx_fsm (
     .io_axis_str_to_trans_ready             (axi_str_tready_from_trans),       
     .io_axis_str_to_trans_valid             (io_axis_str_to_trans_valid),       
     .io_axis_str_to_trans_bits_tdata        (io_axis_str_to_trans_bits_tdata),  
-    .io_axis_str_to_trans_bits_tkeep        (io_axis_str_to_trans_bits_tkeep),  
+    .io_axis_str_to_trans_bits_tkeep        (io_axis_str_to_trans_bits_tkeep),
+	.io_axis_str_to_trans_bits_tuser        (io_axis_str_to_trans_bits_tuser),  
     .io_axis_str_to_trans_bits_tlast        (io_axis_str_to_trans_bits_tlast),  
     .io_axi_str_from_router_ready           (axi_str_tready_to_router),     
     .io_axi_str_from_router_valid           (axi_str_tvalid_from_router),     
     .io_axi_str_from_router_bits_tdata      (axi_str_tdata_from_router),
     .io_axi_str_from_router_bits_tkeep      (axi_str_tkeep_from_router),
+	.io_axi_str_from_router_bits_tuser      (trans_axis_rxd_tuser),
     .io_axi_str_from_router_bits_tlast      (axi_str_tlast_from_router)
   );
 

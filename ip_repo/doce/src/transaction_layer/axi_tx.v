@@ -1,6 +1,8 @@
 `timescale 1ns / 1ps
 
-module axi_tx
+module axi_tx #(
+    parameter DATA_WIDTH       = 16   //Byte
+)
 (
     input  wire              reset,
     input  wire              reset_id_inquire,
@@ -8,8 +10,8 @@ module axi_tx
     output wire              reset_soft,
     output wire              start_soft,
 
-    output wire [127:0]      tx_data,
-    output wire [15:0]       tx_keep,
+    output wire [DATA_WIDTH*8-1:0]      tx_data,
+    output wire [DATA_WIDTH-1:0]       tx_keep,
     output wire [3:0]        tx_connection_id,
     output wire [12:0]       tx_byte_num,
     output wire              tx_last,
@@ -44,13 +46,13 @@ module axi_tx
     input  wire              s_axi_arvalid,
     output wire              s_axi_arready, 
        
-    input  wire [127:0]      s_axi_wdata,
-    input  wire [15:0]       s_axi_wstrb,
+    input  wire [DATA_WIDTH*8-1:0]      s_axi_wdata,
+    input  wire [DATA_WIDTH-1:0]       s_axi_wstrb,
     input  wire              s_axi_wlast,
     input  wire              s_axi_wvalid,
     output wire              s_axi_wready,
 
-    input  wire [127:0]      m_axi_rdata,
+    input  wire [DATA_WIDTH*8-1:0]      m_axi_rdata,
     input  wire [21:0]       m_axi_rid,    //include 4bit connection id
     input  wire              m_axi_rlast,
     input  wire [1:0]        m_axi_rresp,
@@ -108,16 +110,16 @@ wire               barrier_clean_1;   //keep 1 flop
 
 
 
-wire  [127:0]      aw_channel;
-wire  [15:0]       aw_channel_keep;
+wire  [DATA_WIDTH*8-1:0]      aw_channel;
+wire  [DATA_WIDTH-1:0]       aw_channel_keep;
 wire               aw_channel_last;
 wire  [3:0]        aw_channel_connection_id;
 wire  [12:0]       aw_channel_byte_num;
 wire               aw_channel_valid;
 wire               aw_channel_ready;
 
-wire  [127:0]      ar_channel;
-wire  [15:0]       ar_channel_keep;
+wire  [DATA_WIDTH*8-1:0]      ar_channel;
+wire  [DATA_WIDTH-1:0]       ar_channel_keep;
 wire               ar_channel_last;
 wire  [3:0]        ar_channel_connection_id;
 wire  [12:0]       ar_channel_byte_num;
@@ -125,17 +127,17 @@ wire               ar_channel_valid;
 wire               ar_channel_ready;
 
 
-wire  [127:0]      r_channel;
+wire  [DATA_WIDTH*8-1:0]      r_channel;
 wire               r_channel_last;
-wire  [15:0]       r_channel_keep;
+wire  [DATA_WIDTH-1:0]       r_channel_keep;
 wire  [3:0]        r_channel_connection_id;
 wire  [12:0]       r_channel_byte_num;
 wire               r_channel_valid;
 wire               r_channel_ready;
 
-wire  [127:0]      b_channel;
+wire  [DATA_WIDTH*8-1:0]      b_channel;
 wire               b_channel_last;
-wire  [15:0]       b_channel_keep;
+wire  [DATA_WIDTH-1:0]       b_channel_keep;
 wire  [3:0]        b_channel_connection_id;
 wire  [12:0]       b_channel_byte_num;
 wire               b_channel_valid;
@@ -143,16 +145,18 @@ wire               b_channel_ready;
 
 
 
-wire [127:0]       barrier_channel;
+wire [DATA_WIDTH*8-1:0]       barrier_channel;
 wire [3:0]         barrier_channel_connection_id;
 wire [12:0]        barrier_channel_byte_num;
-wire [15:0]        barrier_channel_keep;
+wire [DATA_WIDTH-1:0]        barrier_channel_keep;
 wire               barrier_channel_last;
 wire               barrier_channel_valid;
 wire               barrier_channel_ready;
 
 
-s_inter_tx s_inter_tx_inst
+s_inter_tx #(
+    .DATA_WIDTH(DATA_WIDTH)
+)s_inter_tx_inst
 (  
     .reset                     ( reset ),
     .reset_id_inquire          ( reset_id_inquire ),
@@ -235,7 +239,9 @@ s_inter_tx s_inter_tx_inst
 /*********************lite interface**************************/  
 );
 
-m_inter_tx m_inter_tx_inst
+m_inter_tx #(
+    .DATA_WIDTH(DATA_WIDTH)
+)m_inter_tx_inst
 (
     .reset                     ( reset ),
     .clk                       ( clk ),
@@ -271,7 +277,9 @@ m_inter_tx m_inter_tx_inst
 
 
 
-barrier_tx barrier_tx_inst
+barrier_tx #(
+    .DATA_WIDTH(DATA_WIDTH)
+)barrier_tx_inst
 (
     .reset                   ( reset ),
     .clk                     ( clk ),
@@ -305,15 +313,24 @@ barrier_tx barrier_tx_inst
 
 
 assign   resetn   = ~reset;
-
+wire [512:0] aw_channel_align = {{(513 - DATA_WIDTH*8){1'b0}}, aw_channel};
+wire [512:0] ar_channel_align = {{(513 - DATA_WIDTH*8){1'b0}}, ar_channel};
+wire [512:0] r_channel_align = {{(513 - DATA_WIDTH*8){1'b0}}, r_channel};
+wire [512:0] b_channel_align = {{(513 - DATA_WIDTH*8){1'b0}}, b_channel};
+wire [512:0] barrier_channel_align = {{(513 - DATA_WIDTH*8){1'b0}}, barrier_channel};
+wire [64:0] aw_channel_keep_align = {{(65 - DATA_WIDTH){1'b0}}, aw_channel_keep};
+wire [64:0] ar_channel_keep_align = {{(65 - DATA_WIDTH){1'b0}}, ar_channel_keep};
+wire [64:0] r_channel_keep_align = {{(65 - DATA_WIDTH){1'b0}}, r_channel_keep};
+wire [64:0] b_channel_keep_align = {{(65 - DATA_WIDTH){1'b0}}, b_channel_keep};
+wire [64:0] barrier_channel_keep_align = {{(65 - DATA_WIDTH){1'b0}}, barrier_channel_keep};
 tx_stream_switch tx_stream_switch_inst 
 (
   .aclk                      ( clk ),     // input wire aclk
   .aresetn                   ( resetn ),    // input wire aresetn
   .s_axis_tvalid             ( {aw_channel_valid,ar_channel_valid,r_channel_valid,b_channel_valid,barrier_channel_valid} ),    // input wire [5 : 0] s_axis_tvalid
   .s_axis_tready             ( {aw_channel_ready,ar_channel_ready,r_channel_ready,b_channel_ready,barrier_channel_ready} ),    // output wire [5 : 0] s_axis_tready
-  .s_axis_tdata              ( {aw_channel,ar_channel,r_channel,b_channel,barrier_channel} ),      // input wire [767 : 0] s_axis_tdata
-  .s_axis_tkeep              ( {aw_channel_keep,ar_channel_keep,r_channel_keep,b_channel_keep,barrier_channel_keep} ),      // input wire [95 : 0] s_axis_tkeep
+  .s_axis_tdata              ( {aw_channel_align[511:0],ar_channel_align[511:0],r_channel_align[511:0],b_channel_align[511:0],barrier_channel_align[511:0]} ),      // input wire [767 : 0] s_axis_tdata
+  .s_axis_tkeep              ( {aw_channel_keep_align[63:0],ar_channel_keep_align[63:0],r_channel_keep_align[63:0],b_channel_keep_align[63:0],barrier_channel_keep_align[63:0]} ),      // input wire [95 : 0] s_axis_tkeep
   .s_axis_tlast              ( {aw_channel_last,ar_channel_last,r_channel_last,b_channel_last,barrier_channel_last} ),      // input wire [5 : 0] s_axis_tlast
   .s_axis_tuser              ( {aw_channel_byte_num,aw_channel_connection_id,ar_channel_byte_num,ar_channel_connection_id,r_channel_byte_num,r_channel_connection_id,b_channel_byte_num,b_channel_connection_id,barrier_channel_byte_num,barrier_channel_connection_id} ),      // input wire [23 : 0] s_axis_tuser
   .m_axis_tvalid             ( tx_valid ),    // output wire [0 : 0] m_axis_tvalid

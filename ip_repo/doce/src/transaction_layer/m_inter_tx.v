@@ -1,12 +1,14 @@
 `timescale 1ns / 1ps
 
-module m_inter_tx
+module m_inter_tx#(
+    parameter DATA_WIDTH       = 16   //Byte
+)
 (
    input wire                               reset,
    input wire                               clk,
    
 
-   input  wire [127:0]                      m_axi_rdata,
+   input  wire [DATA_WIDTH*8-1:0]                      m_axi_rdata,
    input  wire [21:0]                       m_axi_rid,    //include 4bit connection id
    input  wire                              m_axi_rlast,
    input  wire [1:0]                        m_axi_rresp,
@@ -18,16 +20,16 @@ module m_inter_tx
    input  wire                              m_axi_bvalid,
    output wire                              m_axi_bready,
 
-   output wire [127:0]                      r_channel,
-   output wire [15:0]                       r_channel_keep,
+   output wire [DATA_WIDTH*8-1:0]                      r_channel,
+   output wire [DATA_WIDTH-1:0]                       r_channel_keep,
    output wire                              r_channel_last,
    output wire [3:0]                        r_channel_connection_id,
    output wire [12:0]                       r_channel_byte_num,
    output wire                              r_channel_valid,
    input  wire                              r_channel_ready,
    
-   output wire [127:0]                      b_channel,
-   output wire [15:0]                       b_channel_keep,
+   output wire [DATA_WIDTH*8-1:0]                      b_channel,
+   output wire [DATA_WIDTH-1:0]                       b_channel_keep,
    output wire                              b_channel_last,
    output wire [3:0]                        b_channel_connection_id,
    output wire [12:0]                       b_channel_byte_num,
@@ -130,7 +132,12 @@ r_num_fifo r_num_fifo_inst
 );
 
 
-
+wire [511:0] r_channel_mid;
+wire [63:0] r_channel_keep_mid;
+assign r_channel = r_channel_mid[DATA_WIDTH*8-1 : 0];
+assign r_channel_keep = r_channel_keep_mid[DATA_WIDTH-1 : 0];
+assign r_channel_mid[511 : 128] = 'd0;
+assign r_channel_keep_mid[63 : 16] = 'd0;
 r_connection_id_gene r_connection_id_gene_inst  //delete connection id ,add channel num
 (
    .reset                    ( reset ),
@@ -145,10 +152,10 @@ r_connection_id_gene r_connection_id_gene_inst  //delete connection id ,add chan
    .num_valid                ( r_fifo_gen_num_valid ),
    .num_ready                ( r_fifo_gen_num_ready ),
    
-   .r_channel                ( r_channel ),
+   .r_channel                ( r_channel_mid[127 : 0] ),
    .r_channel_connection_id  ( r_channel_connection_id ),
    .r_channel_byte_num       ( r_channel_byte_num ),
-   .r_channel_keep           ( r_channel_keep ),
+   .r_channel_keep           ( r_channel_keep[15 : 0] ),
    .r_channel_last           ( r_channel_last ),
    .r_channel_valid          ( r_channel_valid ),
    .r_channel_ready          ( r_channel_ready )
@@ -176,9 +183,9 @@ m_b_fifo m_b_fifo_inst    //width is 24,depth is 64
  ); 
 
 
-assign b_channel[127:24] = 104'b 0; 
+assign b_channel[DATA_WIDTH*8-1:24] = 'b 0; 
 assign b_channel[3:0]    = 4'b 0100;
-assign b_channel_keep    = 16'h 0007;
+assign b_channel_keep    = 'h 0007;
 assign b_channel_last    = 1'b 1;
  
 

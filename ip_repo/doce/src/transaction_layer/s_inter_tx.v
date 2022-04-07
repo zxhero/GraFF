@@ -1,6 +1,8 @@
 `timescale 1ns / 1ps
 
-module s_inter_tx
+module s_inter_tx#(
+    parameter DATA_WIDTH       = 16   //Byte
+)
 (
     input  wire             reset,
     input  wire             reset_id_inquire,
@@ -26,23 +28,23 @@ module s_inter_tx
     input  wire             s_axi_arvalid,
     output wire             s_axi_arready, 
        
-    input  wire [127:0]     s_axi_wdata,
-    input  wire [15:0]      s_axi_wstrb,
+    input  wire [DATA_WIDTH*8-1:0]     s_axi_wdata,
+    input  wire [DATA_WIDTH-1:0]      s_axi_wstrb,
     input  wire             s_axi_wlast,
     input  wire             s_axi_wvalid,
     output wire             s_axi_wready,
 
 
-    output wire [127:0]     aw_channel,
-    output wire [15:0]      aw_channel_keep,
+    output wire [DATA_WIDTH*8-1:0]     aw_channel,
+    output wire [DATA_WIDTH-1:0]      aw_channel_keep,
     output wire             aw_channel_last,
     output wire [3:0]       aw_channel_connection_id,
     output wire [12:0]      aw_channel_byte_num,
     output wire             aw_channel_valid,
     input  wire             aw_channel_ready,
    
-    output wire [127:0]     ar_channel,
-    output wire [15:0]      ar_channel_keep,
+    output wire [DATA_WIDTH*8-1:0]     ar_channel,
+    output wire [DATA_WIDTH-1:0]      ar_channel_keep,
     output wire             ar_channel_last,
     output wire [3:0]       ar_channel_connection_id,
     output wire [12:0]      ar_channel_byte_num,
@@ -91,7 +93,7 @@ module s_inter_tx
 
 wire [75:0]            s_aw_data   = {s_axi_awlock,s_axi_awburst,s_axi_awsize,s_axi_awlen,s_axi_awid,s_axi_awaddr};  //1+2+3+8+18+44
 wire [75:0]            s_ar_data   = {s_axi_arlock,s_axi_arburst,s_axi_arsize,s_axi_arlen,s_axi_arid,s_axi_araddr};  //1+2+3+8+18+44
-wire [143:0]           s_w_data    = {s_axi_wstrb,s_axi_wdata}; //16+128
+wire [DATA_WIDTH*8+DATA_WIDTH-1:0]           s_w_data    = {s_axi_wstrb,s_axi_wdata}; //16+128
 
 
 
@@ -108,7 +110,7 @@ wire [3:0]            aw_inq_packet_context_id;
 wire                  aw_inq_packet_valid;
 wire                  aw_inq_packet_ready;
 
-wire [143:0]          w_fifo_packet;
+wire [DATA_WIDTH*8+DATA_WIDTH-1:0]          w_fifo_packet;
 wire                  w_fifo_packet_last;
 wire                  w_fifo_packet_valid;
 wire                  w_fifo_packet_ready;
@@ -118,9 +120,9 @@ wire [75:0]           ar_fifo_inq;
 wire                  ar_fifo_inq_valid;
 wire                  ar_fifo_inq_ready;
 
-assign ar_channel[127:84]  = 44'b 0;
+assign ar_channel[DATA_WIDTH*8-1:84]  = 'b 0;
 assign ar_channel[3:0]     = 4'b 0010;
-assign ar_channel_keep     = 16'h07ff; 
+assign ar_channel_keep     = 'h07ff; 
 assign ar_channel_last     = 1'b 1;
 assign ar_channel_byte_num = 13'h b;
 

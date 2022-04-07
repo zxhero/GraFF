@@ -233,7 +233,7 @@ assign trans_axis_rxd_tuser[1] = ~|({mac_1_high[15:0], mac_1_low} ^ rx_dst_mac_a
 assign trans_axis_rxd_tuser[2] = ~|({mac_2_high[15:0], mac_2_low} ^ rx_dst_mac_addr);
 assign trans_axis_rxd_tuser[3] = ~|({mac_3_high[15:0], mac_3_low} ^ rx_dst_mac_addr);
 
-always @(posedge clk)
+always @(*)
 begin
     if (reset)
     begin

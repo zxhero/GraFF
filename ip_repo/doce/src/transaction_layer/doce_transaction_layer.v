@@ -1,11 +1,13 @@
 `timescale 1ns / 1ps
 
-module doce_transaction_layer (
+module doce_transaction_layer #(
+    parameter DATA_WIDTH       = 16   //Byte
+)(
     input  wire             reset_in,
     input  wire             clk,
    
-    output wire [127:0]     trans_axis_txd_tdata,
-    output wire [15:0]      trans_axis_txd_tkeep,
+    output wire [DATA_WIDTH*8-1:0]     trans_axis_txd_tdata,
+    output wire [DATA_WIDTH-1:0]      trans_axis_txd_tkeep,
     output wire [3:0]       trans_axis_txd_tconnection_id,
     output wire [12:0]      trans_axis_txd_tbyte_num,
     output wire             trans_axis_txd_tlast,
@@ -13,8 +15,8 @@ module doce_transaction_layer (
     input  wire             trans_axis_txd_tready,
    
    
-    input  wire [127:0]     trans_axis_rxd_tdata,
-    input  wire [15:0]      trans_axis_rxd_tkeep,
+    input  wire [DATA_WIDTH*8-1:0]     trans_axis_rxd_tdata,
+    input  wire [DATA_WIDTH-1:0]      trans_axis_rxd_tkeep,
     input  wire [3:0]       trans_axis_rxd_tconnection_id,
     input  wire             trans_axis_rxd_tlast,
     input  wire             trans_axis_rxd_tvalid,
@@ -40,13 +42,13 @@ module doce_transaction_layer (
     input  wire             s_axi_arvalid,
     output wire             s_axi_arready, 
       
-    input  wire [127:0]     s_axi_wdata,
-    input  wire [15:0]      s_axi_wstrb,
+    input  wire [DATA_WIDTH*8-1:0]     s_axi_wdata,
+    input  wire [DATA_WIDTH-1:0]      s_axi_wstrb,
     input  wire             s_axi_wlast,
     input  wire             s_axi_wvalid,
     output wire             s_axi_wready,
 
-    output wire [127:0]     s_axi_rdata,
+    output wire [DATA_WIDTH*8-1:0]     s_axi_rdata,
     output wire [17:0]      s_axi_rid,
     output wire             s_axi_rlast,
     output wire [1:0]       s_axi_rresp,
@@ -79,13 +81,13 @@ module doce_transaction_layer (
     output wire             m_axi_arvalid,
     input  wire             m_axi_arready, 
       
-    output wire [127:0]     m_axi_wdata,
-    output wire [15:0]      m_axi_wstrb,
+    output wire [DATA_WIDTH*8-1:0]     m_axi_wdata,
+    output wire [DATA_WIDTH-1:0]      m_axi_wstrb,
     output wire             m_axi_wlast,
     output wire             m_axi_wvalid,
     input  wire             m_axi_wready,
 
-    input  wire [127:0]     m_axi_rdata,
+    input  wire [DATA_WIDTH*8-1:0]     m_axi_rdata,
     input  wire [21:0]      m_axi_rid,   //include 4bit connection id
     input  wire             m_axi_rlast,
     input  wire [1:0]       m_axi_rresp,
@@ -257,7 +259,9 @@ axi_lite_crossbar axi_lite_crossbar_inst
 );
 
 
-axi_tx axi_tx_inst
+axi_tx #(
+    .DATA_WIDTH(DATA_WIDTH)
+)axi_tx_inst
 (
     .reset               ( reset ),
     .reset_id_inquire    ( reset_id_inquire ),
@@ -347,7 +351,9 @@ axi_tx axi_tx_inst
 
 
 
-axi_rx axi_rx_inst
+axi_rx #(
+    .DATA_WIDTH(DATA_WIDTH)
+)axi_rx_inst
 (
     .reset                        ( reset ),
     .clk                          ( clk ),

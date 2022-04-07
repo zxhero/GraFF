@@ -1,13 +1,87 @@
 ;buildInfoPackage: chisel3, version: 3.4.3, scalaVersion: 2.12.12, sbtVersion: 1.3.10
 circuit tx_packeting : 
+  module router_out_reg_slice : 
+    input clock : Clock
+    input reset : Reset
+    output io : {dout : {flip ready : UInt<1>, valid : UInt<1>, bits : {tdata : UInt<512>, tkeep : UInt<64>, tlast : UInt<1>}}, flip din : {flip ready : UInt<1>, valid : UInt<1>, bits : {tdata : UInt<512>, tkeep : UInt<64>, tlast : UInt<1>}}}
+    
+    wire _data_WIRE : {tdata : UInt<512>, tkeep : UInt<64>, tlast : UInt<1>} @[DoCE.scala 268:34]
+    _data_WIRE.tlast <= UInt<1>("h00") @[DoCE.scala 268:34]
+    _data_WIRE.tkeep <= UInt<64>("h00") @[DoCE.scala 268:34]
+    _data_WIRE.tdata <= UInt<512>("h00") @[DoCE.scala 268:34]
+    reg data : {tdata : UInt<512>, tkeep : UInt<64>, tlast : UInt<1>}, clock with : (reset => (reset, _data_WIRE)) @[DoCE.scala 268:21]
+    reg valid : UInt<1>, clock with : (reset => (reset, UInt<1>("h00"))) @[DoCE.scala 269:22]
+    node _T = eq(valid, UInt<1>("h00")) @[DoCE.scala 270:25]
+    node _T_1 = or(io.dout.ready, _T) @[DoCE.scala 270:22]
+    when _T_1 : @[DoCE.scala 270:32]
+      data.tlast <= io.din.bits.tlast @[DoCE.scala 271:10]
+      data.tkeep <= io.din.bits.tkeep @[DoCE.scala 271:10]
+      data.tdata <= io.din.bits.tdata @[DoCE.scala 271:10]
+      valid <= io.din.valid @[DoCE.scala 272:11]
+      skip @[DoCE.scala 270:32]
+    node _io_din_ready_T = eq(valid, UInt<1>("h00")) @[DoCE.scala 275:36]
+    node _io_din_ready_T_1 = or(io.dout.ready, _io_din_ready_T) @[DoCE.scala 275:33]
+    io.din.ready <= _io_din_ready_T_1 @[DoCE.scala 275:16]
+    io.dout.valid <= valid @[DoCE.scala 276:17]
+    io.dout.bits.tlast <= data.tlast @[DoCE.scala 277:16]
+    io.dout.bits.tkeep <= data.tkeep @[DoCE.scala 277:16]
+    io.dout.bits.tdata <= data.tdata @[DoCE.scala 277:16]
+    
   module tx_packeting : 
     input clock : Clock
     input reset : UInt<1>
-    output io : {flip axis_rd_from_fsm : {flip ready : UInt<1>, valid : UInt<1>, bits : {tdata : UInt<128>, tkeep : UInt<16>, tlast : UInt<1>}}, axi_str_to_router : {flip ready : UInt<1>, valid : UInt<1>, bits : {tdata : UInt<128>, tkeep : UInt<16>, tlast : UInt<1>}}}
+    output io : {flip axis_rd_from_fsm : {flip ready : UInt<1>, valid : UInt<1>, bits : {tdata : UInt<512>, tkeep : UInt<64>, tlast : UInt<1>}}, axi_str_to_router : {flip ready : UInt<1>, valid : UInt<1>, bits : {tdata : UInt<512>, tkeep : UInt<64>, tlast : UInt<1>}}}
     
-    io.axi_str_to_router.bits.tlast <= io.axis_rd_from_fsm.bits.tlast @[DoCE.scala 247:26]
-    io.axi_str_to_router.bits.tkeep <= io.axis_rd_from_fsm.bits.tkeep @[DoCE.scala 247:26]
-    io.axi_str_to_router.bits.tdata <= io.axis_rd_from_fsm.bits.tdata @[DoCE.scala 247:26]
-    io.axi_str_to_router.valid <= io.axis_rd_from_fsm.valid @[DoCE.scala 247:26]
-    io.axis_rd_from_fsm.ready <= io.axi_str_to_router.ready @[DoCE.scala 247:26]
+    inst router_out of router_out_reg_slice @[DoCE.scala 293:28]
+    router_out.clock <= clock
+    router_out.reset <= reset
+    router_out.io.din.bits.tkeep <= io.axis_rd_from_fsm.bits.tkeep @[DoCE.scala 294:34]
+    router_out.io.din.bits.tdata <= io.axis_rd_from_fsm.bits.tdata @[DoCE.scala 295:34]
+    router_out.io.din.bits.tlast <= io.axis_rd_from_fsm.bits.tlast @[DoCE.scala 296:34]
+    router_out.io.din.valid <= io.axis_rd_from_fsm.valid @[DoCE.scala 297:29]
+    io.axis_rd_from_fsm.ready <= router_out.io.din.ready @[DoCE.scala 298:31]
+    node _T = bits(io.axis_rd_from_fsm.bits.tkeep, 63, 48) @[DoCE.scala 300:37]
+    node _T_1 = eq(_T, UInt<1>("h00")) @[DoCE.scala 300:88]
+    node _T_2 = and(io.axis_rd_from_fsm.bits.tlast, _T_1) @[DoCE.scala 299:41]
+    when _T_2 : @[DoCE.scala 300:96]
+      node _T_3 = and(io.axi_str_to_router.valid, io.axi_str_to_router.ready) @[DoCE.scala 301:39]
+      when _T_3 : @[DoCE.scala 301:68]
+        router_out.io.din.bits.tkeep <= UInt<1>("h00") @[DoCE.scala 302:38]
+        router_out.io.din.bits.tdata <= UInt<1>("h00") @[DoCE.scala 303:38]
+        router_out.io.din.bits.tlast <= UInt<1>("h00") @[DoCE.scala 304:38]
+        router_out.io.din.valid <= UInt<1>("h00") @[DoCE.scala 305:33]
+        io.axis_rd_from_fsm.ready <= UInt<1>("h01") @[DoCE.scala 306:35]
+        skip @[DoCE.scala 301:68]
+      else : @[DoCE.scala 307:18]
+        router_out.io.din.bits.tkeep <= UInt<1>("h00") @[DoCE.scala 308:38]
+        router_out.io.din.bits.tdata <= UInt<1>("h00") @[DoCE.scala 309:38]
+        router_out.io.din.bits.tlast <= UInt<1>("h00") @[DoCE.scala 310:38]
+        router_out.io.din.valid <= UInt<1>("h00") @[DoCE.scala 311:33]
+        io.axis_rd_from_fsm.ready <= UInt<1>("h00") @[DoCE.scala 312:35]
+        skip @[DoCE.scala 307:18]
+      skip @[DoCE.scala 300:96]
+    node _io_axi_str_to_router_valid_T = and(io.axis_rd_from_fsm.valid, router_out.io.dout.valid) @[DoCE.scala 316:61]
+    io.axi_str_to_router.valid <= _io_axi_str_to_router_valid_T @[DoCE.scala 316:32]
+    node _io_axi_str_to_router_bits_tlast_T = bits(io.axis_rd_from_fsm.bits.tkeep, 63, 48) @[DoCE.scala 318:37]
+    node _io_axi_str_to_router_bits_tlast_T_1 = eq(_io_axi_str_to_router_bits_tlast_T, UInt<1>("h00")) @[DoCE.scala 318:88]
+    node _io_axi_str_to_router_bits_tlast_T_2 = and(io.axis_rd_from_fsm.bits.tlast, _io_axi_str_to_router_bits_tlast_T_1) @[DoCE.scala 317:71]
+    io.axi_str_to_router.bits.tlast <= _io_axi_str_to_router_bits_tlast_T_2 @[DoCE.scala 317:37]
+    node io_axi_str_to_router_bits_tdata_hi = bits(io.axis_rd_from_fsm.bits.tdata, 383, 0) @[DoCE.scala 319:74]
+    node io_axi_str_to_router_bits_tdata_lo = bits(router_out.io.dout.bits.tdata, 511, 384) @[DoCE.scala 320:36]
+    node _io_axi_str_to_router_bits_tdata_T = cat(io_axi_str_to_router_bits_tdata_hi, io_axi_str_to_router_bits_tdata_lo) @[Cat.scala 30:58]
+    io.axi_str_to_router.bits.tdata <= _io_axi_str_to_router_bits_tdata_T @[DoCE.scala 319:37]
+    node io_axi_str_to_router_bits_tkeep_hi = bits(io.axis_rd_from_fsm.bits.tkeep, 47, 0) @[DoCE.scala 321:74]
+    node io_axi_str_to_router_bits_tkeep_lo = bits(router_out.io.dout.bits.tkeep, 63, 48) @[DoCE.scala 322:36]
+    node _io_axi_str_to_router_bits_tkeep_T = cat(io_axi_str_to_router_bits_tkeep_hi, io_axi_str_to_router_bits_tkeep_lo) @[Cat.scala 30:58]
+    io.axi_str_to_router.bits.tkeep <= _io_axi_str_to_router_bits_tkeep_T @[DoCE.scala 321:37]
+    when router_out.io.dout.bits.tlast : @[DoCE.scala 323:40]
+      node _io_axi_str_to_router_bits_tdata_T_1 = bits(router_out.io.dout.bits.tdata, 511, 384) @[DoCE.scala 324:71]
+      io.axi_str_to_router.bits.tdata <= _io_axi_str_to_router_bits_tdata_T_1 @[DoCE.scala 324:39]
+      node _io_axi_str_to_router_bits_tkeep_T_1 = bits(router_out.io.dout.bits.tkeep, 63, 48) @[DoCE.scala 325:71]
+      io.axi_str_to_router.bits.tkeep <= _io_axi_str_to_router_bits_tkeep_T_1 @[DoCE.scala 325:39]
+      io.axi_str_to_router.valid <= router_out.io.dout.valid @[DoCE.scala 326:34]
+      io.axi_str_to_router.bits.tlast <= UInt<1>("h01") @[DoCE.scala 327:39]
+      skip @[DoCE.scala 323:40]
+    node _router_out_io_dout_ready_T = and(io.axi_str_to_router.valid, io.axi_str_to_router.ready) @[DoCE.scala 330:60]
+    router_out.io.dout.ready <= _router_out_io_dout_ready_T @[DoCE.scala 330:30]
     

@@ -4,7 +4,6 @@
     "sink":"~aw_width_converter|aw_width_converter>io_w_channel_ready",
     "sources":[
       "~aw_width_converter|aw_width_converter>io_w_channel_valid",
-      "~aw_width_converter|aw_width_converter>io_dout_channel_ready",
       "~aw_width_converter|aw_width_converter>io_aw_channel_valid"
     ]
   },
@@ -13,8 +12,7 @@
     "sink":"~aw_width_converter|aw_width_converter>io_aw_channel_ready",
     "sources":[
       "~aw_width_converter|aw_width_converter>io_w_channel_valid",
-      "~aw_width_converter|aw_width_converter>io_aw_channel_valid",
-      "~aw_width_converter|aw_width_converter>io_dout_channel_ready"
+      "~aw_width_converter|aw_width_converter>io_aw_channel_valid"
     ]
   },
   {

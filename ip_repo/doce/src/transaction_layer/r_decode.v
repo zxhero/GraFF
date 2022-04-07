@@ -1,17 +1,19 @@
 
 `timescale 1ns / 1ps
 
-module r_decode
+module r_decode#(
+    parameter DATA_WIDTH       = 16   //Byte
+)
 (
     input  wire              reset,
     input  wire              clk,
    
-    input  wire [127:0]      r_decode,
+    input  wire [DATA_WIDTH*8-1:0]      r_decode,
     input  wire              r_decode_last,
     input  wire              r_decode_valid,
     output wire              r_decode_ready,
 
-    output reg  [148:0]      r=149'b 0,
+    output reg  [DATA_WIDTH*8+21-1:0]      r='b 0,
     output reg               r_valid=1'b 0,
     input  wire              r_ready
 );
@@ -27,9 +29,9 @@ localparam st1        = ONE_HOT << 1;
 reg  [SW-1:0]    state =st0;
 reg  [SW-1:0]    next_state =st0;
 
-reg [103:0]      r_mid = 104'b 0;
-reg [148:0]      next_r = 149'b0;
-reg [103:0]      next_r_mid = 104'b 0;
+reg [DATA_WIDTH*8-20-1:0]      r_mid = 104'b 0;
+reg [DATA_WIDTH*8+21-1:0]      next_r = 'b0;
+reg [DATA_WIDTH*8-20-1:0]      next_r_mid = 104'b 0;
 reg              next_r_valid = 1'b 0;
 
 
@@ -38,8 +40,8 @@ begin
 
    if (reset)
    begin
-       r              <= 149'b 0;
-       r_mid          <= 104'b 0;
+       r              <= 'b 0;
+       r_mid          <= 'b 0;
        r_valid        <= 1'b 0;
        state          <= st0;
    end
@@ -71,25 +73,25 @@ begin
     next_state          <= state;
     if (reset)
     begin
-        next_r              <= 149'b 0;
-        next_r_mid          <= 104'b 0;
+        next_r              <= 'b 0;
+        next_r_mid          <= 'b 0;
         next_r_valid        <= 1'b 0;
         next_state          <= st0;
     end
     else if (r_decode_valid & r_decode_ready)
     begin
-        next_r_mid         <= r_decode[127:24];   //104bit
+        next_r_mid         <= r_decode[DATA_WIDTH*8-1:24];   //104bit
         case (state)
         st0:
         begin
-            next_r[147:128]    <= {r_decode[23:4]};
+            next_r[DATA_WIDTH*8+21-1-1:DATA_WIDTH*8]    <= {r_decode[23:4]};
             next_r_valid       <= 1'b 0;
             next_state         <= st1;
         end
         st1:
         begin
-            next_r[148]        <= r_decode_last;
-            next_r[127:0]      <= {r_decode[23:0],r_mid};
+            next_r[DATA_WIDTH*8+21-1]        <= r_decode_last;
+            next_r[DATA_WIDTH*8-1:0]      <= {r_decode[23:0],r_mid};
             next_r_valid       <= 1'b 1;
             if (r_decode_last)
                 next_state       <= st0;
@@ -98,8 +100,8 @@ begin
         end
         default:
         begin
-            next_r              <= 149'b 0;
-            next_r_mid          <= 104'b 0;
+            next_r              <= 'b 0;
+            next_r_mid          <= 'b 0;
             next_r_valid        <= 1'b 0;
             next_state          <= st0;
         end

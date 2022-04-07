@@ -9,22 +9,24 @@
 
 `timescale 1ns / 1ps
 
-module doce_transport_layer(
+module doce_transport_layer#(
+    parameter DATA_WIDTH       = 16   //Byte
+)(
 	// Clock and Reset signals
 	input								clk,
 	input								reset,
 	
 	// AXI-Stream interface to transaction layer Rx
-	output  [127:0]                     trans_axis_rxd_tdata,
-	output  [15:0]                      trans_axis_rxd_tkeep,
+	output  [DATA_WIDTH*8-1:0]                     trans_axis_rxd_tdata,
+	output  [DATA_WIDTH-1:0]                      trans_axis_rxd_tkeep,
 	output  [3:0]                       trans_axis_rxd_tuser,
 	output                              trans_axis_rxd_tlast,
 	output                              trans_axis_rxd_tvalid,
 	input                               trans_axis_rxd_tready,
 	
 	// AXI-Stream interface from transaction layer Tx
-	input   [127:0]                     trans_axis_txd_tdata,
-	input   [15:0]                      trans_axis_txd_tkeep,
+	input   [DATA_WIDTH*8-1:0]                     trans_axis_txd_tdata,
+	input   [DATA_WIDTH-1:0]                      trans_axis_txd_tkeep,
 	input   [16:0]                      trans_axis_txd_tuser,
 	input                               trans_axis_txd_tlast,
 	input                               trans_axis_txd_tvalid,
@@ -58,15 +60,15 @@ module doce_transport_layer(
 	input	[31:0]						doce_ip_addr,
 		
 	// DoCE Rx interface
-	input  	[127:0]						doce_axis_rxd_tdata,
-	input 	[15:0]						doce_axis_rxd_tkeep,
+	input  	[DATA_WIDTH*8-1:0]						doce_axis_rxd_tdata,
+	input 	[DATA_WIDTH-1:0]						doce_axis_rxd_tkeep,
 	input 								doce_axis_rxd_tlast,
 	output								doce_axis_rxd_tready,
 	input 								doce_axis_rxd_tvalid,
 	
 	// DoCE Tx interface
-	output	[127:0]						doce_axis_txd_tdata,
-	output	[15:0]						doce_axis_txd_tkeep,
+	output	[DATA_WIDTH*8-1:0]						doce_axis_txd_tdata,
+	output	[DATA_WIDTH-1:0]						doce_axis_txd_tkeep,
 	output								doce_axis_txd_tlast,
 	input 								doce_axis_txd_tready,
 	output								doce_axis_txd_tvalid
@@ -74,14 +76,14 @@ module doce_transport_layer(
     
 	wire 				axi_str_tvalid_to_router;
 	wire 				axi_str_tready_from_router;
-	wire [127:0]		axi_str_tdata_to_router;
-	wire [15:0]			axi_str_tkeep_to_router;
+	wire [DATA_WIDTH*8-1:0]		axi_str_tdata_to_router;
+	wire [DATA_WIDTH-1:0]			axi_str_tkeep_to_router;
 	wire 				axi_str_tlast_to_router;
 	
 	wire 				axi_str_tvalid_from_router;
 	wire 				axi_str_tready_to_router;
-	wire [127:0]		axi_str_tdata_from_router;
-	wire [15:0]			axi_str_tkeep_from_router;
+	wire [DATA_WIDTH*8-1:0]		axi_str_tdata_from_router;
+	wire [DATA_WIDTH-1:0]			axi_str_tkeep_from_router;
 	wire 				axi_str_tlast_from_router;
 	
 	wire [3:0]			look_up_tx_tuser;
@@ -174,7 +176,9 @@ module doce_transport_layer(
 	
 	);
 	
-    tx_fsm u_tx_fsm(
+    tx_fsm #(
+    .DATA_WIDTH(DATA_WIDTH)
+)u_tx_fsm(
 		.user_clk					(clk),
 		.reset						(reset),
 		
@@ -197,7 +201,9 @@ module doce_transport_layer(
 		.doce_ip_addr				(doce_ip_addr_r)
 	);
 	
-	rx_fsm u_rx_fsm(
+	rx_fsm #(
+    .DATA_WIDTH(DATA_WIDTH)
+)u_rx_fsm(
 		.user_clk					(clk),
 		.reset						(reset),
 		

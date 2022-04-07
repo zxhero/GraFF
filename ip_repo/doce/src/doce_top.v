@@ -2,7 +2,7 @@
 
 module doce_top #(
     parameter AXI_ADDR_WIDTH       = 44,
-    parameter AXI_DATA_WIDTH       = 16,   //Byte
+    parameter DATA_WIDTH       = 16,   //Byte
     parameter AXI_ID_WIDTH         = 18,
     parameter AXI_SIZE_WIDTH       = 3,
     parameter AXI_BASE_ADDR        = 44'h00040000000,
@@ -12,15 +12,15 @@ module doce_top #(
     input  wire                             clk,
 
 	/*DoCE Tx interface*/
-    output wire [127:0]						doce_axis_txd_tdata,
-    output wire [15:0]						doce_axis_txd_tkeep,
+    output wire [DATA_WIDTH*8-1:0]						doce_axis_txd_tdata,
+    output wire [DATA_WIDTH-1:0]						doce_axis_txd_tkeep,
     output wire                             doce_axis_txd_tlast,
     output wire                             doce_axis_txd_tvalid,
     input  wire                             doce_axis_txd_tready,
   
 	/*DoCE Rx interface*/
-    input  wire [127:0]						doce_axis_rxd_tdata,
-    input  wire [15:0]						doce_axis_rxd_tkeep,
+    input  wire [DATA_WIDTH*8-1:0]						doce_axis_rxd_tdata,
+    input  wire [DATA_WIDTH-1:0]						doce_axis_rxd_tkeep,
     input  wire                             doce_axis_rxd_tlast,
     input  wire                             doce_axis_rxd_tvalid,
     output wire                             doce_axis_rxd_tready,   
@@ -44,13 +44,13 @@ module doce_top #(
     input  wire                             doce_axi_slave_arvalid,
     output wire                             doce_axi_slave_arready, 
        
-    input  wire [AXI_DATA_WIDTH*8-1:0]      doce_axi_slave_wdata,
-    input  wire [AXI_DATA_WIDTH-1:0]        doce_axi_slave_wstrb,
+    input  wire [DATA_WIDTH*8-1:0]      doce_axi_slave_wdata,
+    input  wire [DATA_WIDTH-1:0]        doce_axi_slave_wstrb,
     input  wire                             doce_axi_slave_wlast,
     input  wire                             doce_axi_slave_wvalid,
     output wire                             doce_axi_slave_wready,
 
-    output wire [AXI_DATA_WIDTH*8-1:0]      doce_axi_slave_rdata,
+    output wire [DATA_WIDTH*8-1:0]      doce_axi_slave_rdata,
     output wire [AXI_ID_WIDTH-1:0]          doce_axi_slave_rid,
     output wire                             doce_axi_slave_rlast,
     output wire [1:0]                       doce_axi_slave_rresp,
@@ -83,13 +83,13 @@ module doce_top #(
     output wire                             doce_axi_master_arvalid,
     input  wire                             doce_axi_master_arready, 
        
-    output wire [AXI_DATA_WIDTH*8-1:0]      doce_axi_master_wdata,
-    output wire [AXI_DATA_WIDTH-1:0]        doce_axi_master_wstrb,
+    output wire [DATA_WIDTH*8-1:0]      doce_axi_master_wdata,
+    output wire [DATA_WIDTH-1:0]        doce_axi_master_wstrb,
     output wire                             doce_axi_master_wlast,
     output wire                             doce_axi_master_wvalid,
     input  wire                             doce_axi_master_wready,
 
-    input  wire [AXI_DATA_WIDTH*8-1:0]      doce_axi_master_rdata,
+    input  wire [DATA_WIDTH*8-1:0]      doce_axi_master_rdata,
     input  wire [AXI_ID_WIDTH+3:0]          doce_axi_master_rid,    //include 4bit connection_id
     input  wire                             doce_axi_master_rlast,
     input  wire [1:0]                       doce_axi_master_rresp,
@@ -155,6 +155,15 @@ module doce_top #(
     
 );
 
+(*dont_touch = "true" *)reg [31: 0] packet_recv;
+always @(posedge clk) begin
+    if(reset)
+        packet_recv <= 'd0;
+    else if(doce_axis_rxd_tlast && doce_axis_rxd_tvalid && doce_axis_rxd_tready)
+        packet_recv <= packet_recv + 'd1;
+    else
+        packet_recv <= packet_recv;
+end
 
 assign doce_axi_master_awcache = 4'b1111;
 assign doce_axi_master_arcache = 4'b1111;
@@ -167,12 +176,12 @@ wire [44:0] s_axi_araddr_f = {{(45-AXI_ADDR_WIDTH){1'b0}}, (doce_axi_slave_aradd
 wire [18:0] s_axi_arid_f = {{(19-AXI_ID_WIDTH){1'b0}}, doce_axi_slave_arid};
 wire [3:0] s_axi_arsize_f = {{(4-AXI_SIZE_WIDTH){1'b0}}, doce_axi_slave_arsize};
 
-wire [128:0] s_axi_wdata_f = {{(129-AXI_DATA_WIDTH*8){1'b0}}, doce_axi_slave_wdata};
-wire [16:0] s_axi_wstrb_f = {{(17-AXI_DATA_WIDTH){1'b0}}, doce_axi_slave_wstrb};
+wire [DATA_WIDTH*8-1:0] s_axi_wdata_f = doce_axi_slave_wdata;
+wire [DATA_WIDTH-1:0] s_axi_wstrb_f = doce_axi_slave_wstrb;
 
-wire [127:0] s_axi_rdata_f;  
+wire [DATA_WIDTH*8-1:0] s_axi_rdata_f;  
 wire [17:0] s_axi_rid_f;
-assign doce_axi_slave_rdata = s_axi_rdata_f[AXI_DATA_WIDTH*8-1:0];
+assign doce_axi_slave_rdata = s_axi_rdata_f;
 assign doce_axi_slave_rid = s_axi_rid_f[AXI_ID_WIDTH-1:0];
 
 wire [17:0] s_axi_bid_f;
@@ -192,12 +201,12 @@ assign doce_axi_master_araddr = m_axi_araddr_f[AXI_ADDR_WIDTH-1:0];
 assign doce_axi_master_arid = {m_axi_arid_f[21:18], m_axi_arid_f[AXI_ID_WIDTH-1:0]};
 assign doce_axi_master_arsize = m_axi_arsize_f[AXI_SIZE_WIDTH-1:0];
 
-wire [127:0] m_axi_wdata_f;
-wire [15:0] m_axi_wstrb_f;
-assign doce_axi_master_wdata = m_axi_wdata_f[AXI_DATA_WIDTH*8-1:0];
-assign doce_axi_master_wstrb = m_axi_wstrb_f[AXI_DATA_WIDTH-1:0];
+wire [DATA_WIDTH*8-1:0] m_axi_wdata_f;
+wire [DATA_WIDTH-1:0] m_axi_wstrb_f;
+assign doce_axi_master_wdata = m_axi_wdata_f;
+assign doce_axi_master_wstrb = m_axi_wstrb_f;
 
-wire [128:0] m_axi_rdata_f = {{(129-AXI_DATA_WIDTH*8){1'b0}}, doce_axi_master_rdata};  
+wire [DATA_WIDTH*8-1:0] m_axi_rdata_f = doce_axi_master_rdata;  
 
 wire [18:0] m_axi_rid_f_mid = {{(19-AXI_ID_WIDTH){1'b0}}, doce_axi_master_rid[AXI_ID_WIDTH-1:0]};
 wire [21:0] m_axi_rid_f = {doce_axi_master_rid[AXI_ID_WIDTH+3:AXI_ID_WIDTH], m_axi_rid_f_mid[17:0]};
@@ -241,15 +250,15 @@ assign m_axi_doce_trp_layer_awaddr = m_axi_doce_trp_layer_awaddr_f[AXI_ADDR_WIDT
 assign m_axi_doce_trp_layer_araddr = m_axi_doce_trp_layer_araddr_f[AXI_ADDR_WIDTH-1:0];
 
 //AXI Stream interface
-wire [127:0]    axis_txd_trans_layer_tdata;
-wire [15:0]     axis_txd_trans_layer_tkeep;
+wire [DATA_WIDTH*8-1:0]    axis_txd_trans_layer_tdata;
+wire [DATA_WIDTH-1:0]     axis_txd_trans_layer_tkeep;
 wire [16:0]     axis_txd_trans_layer_tuser;
 wire            axis_txd_trans_layer_tlast;
 wire            axis_txd_trans_layer_tvalid;
 wire            axis_txd_trans_layer_tready;
 
-wire [127:0]    axis_rxd_trans_layer_tdata;
-wire [15:0]     axis_rxd_trans_layer_tkeep;
+wire [DATA_WIDTH*8-1:0]    axis_rxd_trans_layer_tdata;
+wire [DATA_WIDTH-1:0]     axis_rxd_trans_layer_tkeep;
 wire [3:0]      axis_rxd_trans_layer_tuser;
 wire            axis_rxd_trans_layer_tlast;
 wire            axis_rxd_trans_layer_tvalid;
@@ -258,7 +267,9 @@ wire            axis_rxd_trans_layer_tready;
 
 
 
-doce_transaction_layer		u_deoi_transaction_layer (
+doce_transaction_layer		#(
+    .DATA_WIDTH(DATA_WIDTH)
+)u_deoi_transaction_layer (
    .reset_in                        (reset),
    .clk                             (clk),
    
@@ -296,8 +307,8 @@ doce_transaction_layer		u_deoi_transaction_layer (
    .s_axi_arvalid      (doce_axi_slave_arvalid),
    .s_axi_arready      (doce_axi_slave_arready), 
        
-   .s_axi_wdata        (s_axi_wdata_f[127:0]),
-   .s_axi_wstrb        (s_axi_wstrb_f[15:0]),
+   .s_axi_wdata        (s_axi_wdata_f),
+   .s_axi_wstrb        (s_axi_wstrb_f),
    .s_axi_wlast        (doce_axi_slave_wlast),
    .s_axi_wvalid       (doce_axi_slave_wvalid),
    .s_axi_wready       (doce_axi_slave_wready),
@@ -339,9 +350,9 @@ doce_transaction_layer		u_deoi_transaction_layer (
    .m_axi_wvalid       (doce_axi_master_wvalid),
    .m_axi_wready       (doce_axi_master_wready),
 
-   .m_axi_rdata        (m_axi_rdata_f[127:0]),
+   .m_axi_rdata        (m_axi_rdata_f),
    .m_axi_rid          (m_axi_rid_f),
-   .m_axi_rlast        (doce_axi_master_rlast),
+   .m_axi_rlast        (doce_axi_master_rlast), 
    .m_axi_rresp        (doce_axi_master_rresp),
    .m_axi_rvalid       (doce_axi_master_rvalid),
    .m_axi_rready       (doce_axi_master_rready),
@@ -421,7 +432,9 @@ doce_transaction_layer		u_deoi_transaction_layer (
    .m_axi_lite_bready_2    (m_axi_doce_mac_bready)
 );
 
-doce_transport_layer	u_doce_transport_layer (
+doce_transport_layer	#(
+    .DATA_WIDTH(DATA_WIDTH)
+)u_doce_transport_layer (
 	//clock and reset
 	.clk					(clk),
 	.reset					(reset),
