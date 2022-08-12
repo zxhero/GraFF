@@ -27,6 +27,7 @@ module rx_fsm #(
 			
 	input [3:0]    		trans_axis_rxd_tuser,
 	output [47:0]  		rx_dst_mac_addr,
+	input [47:0]   doce_mac_addr,
 			
     input          		user_clk,
     input          		reset
@@ -46,6 +47,8 @@ module rx_fsm #(
   reg  [1:0]   state_rd = READ_MAC_HEADER;
 
   assign rx_dst_mac_addr = axi_str_tdata_from_router[95:48];
+  wire [47:0] rx_src_mac_addr = axi_str_tdata_from_router[47:0];
+  wire mac_hit = rx_src_mac_addr == doce_mac_addr;
   //assign axi_str_tready_to_router = axi_str_tready_from_trans;
   
   wire         io_axis_str_to_trans_valid;     
@@ -140,7 +143,7 @@ module rx_fsm #(
     .io_axi_str_from_router_valid           (axi_str_tvalid_from_router),     
     .io_axi_str_from_router_bits_tdata      (axi_str_tdata_from_router),
     .io_axi_str_from_router_bits_tkeep      (axi_str_tkeep_from_router),
-	.io_axi_str_from_router_bits_tuser      (trans_axis_rxd_tuser),
+	.io_axi_str_from_router_bits_tuser      (mac_hit ? trans_axis_rxd_tuser : 4'd4),
     .io_axi_str_from_router_bits_tlast      (axi_str_tlast_from_router)
   );
 

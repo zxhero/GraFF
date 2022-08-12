@@ -74,7 +74,7 @@ module tx_fsm #(
      BEGIN_READ    = 2'b10;
 
   reg  [1:0]   state_rd = READ_MAC_HEADER;
-  (*dont_touch = "true" *)reg   [2:0]  state_count;
+  reg   [2:0]  state_count;
   always @(posedge user_clk) begin
     if(reset | state_rd == READ_MAC_HEADER)
       state_count <= 'd0;

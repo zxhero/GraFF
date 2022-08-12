@@ -1,21 +1,5 @@
 [
   {
-    "class":"firrtl.transforms.CombinationalPath",
-    "sink":"~aw_width_converter|aw_width_converter>io_w_channel_ready",
-    "sources":[
-      "~aw_width_converter|aw_width_converter>io_w_channel_valid",
-      "~aw_width_converter|aw_width_converter>io_aw_channel_valid"
-    ]
-  },
-  {
-    "class":"firrtl.transforms.CombinationalPath",
-    "sink":"~aw_width_converter|aw_width_converter>io_aw_channel_ready",
-    "sources":[
-      "~aw_width_converter|aw_width_converter>io_w_channel_valid",
-      "~aw_width_converter|aw_width_converter>io_aw_channel_valid"
-    ]
-  },
-  {
     "class":"firrtl.EmitCircuitAnnotation",
     "emitter":"firrtl.VerilogEmitter"
   },

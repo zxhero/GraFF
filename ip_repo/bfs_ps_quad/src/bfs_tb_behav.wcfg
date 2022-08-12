@@ -1,0 +1,1794 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="bfs_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="axi_bram_ctrl_funcs" />
+            <top_module name="bfs_tb" />
+            <top_module name="glbl" />
+            <top_module name="vcomponents" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="101200001fs"></ZoomEndTime>
+      <Cursor1Time time="0fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="343"></NameColumnWidth>
+      <ValueColumnWidth column_width="222"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="160" />
+   <wvobject type="logic" fp_name="/bfs_tb/gt_txusrclk">
+      <obj_property name="ElementShortName">gt_txusrclk</obj_property>
+      <obj_property name="ObjectShortName">gt_txusrclk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/peripheral_reset">
+      <obj_property name="ElementShortName">peripheral_reset</obj_property>
+      <obj_property name="ObjectShortName">peripheral_reset</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/io_PLmemory_0_awaddr">
+      <obj_property name="ElementShortName">io_PLmemory_0_awaddr[63:0]</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_0_awaddr[63:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/io_PLmemory_0_awid">
+      <obj_property name="ElementShortName">io_PLmemory_0_awid[5:0]</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_0_awid[5:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/io_PLmemory_0_awlen">
+      <obj_property name="ElementShortName">io_PLmemory_0_awlen[7:0]</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_0_awlen[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/io_PLmemory_0_awsize">
+      <obj_property name="ElementShortName">io_PLmemory_0_awsize[2:0]</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_0_awsize[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/io_PLmemory_0_awburst">
+      <obj_property name="ElementShortName">io_PLmemory_0_awburst[1:0]</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_0_awburst[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/io_PLmemory_0_awlock">
+      <obj_property name="ElementShortName">io_PLmemory_0_awlock</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_0_awlock</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/io_PLmemory_0_awvalid">
+      <obj_property name="ElementShortName">io_PLmemory_0_awvalid</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_0_awvalid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/io_PLmemory_0_awready">
+      <obj_property name="ElementShortName">io_PLmemory_0_awready</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_0_awready</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/io_PLmemory_0_araddr">
+      <obj_property name="ElementShortName">io_PLmemory_0_araddr[63:0]</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_0_araddr[63:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/io_PLmemory_0_arid">
+      <obj_property name="ElementShortName">io_PLmemory_0_arid[5:0]</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_0_arid[5:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/io_PLmemory_0_arlen">
+      <obj_property name="ElementShortName">io_PLmemory_0_arlen[7:0]</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_0_arlen[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/io_PLmemory_0_arsize">
+      <obj_property name="ElementShortName">io_PLmemory_0_arsize[2:0]</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_0_arsize[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/io_PLmemory_0_arburst">
+      <obj_property name="ElementShortName">io_PLmemory_0_arburst[1:0]</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_0_arburst[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/io_PLmemory_0_arlock">
+      <obj_property name="ElementShortName">io_PLmemory_0_arlock</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_0_arlock</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/io_PLmemory_0_arvalid">
+      <obj_property name="ElementShortName">io_PLmemory_0_arvalid</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_0_arvalid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/io_PLmemory_0_arready">
+      <obj_property name="ElementShortName">io_PLmemory_0_arready</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_0_arready</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/io_PLmemory_0_wdata">
+      <obj_property name="ElementShortName">io_PLmemory_0_wdata[511:0]</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_0_wdata[511:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/io_PLmemory_0_wstrb">
+      <obj_property name="ElementShortName">io_PLmemory_0_wstrb[63:0]</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_0_wstrb[63:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/io_PLmemory_0_wlast">
+      <obj_property name="ElementShortName">io_PLmemory_0_wlast</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_0_wlast</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/io_PLmemory_0_wvalid">
+      <obj_property name="ElementShortName">io_PLmemory_0_wvalid</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_0_wvalid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/io_PLmemory_0_wready">
+      <obj_property name="ElementShortName">io_PLmemory_0_wready</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_0_wready</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/io_PLmemory_0_rdata">
+      <obj_property name="ElementShortName">io_PLmemory_0_rdata[511:0]</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_0_rdata[511:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/io_PLmemory_0_rid">
+      <obj_property name="ElementShortName">io_PLmemory_0_rid[5:0]</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_0_rid[5:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/io_PLmemory_0_rlast">
+      <obj_property name="ElementShortName">io_PLmemory_0_rlast</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_0_rlast</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/io_PLmemory_0_rresp">
+      <obj_property name="ElementShortName">io_PLmemory_0_rresp[1:0]</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_0_rresp[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/io_PLmemory_0_rvalid">
+      <obj_property name="ElementShortName">io_PLmemory_0_rvalid</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_0_rvalid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/io_PLmemory_0_rready">
+      <obj_property name="ElementShortName">io_PLmemory_0_rready</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_0_rready</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/io_PLmemory_0_bresp">
+      <obj_property name="ElementShortName">io_PLmemory_0_bresp[1:0]</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_0_bresp[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/io_PLmemory_0_bid">
+      <obj_property name="ElementShortName">io_PLmemory_0_bid[5:0]</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_0_bid[5:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/io_PLmemory_0_bvalid">
+      <obj_property name="ElementShortName">io_PLmemory_0_bvalid</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_0_bvalid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/io_PLmemory_0_bready">
+      <obj_property name="ElementShortName">io_PLmemory_0_bready</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_0_bready</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/io_PLmemory_1_awaddr">
+      <obj_property name="ElementShortName">io_PLmemory_1_awaddr[63:0]</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_1_awaddr[63:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/io_PLmemory_1_awid">
+      <obj_property name="ElementShortName">io_PLmemory_1_awid[5:0]</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_1_awid[5:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/io_PLmemory_1_awlen">
+      <obj_property name="ElementShortName">io_PLmemory_1_awlen[7:0]</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_1_awlen[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/io_PLmemory_1_awsize">
+      <obj_property name="ElementShortName">io_PLmemory_1_awsize[2:0]</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_1_awsize[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/io_PLmemory_1_awburst">
+      <obj_property name="ElementShortName">io_PLmemory_1_awburst[1:0]</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_1_awburst[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/io_PLmemory_1_awlock">
+      <obj_property name="ElementShortName">io_PLmemory_1_awlock</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_1_awlock</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/io_PLmemory_1_awvalid">
+      <obj_property name="ElementShortName">io_PLmemory_1_awvalid</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_1_awvalid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/io_PLmemory_1_awready">
+      <obj_property name="ElementShortName">io_PLmemory_1_awready</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_1_awready</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/io_PLmemory_1_araddr">
+      <obj_property name="ElementShortName">io_PLmemory_1_araddr[63:0]</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_1_araddr[63:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/io_PLmemory_1_arid">
+      <obj_property name="ElementShortName">io_PLmemory_1_arid[5:0]</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_1_arid[5:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/io_PLmemory_1_arlen">
+      <obj_property name="ElementShortName">io_PLmemory_1_arlen[7:0]</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_1_arlen[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/io_PLmemory_1_arsize">
+      <obj_property name="ElementShortName">io_PLmemory_1_arsize[2:0]</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_1_arsize[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/io_PLmemory_1_arburst">
+      <obj_property name="ElementShortName">io_PLmemory_1_arburst[1:0]</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_1_arburst[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/io_PLmemory_1_arlock">
+      <obj_property name="ElementShortName">io_PLmemory_1_arlock</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_1_arlock</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/io_PLmemory_1_arvalid">
+      <obj_property name="ElementShortName">io_PLmemory_1_arvalid</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_1_arvalid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/io_PLmemory_1_arready">
+      <obj_property name="ElementShortName">io_PLmemory_1_arready</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_1_arready</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/io_PLmemory_1_wdata">
+      <obj_property name="ElementShortName">io_PLmemory_1_wdata[511:0]</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_1_wdata[511:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/io_PLmemory_1_wstrb">
+      <obj_property name="ElementShortName">io_PLmemory_1_wstrb[63:0]</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_1_wstrb[63:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/io_PLmemory_1_wlast">
+      <obj_property name="ElementShortName">io_PLmemory_1_wlast</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_1_wlast</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/io_PLmemory_1_wvalid">
+      <obj_property name="ElementShortName">io_PLmemory_1_wvalid</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_1_wvalid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/io_PLmemory_1_wready">
+      <obj_property name="ElementShortName">io_PLmemory_1_wready</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_1_wready</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/io_PLmemory_1_rdata">
+      <obj_property name="ElementShortName">io_PLmemory_1_rdata[511:0]</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_1_rdata[511:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/io_PLmemory_1_rid">
+      <obj_property name="ElementShortName">io_PLmemory_1_rid[5:0]</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_1_rid[5:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/io_PLmemory_1_rlast">
+      <obj_property name="ElementShortName">io_PLmemory_1_rlast</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_1_rlast</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/io_PLmemory_1_rresp">
+      <obj_property name="ElementShortName">io_PLmemory_1_rresp[1:0]</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_1_rresp[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/io_PLmemory_1_rvalid">
+      <obj_property name="ElementShortName">io_PLmemory_1_rvalid</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_1_rvalid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/io_PLmemory_1_rready">
+      <obj_property name="ElementShortName">io_PLmemory_1_rready</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_1_rready</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/io_PLmemory_1_bresp">
+      <obj_property name="ElementShortName">io_PLmemory_1_bresp[1:0]</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_1_bresp[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/io_PLmemory_1_bid">
+      <obj_property name="ElementShortName">io_PLmemory_1_bid[5:0]</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_1_bid[5:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/io_PLmemory_1_bvalid">
+      <obj_property name="ElementShortName">io_PLmemory_1_bvalid</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_1_bvalid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/io_PLmemory_1_bready">
+      <obj_property name="ElementShortName">io_PLmemory_1_bready</obj_property>
+      <obj_property name="ObjectShortName">io_PLmemory_1_bready</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/M00_AXI_AWID">
+      <obj_property name="ElementShortName">M00_AXI_AWID[9:0]</obj_property>
+      <obj_property name="ObjectShortName">M00_AXI_AWID[9:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/M00_AXI_AWADDR">
+      <obj_property name="ElementShortName">M00_AXI_AWADDR[63:0]</obj_property>
+      <obj_property name="ObjectShortName">M00_AXI_AWADDR[63:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/M00_AXI_AWLEN">
+      <obj_property name="ElementShortName">M00_AXI_AWLEN[7:0]</obj_property>
+      <obj_property name="ObjectShortName">M00_AXI_AWLEN[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/M00_AXI_AWSIZE">
+      <obj_property name="ElementShortName">M00_AXI_AWSIZE[2:0]</obj_property>
+      <obj_property name="ObjectShortName">M00_AXI_AWSIZE[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/M00_AXI_AWBURST">
+      <obj_property name="ElementShortName">M00_AXI_AWBURST[1:0]</obj_property>
+      <obj_property name="ObjectShortName">M00_AXI_AWBURST[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/M00_AXI_AWLOCK">
+      <obj_property name="ElementShortName">M00_AXI_AWLOCK</obj_property>
+      <obj_property name="ObjectShortName">M00_AXI_AWLOCK</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/M00_AXI_AWCACHE">
+      <obj_property name="ElementShortName">M00_AXI_AWCACHE[3:0]</obj_property>
+      <obj_property name="ObjectShortName">M00_AXI_AWCACHE[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/M00_AXI_AWPROT">
+      <obj_property name="ElementShortName">M00_AXI_AWPROT[2:0]</obj_property>
+      <obj_property name="ObjectShortName">M00_AXI_AWPROT[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/M00_AXI_AWVALID">
+      <obj_property name="ElementShortName">M00_AXI_AWVALID</obj_property>
+      <obj_property name="ObjectShortName">M00_AXI_AWVALID</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/M00_AXI_AWREADY">
+      <obj_property name="ElementShortName">M00_AXI_AWREADY</obj_property>
+      <obj_property name="ObjectShortName">M00_AXI_AWREADY</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/M00_AXI_WDATA">
+      <obj_property name="ElementShortName">M00_AXI_WDATA[511:0]</obj_property>
+      <obj_property name="ObjectShortName">M00_AXI_WDATA[511:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/M00_AXI_WSTRB">
+      <obj_property name="ElementShortName">M00_AXI_WSTRB[63:0]</obj_property>
+      <obj_property name="ObjectShortName">M00_AXI_WSTRB[63:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/M00_AXI_WLAST">
+      <obj_property name="ElementShortName">M00_AXI_WLAST</obj_property>
+      <obj_property name="ObjectShortName">M00_AXI_WLAST</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/M00_AXI_WVALID">
+      <obj_property name="ElementShortName">M00_AXI_WVALID</obj_property>
+      <obj_property name="ObjectShortName">M00_AXI_WVALID</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/M00_AXI_WREADY">
+      <obj_property name="ElementShortName">M00_AXI_WREADY</obj_property>
+      <obj_property name="ObjectShortName">M00_AXI_WREADY</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/M00_AXI_BID">
+      <obj_property name="ElementShortName">M00_AXI_BID[9:0]</obj_property>
+      <obj_property name="ObjectShortName">M00_AXI_BID[9:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/M00_AXI_BRESP">
+      <obj_property name="ElementShortName">M00_AXI_BRESP[1:0]</obj_property>
+      <obj_property name="ObjectShortName">M00_AXI_BRESP[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/M00_AXI_BVALID">
+      <obj_property name="ElementShortName">M00_AXI_BVALID</obj_property>
+      <obj_property name="ObjectShortName">M00_AXI_BVALID</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/M00_AXI_BREADY">
+      <obj_property name="ElementShortName">M00_AXI_BREADY</obj_property>
+      <obj_property name="ObjectShortName">M00_AXI_BREADY</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/M00_AXI_ARID">
+      <obj_property name="ElementShortName">M00_AXI_ARID[9:0]</obj_property>
+      <obj_property name="ObjectShortName">M00_AXI_ARID[9:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/M00_AXI_ARADDR">
+      <obj_property name="ElementShortName">M00_AXI_ARADDR[63:0]</obj_property>
+      <obj_property name="ObjectShortName">M00_AXI_ARADDR[63:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/M00_AXI_ARLEN">
+      <obj_property name="ElementShortName">M00_AXI_ARLEN[7:0]</obj_property>
+      <obj_property name="ObjectShortName">M00_AXI_ARLEN[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/M00_AXI_ARSIZE">
+      <obj_property name="ElementShortName">M00_AXI_ARSIZE[2:0]</obj_property>
+      <obj_property name="ObjectShortName">M00_AXI_ARSIZE[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/M00_AXI_ARBURST">
+      <obj_property name="ElementShortName">M00_AXI_ARBURST[1:0]</obj_property>
+      <obj_property name="ObjectShortName">M00_AXI_ARBURST[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/M00_AXI_ARLOCK">
+      <obj_property name="ElementShortName">M00_AXI_ARLOCK</obj_property>
+      <obj_property name="ObjectShortName">M00_AXI_ARLOCK</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/M00_AXI_ARCACHE">
+      <obj_property name="ElementShortName">M00_AXI_ARCACHE[3:0]</obj_property>
+      <obj_property name="ObjectShortName">M00_AXI_ARCACHE[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/M00_AXI_ARPROT">
+      <obj_property name="ElementShortName">M00_AXI_ARPROT[2:0]</obj_property>
+      <obj_property name="ObjectShortName">M00_AXI_ARPROT[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/M00_AXI_ARVALID">
+      <obj_property name="ElementShortName">M00_AXI_ARVALID</obj_property>
+      <obj_property name="ObjectShortName">M00_AXI_ARVALID</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/M00_AXI_ARREADY">
+      <obj_property name="ElementShortName">M00_AXI_ARREADY</obj_property>
+      <obj_property name="ObjectShortName">M00_AXI_ARREADY</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/M00_AXI_RID">
+      <obj_property name="ElementShortName">M00_AXI_RID[9:0]</obj_property>
+      <obj_property name="ObjectShortName">M00_AXI_RID[9:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/M00_AXI_RDATA">
+      <obj_property name="ElementShortName">M00_AXI_RDATA[511:0]</obj_property>
+      <obj_property name="ObjectShortName">M00_AXI_RDATA[511:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/M00_AXI_RRESP">
+      <obj_property name="ElementShortName">M00_AXI_RRESP[1:0]</obj_property>
+      <obj_property name="ObjectShortName">M00_AXI_RRESP[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/M00_AXI_RLAST">
+      <obj_property name="ElementShortName">M00_AXI_RLAST</obj_property>
+      <obj_property name="ObjectShortName">M00_AXI_RLAST</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/M00_AXI_RVALID">
+      <obj_property name="ElementShortName">M00_AXI_RVALID</obj_property>
+      <obj_property name="ObjectShortName">M00_AXI_RVALID</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/M00_AXI_RREADY">
+      <obj_property name="ElementShortName">M00_AXI_RREADY</obj_property>
+      <obj_property name="ObjectShortName">M00_AXI_RREADY</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/u_xbar/S01_AXI_ARID">
+      <obj_property name="ElementShortName">S01_AXI_ARID[5:0]</obj_property>
+      <obj_property name="ObjectShortName">S01_AXI_ARID[5:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/u_xbar/S01_AXI_ARADDR">
+      <obj_property name="ElementShortName">S01_AXI_ARADDR[63:0]</obj_property>
+      <obj_property name="ObjectShortName">S01_AXI_ARADDR[63:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/u_xbar/S01_AXI_ARLEN">
+      <obj_property name="ElementShortName">S01_AXI_ARLEN[7:0]</obj_property>
+      <obj_property name="ObjectShortName">S01_AXI_ARLEN[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/u_xbar/S01_AXI_ARVALID">
+      <obj_property name="ElementShortName">S01_AXI_ARVALID</obj_property>
+      <obj_property name="ObjectShortName">S01_AXI_ARVALID</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/u_xbar/S01_AXI_ARREADY">
+      <obj_property name="ElementShortName">S01_AXI_ARREADY</obj_property>
+      <obj_property name="ObjectShortName">S01_AXI_ARREADY</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/u_xbar/S01_AXI_RID">
+      <obj_property name="ElementShortName">S01_AXI_RID[5:0]</obj_property>
+      <obj_property name="ObjectShortName">S01_AXI_RID[5:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/u_xbar/S01_AXI_RLAST">
+      <obj_property name="ElementShortName">S01_AXI_RLAST</obj_property>
+      <obj_property name="ObjectShortName">S01_AXI_RLAST</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/u_xbar/S01_AXI_RVALID">
+      <obj_property name="ElementShortName">S01_AXI_RVALID</obj_property>
+      <obj_property name="ObjectShortName">S01_AXI_RVALID</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/u_xbar/S01_AXI_RREADY">
+      <obj_property name="ElementShortName">S01_AXI_RREADY</obj_property>
+      <obj_property name="ObjectShortName">S01_AXI_RREADY</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/u_xbar/S01_AXI_RDATA">
+      <obj_property name="ElementShortName">S01_AXI_RDATA[511:0]</obj_property>
+      <obj_property name="ObjectShortName">S01_AXI_RDATA[511:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/u_mig/bram_en_b">
+      <obj_property name="ElementShortName">bram_en_b</obj_property>
+      <obj_property name="ObjectShortName">bram_en_b</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/u_mig/bram_we_b">
+      <obj_property name="ElementShortName">bram_we_b[63:0]</obj_property>
+      <obj_property name="ObjectShortName">bram_we_b[63:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/u_mig/bram_addr_b">
+      <obj_property name="ElementShortName">bram_addr_b[19:0]</obj_property>
+      <obj_property name="ObjectShortName">bram_addr_b[19:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/u_mig/bram_wrdata_b">
+      <obj_property name="ElementShortName">bram_wrdata_b[511:0]</obj_property>
+      <obj_property name="ObjectShortName">bram_wrdata_b[511:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/u_mig/bram_rddata_b">
+      <obj_property name="ElementShortName">bram_rddata_b[511:0]</obj_property>
+      <obj_property name="ObjectShortName">bram_rddata_b[511:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/clka">
+      <obj_property name="ElementShortName">clka</obj_property>
+      <obj_property name="ObjectShortName">clka</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/rsta">
+      <obj_property name="ElementShortName">rsta</obj_property>
+      <obj_property name="ObjectShortName">rsta</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/ena">
+      <obj_property name="ElementShortName">ena</obj_property>
+      <obj_property name="ObjectShortName">ena</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/wea">
+      <obj_property name="ElementShortName">wea[63:0]</obj_property>
+      <obj_property name="ObjectShortName">wea[63:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/addra">
+      <obj_property name="ElementShortName">addra[31:0]</obj_property>
+      <obj_property name="ObjectShortName">addra[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/dina">
+      <obj_property name="ElementShortName">dina[511:0]</obj_property>
+      <obj_property name="ObjectShortName">dina[511:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/douta">
+      <obj_property name="ElementShortName">douta[511:0]</obj_property>
+      <obj_property name="ObjectShortName">douta[511:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/clkb">
+      <obj_property name="ElementShortName">clkb</obj_property>
+      <obj_property name="ObjectShortName">clkb</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/rstb">
+      <obj_property name="ElementShortName">rstb</obj_property>
+      <obj_property name="ObjectShortName">rstb</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/enb">
+      <obj_property name="ElementShortName">enb</obj_property>
+      <obj_property name="ObjectShortName">enb</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/web">
+      <obj_property name="ElementShortName">web[63:0]</obj_property>
+      <obj_property name="ObjectShortName">web[63:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/addrb">
+      <obj_property name="ElementShortName">addrb[31:0]</obj_property>
+      <obj_property name="ObjectShortName">addrb[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/dinb">
+      <obj_property name="ElementShortName">dinb[511:0]</obj_property>
+      <obj_property name="ObjectShortName">dinb[511:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/doutb">
+      <obj_property name="ElementShortName">doutb[511:0]</obj_property>
+      <obj_property name="ObjectShortName">doutb[511:0]</obj_property>
+   </wvobject>
+   <wvobject type="group" fp_name="group379">
+      <obj_property name="label">pl_mc</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/pl_mc/status">
+         <obj_property name="ElementShortName">status[4:0]</obj_property>
+         <obj_property name="ObjectShortName">status[4:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/pl_mc/io_ddr_out_0_ar_ready">
+         <obj_property name="ElementShortName">io_ddr_out_0_ar_ready</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_out_0_ar_ready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/pl_mc/io_ddr_out_0_ar_valid">
+         <obj_property name="ElementShortName">io_ddr_out_0_ar_valid</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_out_0_ar_valid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/pl_mc/io_ddr_out_0_ar_bits_araddr">
+         <obj_property name="ElementShortName">io_ddr_out_0_ar_bits_araddr[63:0]</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_out_0_ar_bits_araddr[63:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/pl_mc/io_ddr_out_0_r_valid">
+         <obj_property name="ElementShortName">io_ddr_out_0_r_valid</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_out_0_r_valid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/pl_mc/io_ddr_out_0_r_bits_rdata">
+         <obj_property name="ElementShortName">io_ddr_out_0_r_bits_rdata[511:0]</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_out_0_r_bits_rdata[511:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/pl_mc/io_ddr_out_0_r_bits_rlast">
+         <obj_property name="ElementShortName">io_ddr_out_0_r_bits_rlast</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_out_0_r_bits_rlast</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/pl_mc/io_ddr_out_0_aw_ready">
+         <obj_property name="ElementShortName">io_ddr_out_0_aw_ready</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_out_0_aw_ready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/pl_mc/io_ddr_out_0_aw_valid">
+         <obj_property name="ElementShortName">io_ddr_out_0_aw_valid</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_out_0_aw_valid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/pl_mc/io_ddr_out_0_aw_bits_awaddr">
+         <obj_property name="ElementShortName">io_ddr_out_0_aw_bits_awaddr[63:0]</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_out_0_aw_bits_awaddr[63:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/pl_mc/io_ddr_out_0_w_ready">
+         <obj_property name="ElementShortName">io_ddr_out_0_w_ready</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_out_0_w_ready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/pl_mc/io_ddr_out_0_w_valid">
+         <obj_property name="ElementShortName">io_ddr_out_0_w_valid</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_out_0_w_valid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/pl_mc/io_ddr_out_0_w_bits_wdata">
+         <obj_property name="ElementShortName">io_ddr_out_0_w_bits_wdata[511:0]</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_out_0_w_bits_wdata[511:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/pl_mc/io_ddr_out_0_w_bits_wlast">
+         <obj_property name="ElementShortName">io_ddr_out_0_w_bits_wlast</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_out_0_w_bits_wlast</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/pl_mc/io_unvisited_size">
+         <obj_property name="ElementShortName">io_unvisited_size[31:0]</obj_property>
+         <obj_property name="ObjectShortName">io_unvisited_size[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/pl_mc/tier_counter_0">
+         <obj_property name="ElementShortName">tier_counter_0[31:0]</obj_property>
+         <obj_property name="ObjectShortName">tier_counter_0[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/pl_mc/io_cacheable_in_0_ready">
+         <obj_property name="ElementShortName">io_cacheable_in_0_ready</obj_property>
+         <obj_property name="ObjectShortName">io_cacheable_in_0_ready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/pl_mc/io_cacheable_in_0_valid">
+         <obj_property name="ElementShortName">io_cacheable_in_0_valid</obj_property>
+         <obj_property name="ObjectShortName">io_cacheable_in_0_valid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/pl_mc/io_cacheable_in_0_bits_tdata">
+         <obj_property name="ElementShortName">io_cacheable_in_0_bits_tdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">io_cacheable_in_0_bits_tdata[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/pl_mc/tier_counter_1">
+         <obj_property name="ElementShortName">tier_counter_1[31:0]</obj_property>
+         <obj_property name="ObjectShortName">tier_counter_1[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/pl_mc/tier_base_addr_0">
+         <obj_property name="ElementShortName">tier_base_addr_0[63:0]</obj_property>
+         <obj_property name="ObjectShortName">tier_base_addr_0[63:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/pl_mc/tier_base_addr_1">
+         <obj_property name="ElementShortName">tier_base_addr_1[63:0]</obj_property>
+         <obj_property name="ObjectShortName">tier_base_addr_1[63:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/pl_mc/io_cacheable_out_ready">
+         <obj_property name="ElementShortName">io_cacheable_out_ready</obj_property>
+         <obj_property name="ObjectShortName">io_cacheable_out_ready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/pl_mc/io_cacheable_out_valid">
+         <obj_property name="ElementShortName">io_cacheable_out_valid</obj_property>
+         <obj_property name="ObjectShortName">io_cacheable_out_valid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/pl_mc/io_cacheable_out_bits_tdata">
+         <obj_property name="ElementShortName">io_cacheable_out_bits_tdata[511:0]</obj_property>
+         <obj_property name="ObjectShortName">io_cacheable_out_bits_tdata[511:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/pl_mc/io_cacheable_out_bits_tkeep">
+         <obj_property name="ElementShortName">io_cacheable_out_bits_tkeep[15:0]</obj_property>
+         <obj_property name="ObjectShortName">io_cacheable_out_bits_tkeep[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/pl_mc/tier_status_0">
+         <obj_property name="ElementShortName">tier_status_0[4:0]</obj_property>
+         <obj_property name="ObjectShortName">tier_status_0[4:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/pl_mc/tier_status_1">
+         <obj_property name="ElementShortName">tier_status_1[4:0]</obj_property>
+         <obj_property name="ObjectShortName">tier_status_1[4:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/pl_mc/next_tier_mask">
+         <obj_property name="ElementShortName">next_tier_mask[1:0]</obj_property>
+         <obj_property name="ObjectShortName">next_tier_mask[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/pl_mc/io_ddr_out_0_ar_valid">
+         <obj_property name="ElementShortName">io_ddr_out_0_ar_valid</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_out_0_ar_valid</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/pl_mc/io_signal">
+         <obj_property name="ElementShortName">io_signal</obj_property>
+         <obj_property name="ObjectShortName">io_signal</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/pl_mc/io_ddr_out_0_r_valid">
+         <obj_property name="ElementShortName">io_ddr_out_0_r_valid</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_out_0_r_valid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/pl_mc/io_ddr_out_0_r_bits_rdata">
+         <obj_property name="ElementShortName">io_ddr_out_0_r_bits_rdata[511:0]</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_out_0_r_bits_rdata[511:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/u_BFS/pl_mc/tier_fifo_0/collector_fifos_0_full">
+      <obj_property name="ElementShortName">collector_fifos_0_full</obj_property>
+      <obj_property name="ObjectShortName">collector_fifos_0_full</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/u_BFS/pl_mc/tier_fifo_0/collector_fifos_0_din">
+      <obj_property name="ElementShortName">collector_fifos_0_din[31:0]</obj_property>
+      <obj_property name="ObjectShortName">collector_fifos_0_din[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/u_BFS/pl_mc/tier_fifo_0/collector_fifos_0_wr_en">
+      <obj_property name="ElementShortName">collector_fifos_0_wr_en</obj_property>
+      <obj_property name="ObjectShortName">collector_fifos_0_wr_en</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/u_BFS/pl_mc/tier_fifo_0/collector_fifos_0_empty">
+      <obj_property name="ElementShortName">collector_fifos_0_empty</obj_property>
+      <obj_property name="ObjectShortName">collector_fifos_0_empty</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/u_BFS/pl_mc/tier_fifo_0/collector_fifos_0_dout">
+      <obj_property name="ElementShortName">collector_fifos_0_dout[31:0]</obj_property>
+      <obj_property name="ObjectShortName">collector_fifos_0_dout[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/u_BFS/pl_mc/tier_fifo_0/collector_fifos_0_rd_en">
+      <obj_property name="ElementShortName">collector_fifos_0_rd_en</obj_property>
+      <obj_property name="ObjectShortName">collector_fifos_0_rd_en</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/u_BFS/pl_mc/tier_fifo_0/collector_fifos_0_data_count">
+      <obj_property name="ElementShortName">collector_fifos_0_data_count[4:0]</obj_property>
+      <obj_property name="ObjectShortName">collector_fifos_0_data_count[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/u_BFS/pl_mc/tier_fifo_0/collector_fifos_0_valid">
+      <obj_property name="ElementShortName">collector_fifos_0_valid</obj_property>
+      <obj_property name="ObjectShortName">collector_fifos_0_valid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/u_BFS/pl_mc/tier_fifo_0_io_out_full">
+      <obj_property name="ElementShortName">tier_fifo_0_io_out_full</obj_property>
+      <obj_property name="ObjectShortName">tier_fifo_0_io_out_full</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/u_BFS/pl_mc/tier_fifo_0_io_out_din">
+      <obj_property name="ElementShortName">tier_fifo_0_io_out_din[511:0]</obj_property>
+      <obj_property name="ObjectShortName">tier_fifo_0_io_out_din[511:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/u_BFS/pl_mc/tier_fifo_0_io_out_wr_en">
+      <obj_property name="ElementShortName">tier_fifo_0_io_out_wr_en</obj_property>
+      <obj_property name="ObjectShortName">tier_fifo_0_io_out_wr_en</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/u_BFS/pl_mc/tier_fifo_0_io_out_dout">
+      <obj_property name="ElementShortName">tier_fifo_0_io_out_dout[511:0]</obj_property>
+      <obj_property name="ObjectShortName">tier_fifo_0_io_out_dout[511:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/u_BFS/pl_mc/tier_fifo_0_io_out_rd_en">
+      <obj_property name="ElementShortName">tier_fifo_0_io_out_rd_en</obj_property>
+      <obj_property name="ObjectShortName">tier_fifo_0_io_out_rd_en</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/u_BFS/pl_mc/tier_fifo_0_io_out_data_count">
+      <obj_property name="ElementShortName">tier_fifo_0_io_out_data_count[8:0]</obj_property>
+      <obj_property name="ObjectShortName">tier_fifo_0_io_out_data_count[8:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/u_BFS/pl_mc/tier_fifo_0_io_out_valid">
+      <obj_property name="ElementShortName">tier_fifo_0_io_out_valid</obj_property>
+      <obj_property name="ObjectShortName">tier_fifo_0_io_out_valid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/u_BFS/pl_mc/tier_fifo_1_io_out_full">
+      <obj_property name="ElementShortName">tier_fifo_1_io_out_full</obj_property>
+      <obj_property name="ObjectShortName">tier_fifo_1_io_out_full</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/u_BFS/pl_mc/tier_fifo_1_io_out_din">
+      <obj_property name="ElementShortName">tier_fifo_1_io_out_din[511:0]</obj_property>
+      <obj_property name="ObjectShortName">tier_fifo_1_io_out_din[511:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/u_BFS/pl_mc/tier_fifo_1_io_out_wr_en">
+      <obj_property name="ElementShortName">tier_fifo_1_io_out_wr_en</obj_property>
+      <obj_property name="ObjectShortName">tier_fifo_1_io_out_wr_en</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/u_BFS/pl_mc/tier_fifo_1_io_out_dout">
+      <obj_property name="ElementShortName">tier_fifo_1_io_out_dout[511:0]</obj_property>
+      <obj_property name="ObjectShortName">tier_fifo_1_io_out_dout[511:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/u_BFS/pl_mc/tier_fifo_1_io_out_rd_en">
+      <obj_property name="ElementShortName">tier_fifo_1_io_out_rd_en</obj_property>
+      <obj_property name="ObjectShortName">tier_fifo_1_io_out_rd_en</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/bfs_tb/u_BFS/pl_mc/tier_fifo_1_io_out_data_count">
+      <obj_property name="ElementShortName">tier_fifo_1_io_out_data_count[8:0]</obj_property>
+      <obj_property name="ObjectShortName">tier_fifo_1_io_out_data_count[8:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/bfs_tb/u_BFS/pl_mc/tier_fifo_1_io_out_valid">
+      <obj_property name="ElementShortName">tier_fifo_1_io_out_valid</obj_property>
+      <obj_property name="ObjectShortName">tier_fifo_1_io_out_valid</obj_property>
+   </wvobject>
+   <wvobject type="group" fp_name="group387">
+      <obj_property name="label">gather</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Gathers/clock">
+         <obj_property name="ElementShortName">clock</obj_property>
+         <obj_property name="ObjectShortName">clock</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Gathers/reset">
+         <obj_property name="ElementShortName">reset</obj_property>
+         <obj_property name="ObjectShortName">reset</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Gathers/io_ddr_in_ready">
+         <obj_property name="ElementShortName">io_ddr_in_ready</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_in_ready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Gathers/io_ddr_in_valid">
+         <obj_property name="ElementShortName">io_ddr_in_valid</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_in_valid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Gathers/io_ddr_in_bits_tdata">
+         <obj_property name="ElementShortName">io_ddr_in_bits_tdata[511:0]</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_in_bits_tdata[511:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Gathers/io_ddr_in_bits_tkeep">
+         <obj_property name="ElementShortName">io_ddr_in_bits_tkeep[15:0]</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_in_bits_tkeep[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Gathers/Selector_clock">
+         <obj_property name="ElementShortName">Selector_clock</obj_property>
+         <obj_property name="ObjectShortName">Selector_clock</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Gathers/Selector_reset">
+         <obj_property name="ElementShortName">Selector_reset</obj_property>
+         <obj_property name="ObjectShortName">Selector_reset</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Gathers/Selector_io_xbar_in_ready">
+         <obj_property name="ElementShortName">Selector_io_xbar_in_ready</obj_property>
+         <obj_property name="ObjectShortName">Selector_io_xbar_in_ready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Gathers/Selector_io_xbar_in_valid">
+         <obj_property name="ElementShortName">Selector_io_xbar_in_valid</obj_property>
+         <obj_property name="ObjectShortName">Selector_io_xbar_in_valid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Gathers/Selector_io_xbar_in_bits_tdata">
+         <obj_property name="ElementShortName">Selector_io_xbar_in_bits_tdata[511:0]</obj_property>
+         <obj_property name="ObjectShortName">Selector_io_xbar_in_bits_tdata[511:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Gathers/Selector_io_xbar_in_bits_tkeep">
+         <obj_property name="ElementShortName">Selector_io_xbar_in_bits_tkeep[15:0]</obj_property>
+         <obj_property name="ObjectShortName">Selector_io_xbar_in_bits_tkeep[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Gathers/Selector_io_ddr_out_ready">
+         <obj_property name="ElementShortName">Selector_io_ddr_out_ready</obj_property>
+         <obj_property name="ObjectShortName">Selector_io_ddr_out_ready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Gathers/Selector_io_ddr_out_valid">
+         <obj_property name="ElementShortName">Selector_io_ddr_out_valid</obj_property>
+         <obj_property name="ObjectShortName">Selector_io_ddr_out_valid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Gathers/Selector_io_ddr_out_bits_tdata">
+         <obj_property name="ElementShortName">Selector_io_ddr_out_bits_tdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">Selector_io_ddr_out_bits_tdata[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Gathers/io_gather_out_0_ready">
+         <obj_property name="ElementShortName">io_gather_out_0_ready</obj_property>
+         <obj_property name="ObjectShortName">io_gather_out_0_ready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Gathers/io_gather_out_0_valid">
+         <obj_property name="ElementShortName">io_gather_out_0_valid</obj_property>
+         <obj_property name="ObjectShortName">io_gather_out_0_valid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Gathers/io_gather_out_0_bits_tdata">
+         <obj_property name="ElementShortName">io_gather_out_0_bits_tdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">io_gather_out_0_bits_tdata[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Gathers/io_gather_out_1_ready">
+         <obj_property name="ElementShortName">io_gather_out_1_ready</obj_property>
+         <obj_property name="ObjectShortName">io_gather_out_1_ready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Gathers/io_gather_out_1_valid">
+         <obj_property name="ElementShortName">io_gather_out_1_valid</obj_property>
+         <obj_property name="ObjectShortName">io_gather_out_1_valid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Gathers/io_gather_out_1_bits_tdata">
+         <obj_property name="ElementShortName">io_gather_out_1_bits_tdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">io_gather_out_1_bits_tdata[31:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group408">
+      <obj_property name="label">apply</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Applys/io_level">
+         <obj_property name="ElementShortName">io_level[31:0]</obj_property>
+         <obj_property name="ObjectShortName">io_level[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Applys/io_level_base_addr">
+         <obj_property name="ElementShortName">io_level_base_addr[63:0]</obj_property>
+         <obj_property name="ObjectShortName">io_level_base_addr[63:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Applys/vertex_update_buffer_full">
+         <obj_property name="ElementShortName">vertex_update_buffer_full</obj_property>
+         <obj_property name="ObjectShortName">vertex_update_buffer_full</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Applys/vertex_update_buffer_din">
+         <obj_property name="ElementShortName">vertex_update_buffer_din[63:0]</obj_property>
+         <obj_property name="ObjectShortName">vertex_update_buffer_din[63:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Applys/vertex_update_buffer_wr_en">
+         <obj_property name="ElementShortName">vertex_update_buffer_wr_en</obj_property>
+         <obj_property name="ObjectShortName">vertex_update_buffer_wr_en</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Applys/vertex_update_buffer_empty">
+         <obj_property name="ElementShortName">vertex_update_buffer_empty</obj_property>
+         <obj_property name="ObjectShortName">vertex_update_buffer_empty</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Applys/vertex_update_buffer_dout">
+         <obj_property name="ElementShortName">vertex_update_buffer_dout[63:0]</obj_property>
+         <obj_property name="ObjectShortName">vertex_update_buffer_dout[63:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Applys/vertex_update_buffer_rd_en">
+         <obj_property name="ElementShortName">vertex_update_buffer_rd_en</obj_property>
+         <obj_property name="ObjectShortName">vertex_update_buffer_rd_en</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Applys/vertex_update_buffer_data_count">
+         <obj_property name="ElementShortName">vertex_update_buffer_data_count[5:0]</obj_property>
+         <obj_property name="ObjectShortName">vertex_update_buffer_data_count[5:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Applys/vertex_update_buffer_valid">
+         <obj_property name="ElementShortName">vertex_update_buffer_valid</obj_property>
+         <obj_property name="ObjectShortName">vertex_update_buffer_valid</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Applys/update_engine_io_xbar_in_ready">
+         <obj_property name="ElementShortName">update_engine_io_xbar_in_ready</obj_property>
+         <obj_property name="ObjectShortName">update_engine_io_xbar_in_ready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Applys/update_engine_io_xbar_in_valid">
+         <obj_property name="ElementShortName">update_engine_io_xbar_in_valid</obj_property>
+         <obj_property name="ObjectShortName">update_engine_io_xbar_in_valid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Applys/update_engine_io_xbar_in_bits_tdata">
+         <obj_property name="ElementShortName">update_engine_io_xbar_in_bits_tdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">update_engine_io_xbar_in_bits_tdata[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Applys/update_engine_io_level">
+         <obj_property name="ElementShortName">update_engine_io_level[31:0]</obj_property>
+         <obj_property name="ObjectShortName">update_engine_io_level[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Applys/FIN">
+         <obj_property name="ElementShortName">FIN</obj_property>
+         <obj_property name="ObjectShortName">FIN</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Applys/io_gather_in_ready">
+         <obj_property name="ElementShortName">io_gather_in_ready</obj_property>
+         <obj_property name="ObjectShortName">io_gather_in_ready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Applys/io_gather_in_valid">
+         <obj_property name="ElementShortName">io_gather_in_valid</obj_property>
+         <obj_property name="ObjectShortName">io_gather_in_valid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Applys/io_gather_in_bits_tdata">
+         <obj_property name="ElementShortName">io_gather_in_bits_tdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">io_gather_in_bits_tdata[31:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group442">
+      <obj_property name="label">broadcast</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/io_edge_base_addr">
+         <obj_property name="ElementShortName">io_edge_base_addr[63:0]</obj_property>
+         <obj_property name="ObjectShortName">io_edge_base_addr[63:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/io_ddr_ar_ready">
+         <obj_property name="ElementShortName">io_ddr_ar_ready</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_ar_ready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/io_ddr_ar_valid">
+         <obj_property name="ElementShortName">io_ddr_ar_valid</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_ar_valid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/io_ddr_ar_bits_araddr">
+         <obj_property name="ElementShortName">io_ddr_ar_bits_araddr[63:0]</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_ar_bits_araddr[63:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/io_ddr_ar_bits_arid">
+         <obj_property name="ElementShortName">io_ddr_ar_bits_arid[5:0]</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_ar_bits_arid[5:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/io_ddr_ar_bits_arlen">
+         <obj_property name="ElementShortName">io_ddr_ar_bits_arlen[7:0]</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_ar_bits_arlen[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/io_ddr_r_ready">
+         <obj_property name="ElementShortName">io_ddr_r_ready</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_r_ready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/io_ddr_r_valid">
+         <obj_property name="ElementShortName">io_ddr_r_valid</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_r_valid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/io_ddr_r_bits_rdata">
+         <obj_property name="ElementShortName">io_ddr_r_bits_rdata[511:0]</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_r_bits_rdata[511:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/io_ddr_r_bits_rid">
+         <obj_property name="ElementShortName">io_ddr_r_bits_rid[5:0]</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_r_bits_rid[5:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/io_ddr_r_bits_rlast">
+         <obj_property name="ElementShortName">io_ddr_r_bits_rlast</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_r_bits_rlast</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/upward_status">
+         <obj_property name="ElementShortName">upward_status[1:0]</obj_property>
+         <obj_property name="ObjectShortName">upward_status[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/r_demux_s_axis_tdata">
+         <obj_property name="ElementShortName">r_demux_s_axis_tdata[511:0]</obj_property>
+         <obj_property name="ObjectShortName">r_demux_s_axis_tdata[511:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/r_demux_s_axis_tkeep">
+         <obj_property name="ElementShortName">r_demux_s_axis_tkeep[63:0]</obj_property>
+         <obj_property name="ObjectShortName">r_demux_s_axis_tkeep[63:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/r_demux_s_axis_tlast">
+         <obj_property name="ElementShortName">r_demux_s_axis_tlast</obj_property>
+         <obj_property name="ObjectShortName">r_demux_s_axis_tlast</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/r_demux_s_axis_tvalid">
+         <obj_property name="ElementShortName">r_demux_s_axis_tvalid</obj_property>
+         <obj_property name="ObjectShortName">r_demux_s_axis_tvalid</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/r_demux_s_axis_tready">
+         <obj_property name="ElementShortName">r_demux_s_axis_tready</obj_property>
+         <obj_property name="ObjectShortName">r_demux_s_axis_tready</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/r_demux_s_axis_tid">
+         <obj_property name="ElementShortName">r_demux_s_axis_tid[5:0]</obj_property>
+         <obj_property name="ObjectShortName">r_demux_s_axis_tid[5:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/r_demux_m_axis_tdata">
+         <obj_property name="ElementShortName">r_demux_m_axis_tdata[1023:0]</obj_property>
+         <obj_property name="ObjectShortName">r_demux_m_axis_tdata[1023:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/r_demux_m_axis_tkeep">
+         <obj_property name="ElementShortName">r_demux_m_axis_tkeep[127:0]</obj_property>
+         <obj_property name="ObjectShortName">r_demux_m_axis_tkeep[127:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/r_demux_m_axis_tlast">
+         <obj_property name="ElementShortName">r_demux_m_axis_tlast[1:0]</obj_property>
+         <obj_property name="ObjectShortName">r_demux_m_axis_tlast[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/r_demux_m_axis_tvalid">
+         <obj_property name="ElementShortName">r_demux_m_axis_tvalid[1:0]</obj_property>
+         <obj_property name="ObjectShortName">r_demux_m_axis_tvalid[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/r_demux_m_axis_tready">
+         <obj_property name="ElementShortName">r_demux_m_axis_tready[1:0]</obj_property>
+         <obj_property name="ObjectShortName">r_demux_m_axis_tready[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/r_demux_m_axis_tid">
+         <obj_property name="ElementShortName">r_demux_m_axis_tid[11:0]</obj_property>
+         <obj_property name="ObjectShortName">r_demux_m_axis_tid[11:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/r_demux_out_0_valid">
+         <obj_property name="ElementShortName">r_demux_out_0_valid</obj_property>
+         <obj_property name="ObjectShortName">r_demux_out_0_valid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/r_demux_out_0_bits_rid">
+         <obj_property name="ElementShortName">r_demux_out_0_bits_rid[5:0]</obj_property>
+         <obj_property name="ObjectShortName">r_demux_out_0_bits_rid[5:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/r_demux_out_0_bits_rlast">
+         <obj_property name="ElementShortName">r_demux_out_0_bits_rlast</obj_property>
+         <obj_property name="ObjectShortName">r_demux_out_0_bits_rlast</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/r_demux_out_1_ready">
+         <obj_property name="ElementShortName">r_demux_out_1_ready</obj_property>
+         <obj_property name="ObjectShortName">r_demux_out_1_ready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/r_demux_out_0_ready">
+         <obj_property name="ElementShortName">r_demux_out_0_ready</obj_property>
+         <obj_property name="ObjectShortName">r_demux_out_0_ready</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/r_demux_out_0_bits_rdata">
+         <obj_property name="ElementShortName">r_demux_out_0_bits_rdata[511:0]</obj_property>
+         <obj_property name="ObjectShortName">r_demux_out_0_bits_rdata[511:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/arbi_io_in_0_ready">
+         <obj_property name="ElementShortName">arbi_io_in_0_ready</obj_property>
+         <obj_property name="ObjectShortName">arbi_io_in_0_ready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/arbi_io_in_0_valid">
+         <obj_property name="ElementShortName">arbi_io_in_0_valid</obj_property>
+         <obj_property name="ObjectShortName">arbi_io_in_0_valid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/arbi_io_in_0_bits_araddr">
+         <obj_property name="ElementShortName">arbi_io_in_0_bits_araddr[63:0]</obj_property>
+         <obj_property name="ObjectShortName">arbi_io_in_0_bits_araddr[63:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/arbi_io_in_0_bits_arid">
+         <obj_property name="ElementShortName">arbi_io_in_0_bits_arid[5:0]</obj_property>
+         <obj_property name="ObjectShortName">arbi_io_in_0_bits_arid[5:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/arbi_io_in_0_bits_arlen">
+         <obj_property name="ElementShortName">arbi_io_in_0_bits_arlen[7:0]</obj_property>
+         <obj_property name="ObjectShortName">arbi_io_in_0_bits_arlen[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/arbi_io_in_1_ready">
+         <obj_property name="ElementShortName">arbi_io_in_1_ready</obj_property>
+         <obj_property name="ObjectShortName">arbi_io_in_1_ready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/arbi_io_in_1_valid">
+         <obj_property name="ElementShortName">arbi_io_in_1_valid</obj_property>
+         <obj_property name="ObjectShortName">arbi_io_in_1_valid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/arbi_io_in_1_bits_araddr">
+         <obj_property name="ElementShortName">arbi_io_in_1_bits_araddr[63:0]</obj_property>
+         <obj_property name="ObjectShortName">arbi_io_in_1_bits_araddr[63:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/arbi_io_in_1_bits_arid">
+         <obj_property name="ElementShortName">arbi_io_in_1_bits_arid[5:0]</obj_property>
+         <obj_property name="ObjectShortName">arbi_io_in_1_bits_arid[5:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/arbi_io_out_ready">
+         <obj_property name="ElementShortName">arbi_io_out_ready</obj_property>
+         <obj_property name="ObjectShortName">arbi_io_out_ready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/arbi_io_out_valid">
+         <obj_property name="ElementShortName">arbi_io_out_valid</obj_property>
+         <obj_property name="ObjectShortName">arbi_io_out_valid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/arbi_io_out_bits_araddr">
+         <obj_property name="ElementShortName">arbi_io_out_bits_araddr[63:0]</obj_property>
+         <obj_property name="ObjectShortName">arbi_io_out_bits_araddr[63:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/arbi_io_out_bits_arid">
+         <obj_property name="ElementShortName">arbi_io_out_bits_arid[5:0]</obj_property>
+         <obj_property name="ObjectShortName">arbi_io_out_bits_arid[5:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/arbi_io_out_bits_arlen">
+         <obj_property name="ElementShortName">arbi_io_out_bits_arlen[7:0]</obj_property>
+         <obj_property name="ObjectShortName">arbi_io_out_bits_arlen[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/vertex_read_buffer_din">
+         <obj_property name="ElementShortName">vertex_read_buffer_din[31:0]</obj_property>
+         <obj_property name="ObjectShortName">vertex_read_buffer_din[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/vertex_read_buffer_full">
+         <obj_property name="ElementShortName">vertex_read_buffer_full</obj_property>
+         <obj_property name="ObjectShortName">vertex_read_buffer_full</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/vertex_read_buffer_wr_en">
+         <obj_property name="ElementShortName">vertex_read_buffer_wr_en</obj_property>
+         <obj_property name="ObjectShortName">vertex_read_buffer_wr_en</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/vertex_read_buffer_empty">
+         <obj_property name="ElementShortName">vertex_read_buffer_empty</obj_property>
+         <obj_property name="ObjectShortName">vertex_read_buffer_empty</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/vertex_read_buffer_dout">
+         <obj_property name="ElementShortName">vertex_read_buffer_dout[31:0]</obj_property>
+         <obj_property name="ObjectShortName">vertex_read_buffer_dout[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/vertex_read_buffer/valid">
+         <obj_property name="ElementShortName">valid</obj_property>
+         <obj_property name="ObjectShortName">valid</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/vertex_read_buffer_rd_en">
+         <obj_property name="ElementShortName">vertex_read_buffer_rd_en</obj_property>
+         <obj_property name="ObjectShortName">vertex_read_buffer_rd_en</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/vertex_read_buffer/data_count">
+         <obj_property name="ElementShortName">data_count[5:0]</obj_property>
+         <obj_property name="ObjectShortName">data_count[5:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/vertex_read_buffer_data_count">
+         <obj_property name="ElementShortName">vertex_read_buffer_data_count[5:0]</obj_property>
+         <obj_property name="ObjectShortName">vertex_read_buffer_data_count[5:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/vertex_out_fifo_full">
+         <obj_property name="ElementShortName">vertex_out_fifo_full</obj_property>
+         <obj_property name="ObjectShortName">vertex_out_fifo_full</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/vertex_out_fifo_din">
+         <obj_property name="ElementShortName">vertex_out_fifo_din[527:0]</obj_property>
+         <obj_property name="ObjectShortName">vertex_out_fifo_din[527:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/vertex_out_fifo_wr_en">
+         <obj_property name="ElementShortName">vertex_out_fifo_wr_en</obj_property>
+         <obj_property name="ObjectShortName">vertex_out_fifo_wr_en</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/vertex_out_fifo_empty">
+         <obj_property name="ElementShortName">vertex_out_fifo_empty</obj_property>
+         <obj_property name="ObjectShortName">vertex_out_fifo_empty</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/vertex_out_fifo_dout">
+         <obj_property name="ElementShortName">vertex_out_fifo_dout[527:0]</obj_property>
+         <obj_property name="ObjectShortName">vertex_out_fifo_dout[527:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/vertex_out_fifo_rd_en">
+         <obj_property name="ElementShortName">vertex_out_fifo_rd_en</obj_property>
+         <obj_property name="ObjectShortName">vertex_out_fifo_rd_en</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/vertex_out_fifo_data_count">
+         <obj_property name="ElementShortName">vertex_out_fifo_data_count[5:0]</obj_property>
+         <obj_property name="ObjectShortName">vertex_out_fifo_data_count[5:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/io_signal">
+         <obj_property name="ElementShortName">io_signal</obj_property>
+         <obj_property name="ObjectShortName">io_signal</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/vertex_read_buffer/clk">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/vertex_read_buffer/srst">
+         <obj_property name="ElementShortName">srst</obj_property>
+         <obj_property name="ObjectShortName">srst</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/vertex_read_buffer/din">
+         <obj_property name="ElementShortName">din[31:0]</obj_property>
+         <obj_property name="ObjectShortName">din[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/vertex_read_buffer/wr_en">
+         <obj_property name="ElementShortName">wr_en</obj_property>
+         <obj_property name="ObjectShortName">wr_en</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/vertex_read_buffer/rd_en">
+         <obj_property name="ElementShortName">rd_en</obj_property>
+         <obj_property name="ObjectShortName">rd_en</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/vertex_read_buffer/dout">
+         <obj_property name="ElementShortName">dout[31:0]</obj_property>
+         <obj_property name="ObjectShortName">dout[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/vertex_read_buffer/full">
+         <obj_property name="ElementShortName">full</obj_property>
+         <obj_property name="ObjectShortName">full</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/vertex_read_buffer/empty">
+         <obj_property name="ElementShortName">empty</obj_property>
+         <obj_property name="ObjectShortName">empty</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/vertex_read_buffer/data_count">
+         <obj_property name="ElementShortName">data_count[5:0]</obj_property>
+         <obj_property name="ObjectShortName">data_count[5:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/vertex_read_buffer/wr_rst_busy">
+         <obj_property name="ElementShortName">wr_rst_busy</obj_property>
+         <obj_property name="ObjectShortName">wr_rst_busy</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/vertex_read_buffer/rd_rst_busy">
+         <obj_property name="ElementShortName">rd_rst_busy</obj_property>
+         <obj_property name="ObjectShortName">rd_rst_busy</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/upward_status">
+         <obj_property name="ElementShortName">upward_status[1:0]</obj_property>
+         <obj_property name="ObjectShortName">upward_status[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/inflight_vtxs">
+         <obj_property name="ElementShortName">inflight_vtxs[63:0]</obj_property>
+         <obj_property name="ObjectShortName">inflight_vtxs[63:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/io_gather_in_ready">
+         <obj_property name="ElementShortName">io_gather_in_ready</obj_property>
+         <obj_property name="ObjectShortName">io_gather_in_ready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/io_gather_in_valid">
+         <obj_property name="ElementShortName">io_gather_in_valid</obj_property>
+         <obj_property name="ObjectShortName">io_gather_in_valid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/io_gather_in_bits_tdata">
+         <obj_property name="ElementShortName">io_gather_in_bits_tdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">io_gather_in_bits_tdata[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/io_xbar_out_ready">
+         <obj_property name="ElementShortName">io_xbar_out_ready</obj_property>
+         <obj_property name="ObjectShortName">io_xbar_out_ready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/io_xbar_out_valid">
+         <obj_property name="ElementShortName">io_xbar_out_valid</obj_property>
+         <obj_property name="ObjectShortName">io_xbar_out_valid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/io_xbar_out_bits_tdata">
+         <obj_property name="ElementShortName">io_xbar_out_bits_tdata[511:0]</obj_property>
+         <obj_property name="ObjectShortName">io_xbar_out_bits_tdata[511:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/io_xbar_out_bits_tkeep">
+         <obj_property name="ElementShortName">io_xbar_out_bits_tkeep[15:0]</obj_property>
+         <obj_property name="ObjectShortName">io_xbar_out_bits_tkeep[15:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group2236">
+      <obj_property name="label">New Group 32</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="array" fp_name="/bfs_tb/mem">
+         <obj_property name="ElementShortName">mem[15:0][19:0]</obj_property>
+         <obj_property name="ObjectShortName">mem[15:0][19:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group2901">
+      <obj_property name="label">scatter</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Scatters_0/io_end">
+         <obj_property name="ElementShortName">io_end</obj_property>
+         <obj_property name="ObjectShortName">io_end</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Scatters_0/vertex_in_fifo_full">
+         <obj_property name="ElementShortName">vertex_in_fifo_full</obj_property>
+         <obj_property name="ObjectShortName">vertex_in_fifo_full</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Scatters_0/vertex_in_fifo_din">
+         <obj_property name="ElementShortName">vertex_in_fifo_din[31:0]</obj_property>
+         <obj_property name="ObjectShortName">vertex_in_fifo_din[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Scatters_0/vertex_in_fifo_wr_en">
+         <obj_property name="ElementShortName">vertex_in_fifo_wr_en</obj_property>
+         <obj_property name="ObjectShortName">vertex_in_fifo_wr_en</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Scatters_0/vertex_in_fifo_empty">
+         <obj_property name="ElementShortName">vertex_in_fifo_empty</obj_property>
+         <obj_property name="ObjectShortName">vertex_in_fifo_empty</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Scatters_0/vertex_in_fifo_dout">
+         <obj_property name="ElementShortName">vertex_in_fifo_dout[31:0]</obj_property>
+         <obj_property name="ObjectShortName">vertex_in_fifo_dout[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Scatters_0/vertex_in_fifo_rd_en">
+         <obj_property name="ElementShortName">vertex_in_fifo_rd_en</obj_property>
+         <obj_property name="ObjectShortName">vertex_in_fifo_rd_en</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Scatters_0/vertex_in_fifo_data_count">
+         <obj_property name="ElementShortName">vertex_in_fifo_data_count[5:0]</obj_property>
+         <obj_property name="ObjectShortName">vertex_in_fifo_data_count[5:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Scatters_0/vertex_in_fifo_valid">
+         <obj_property name="ElementShortName">vertex_in_fifo_valid</obj_property>
+         <obj_property name="ObjectShortName">vertex_in_fifo_valid</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Scatters_0/bitmap/clka">
+         <obj_property name="ElementShortName">clka</obj_property>
+         <obj_property name="ObjectShortName">clka</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Scatters_0/bitmap/ena">
+         <obj_property name="ElementShortName">ena</obj_property>
+         <obj_property name="ObjectShortName">ena</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Scatters_0/bitmap/wea">
+         <obj_property name="ElementShortName">wea[0:0]</obj_property>
+         <obj_property name="ObjectShortName">wea[0:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Scatters_0/bitmap/addra">
+         <obj_property name="ElementShortName">addra[19:0]</obj_property>
+         <obj_property name="ObjectShortName">addra[19:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Scatters_0/bitmap/dina">
+         <obj_property name="ElementShortName">dina[0:0]</obj_property>
+         <obj_property name="ObjectShortName">dina[0:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Scatters_0/bitmap/clkb">
+         <obj_property name="ElementShortName">clkb</obj_property>
+         <obj_property name="ObjectShortName">clkb</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Scatters_0/bitmap/enb">
+         <obj_property name="ElementShortName">enb</obj_property>
+         <obj_property name="ObjectShortName">enb</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Scatters_0/bitmap/addrb">
+         <obj_property name="ElementShortName">addrb[19:0]</obj_property>
+         <obj_property name="ObjectShortName">addrb[19:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Scatters_0/bitmap/doutb">
+         <obj_property name="ElementShortName">doutb[0:0]</obj_property>
+         <obj_property name="ObjectShortName">doutb[0:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Scatters_0/io_end">
+         <obj_property name="ElementShortName">io_end</obj_property>
+         <obj_property name="ObjectShortName">io_end</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Scatters_0/io_ddr_out_ready">
+         <obj_property name="ElementShortName">io_ddr_out_ready</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_out_ready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Scatters_0/io_ddr_out_valid">
+         <obj_property name="ElementShortName">io_ddr_out_valid</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_out_valid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Scatters_0/io_ddr_out_bits_tdata">
+         <obj_property name="ElementShortName">io_ddr_out_bits_tdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_out_bits_tdata[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Scatters_0/vertex_out_fifo_full">
+         <obj_property name="ElementShortName">vertex_out_fifo_full</obj_property>
+         <obj_property name="ObjectShortName">vertex_out_fifo_full</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Scatters_0/vertex_out_fifo_din">
+         <obj_property name="ElementShortName">vertex_out_fifo_din[31:0]</obj_property>
+         <obj_property name="ObjectShortName">vertex_out_fifo_din[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Scatters_0/vertex_out_fifo_wr_en">
+         <obj_property name="ElementShortName">vertex_out_fifo_wr_en</obj_property>
+         <obj_property name="ObjectShortName">vertex_out_fifo_wr_en</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Scatters_0/vertex_out_fifo_empty">
+         <obj_property name="ElementShortName">vertex_out_fifo_empty</obj_property>
+         <obj_property name="ObjectShortName">vertex_out_fifo_empty</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Scatters_0/vertex_out_fifo_dout">
+         <obj_property name="ElementShortName">vertex_out_fifo_dout[31:0]</obj_property>
+         <obj_property name="ObjectShortName">vertex_out_fifo_dout[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Scatters_0/vertex_out_fifo_rd_en">
+         <obj_property name="ElementShortName">vertex_out_fifo_rd_en</obj_property>
+         <obj_property name="ObjectShortName">vertex_out_fifo_rd_en</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Scatters_0/vertex_out_fifo_data_count">
+         <obj_property name="ElementShortName">vertex_out_fifo_data_count[5:0]</obj_property>
+         <obj_property name="ObjectShortName">vertex_out_fifo_data_count[5:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Scatters_0/vertex_out_fifo_valid">
+         <obj_property name="ElementShortName">vertex_out_fifo_valid</obj_property>
+         <obj_property name="ObjectShortName">vertex_out_fifo_valid</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Scatters_0/bitmap_write_io_dout_ready">
+         <obj_property name="ElementShortName">bitmap_write_io_dout_ready</obj_property>
+         <obj_property name="ObjectShortName">bitmap_write_io_dout_ready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Scatters_0/bitmap_write_io_dout_valid">
+         <obj_property name="ElementShortName">bitmap_write_io_dout_valid</obj_property>
+         <obj_property name="ObjectShortName">bitmap_write_io_dout_valid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Scatters_0/bitmap_write_io_dout_bits">
+         <obj_property name="ElementShortName">bitmap_write_io_dout_bits[31:0]</obj_property>
+         <obj_property name="ObjectShortName">bitmap_write_io_dout_bits[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Scatters_0/bitmap_write_io_din_valid">
+         <obj_property name="ElementShortName">bitmap_write_io_din_valid</obj_property>
+         <obj_property name="ObjectShortName">bitmap_write_io_din_valid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Scatters_0/bitmap_write_io_din_bits">
+         <obj_property name="ElementShortName">bitmap_write_io_din_bits[31:0]</obj_property>
+         <obj_property name="ObjectShortName">bitmap_write_io_din_bits[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Scatters_0/io_xbar_in_ready">
+         <obj_property name="ElementShortName">io_xbar_in_ready</obj_property>
+         <obj_property name="ObjectShortName">io_xbar_in_ready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Scatters_0/io_xbar_in_valid">
+         <obj_property name="ElementShortName">io_xbar_in_valid</obj_property>
+         <obj_property name="ObjectShortName">io_xbar_in_valid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Scatters_0/io_xbar_in_bits_tdata">
+         <obj_property name="ElementShortName">io_xbar_in_bits_tdata[511:0]</obj_property>
+         <obj_property name="ObjectShortName">io_xbar_in_bits_tdata[511:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Scatters_0/arbi_io_xbar_in_ready">
+         <obj_property name="ElementShortName">arbi_io_xbar_in_ready</obj_property>
+         <obj_property name="ObjectShortName">arbi_io_xbar_in_ready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Scatters_0/arbi_io_xbar_in_valid">
+         <obj_property name="ElementShortName">arbi_io_xbar_in_valid</obj_property>
+         <obj_property name="ObjectShortName">arbi_io_xbar_in_valid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Scatters_0/arbi_io_xbar_in_bits_tdata">
+         <obj_property name="ElementShortName">arbi_io_xbar_in_bits_tdata[511:0]</obj_property>
+         <obj_property name="ObjectShortName">arbi_io_xbar_in_bits_tdata[511:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Scatters_0/arbi_io_xbar_in_bits_tkeep">
+         <obj_property name="ElementShortName">arbi_io_xbar_in_bits_tkeep[15:0]</obj_property>
+         <obj_property name="ObjectShortName">arbi_io_xbar_in_bits_tkeep[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Scatters_0/arbi_io_ddr_out_ready">
+         <obj_property name="ElementShortName">arbi_io_ddr_out_ready</obj_property>
+         <obj_property name="ObjectShortName">arbi_io_ddr_out_ready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Scatters_0/arbi_io_ddr_out_valid">
+         <obj_property name="ElementShortName">arbi_io_ddr_out_valid</obj_property>
+         <obj_property name="ObjectShortName">arbi_io_ddr_out_valid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Scatters_0/arbi_io_ddr_out_bits_tdata">
+         <obj_property name="ElementShortName">arbi_io_ddr_out_bits_tdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">arbi_io_ddr_out_bits_tdata[31:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group3343">
+      <obj_property name="label">controller</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/controls/level">
+         <obj_property name="ElementShortName">level[31:0]</obj_property>
+         <obj_property name="ObjectShortName">level[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/controls/status">
+         <obj_property name="ElementShortName">status[2:0]</obj_property>
+         <obj_property name="ObjectShortName">status[2:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/controls/io_signal">
+         <obj_property name="ElementShortName">io_signal</obj_property>
+         <obj_property name="ObjectShortName">io_signal</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/controls/_T_1">
+         <obj_property name="ElementShortName">_T_1</obj_property>
+         <obj_property name="ObjectShortName">_T_1</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/controls/_controls_io_writeFlag_0_T_1">
+         <obj_property name="ElementShortName">_controls_io_writeFlag_0_T_1</obj_property>
+         <obj_property name="ObjectShortName">_controls_io_writeFlag_0_T_1</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/controls/controls/io_data_0">
+         <obj_property name="ElementShortName">io_data_0[31:0]</obj_property>
+         <obj_property name="ObjectShortName">io_data_0[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/controls/controls/table_0">
+         <obj_property name="ElementShortName">table_0[31:0]</obj_property>
+         <obj_property name="ObjectShortName">table_0[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/controls/controls/io_dataIn_0">
+         <obj_property name="ElementShortName">io_dataIn_0[31:0]</obj_property>
+         <obj_property name="ObjectShortName">io_dataIn_0[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/controls/controls/io_dataIn_1">
+         <obj_property name="ElementShortName">io_dataIn_1[31:0]</obj_property>
+         <obj_property name="ObjectShortName">io_dataIn_1[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/controls/controls/io_writeFlag_0">
+         <obj_property name="ElementShortName">io_writeFlag_0</obj_property>
+         <obj_property name="ObjectShortName">io_writeFlag_0</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/controls/controls/io_writeFlag_1">
+         <obj_property name="ElementShortName">io_writeFlag_1</obj_property>
+         <obj_property name="ObjectShortName">io_writeFlag_1</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/controls/controls/config_wvalid">
+         <obj_property name="ElementShortName">config_wvalid</obj_property>
+         <obj_property name="ObjectShortName">config_wvalid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/controls/controls/io_data_12">
+         <obj_property name="ElementShortName">io_data_12[31:0]</obj_property>
+         <obj_property name="ObjectShortName">io_data_12[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/controls/controls/io_data_13">
+         <obj_property name="ElementShortName">io_data_13[31:0]</obj_property>
+         <obj_property name="ObjectShortName">io_data_13[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/controls/io_traveled_edges">
+         <obj_property name="ElementShortName">io_traveled_edges[63:0]</obj_property>
+         <obj_property name="ObjectShortName">io_traveled_edges[63:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/controls/controls/io_wptr_0">
+         <obj_property name="ElementShortName">io_wptr_0[4:0]</obj_property>
+         <obj_property name="ObjectShortName">io_wptr_0[4:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/controls/controls/config_wvalid">
+         <obj_property name="ElementShortName">config_wvalid</obj_property>
+         <obj_property name="ObjectShortName">config_wvalid</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group3416">
+      <obj_property name="label">update_engine</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Applys/update_engine/io_flush">
+         <obj_property name="ElementShortName">io_flush</obj_property>
+         <obj_property name="ObjectShortName">io_flush</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Applys/update_engine/io_ddr_aw_ready">
+         <obj_property name="ElementShortName">io_ddr_aw_ready</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_aw_ready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Applys/update_engine/io_ddr_aw_valid">
+         <obj_property name="ElementShortName">io_ddr_aw_valid</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_aw_valid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Applys/update_engine/io_ddr_aw_bits_awaddr">
+         <obj_property name="ElementShortName">io_ddr_aw_bits_awaddr[63:0]</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_aw_bits_awaddr[63:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Applys/update_engine/io_ddr_aw_bits_awid">
+         <obj_property name="ElementShortName">io_ddr_aw_bits_awid[5:0]</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_aw_bits_awid[5:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Applys/update_engine/io_ddr_w_ready">
+         <obj_property name="ElementShortName">io_ddr_w_ready</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_w_ready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Applys/update_engine/io_ddr_w_valid">
+         <obj_property name="ElementShortName">io_ddr_w_valid</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_w_valid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Applys/update_engine/io_ddr_w_bits_wdata">
+         <obj_property name="ElementShortName">io_ddr_w_bits_wdata[511:0]</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_w_bits_wdata[511:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Applys/update_engine/io_level">
+         <obj_property name="ElementShortName">io_level[31:0]</obj_property>
+         <obj_property name="ObjectShortName">io_level[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Applys/update_engine/size">
+         <obj_property name="ElementShortName">size[31:0]</obj_property>
+         <obj_property name="ObjectShortName">size[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Applys/update_engine/buffer_addra">
+         <obj_property name="ElementShortName">buffer_addra[18:0]</obj_property>
+         <obj_property name="ObjectShortName">buffer_addra[18:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Applys/update_engine/buffer_dina">
+         <obj_property name="ElementShortName">buffer_dina[31:0]</obj_property>
+         <obj_property name="ObjectShortName">buffer_dina[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Applys/update_engine/buffer_douta">
+         <obj_property name="ElementShortName">buffer_douta[31:0]</obj_property>
+         <obj_property name="ObjectShortName">buffer_douta[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Applys/update_engine/buffer_ena">
+         <obj_property name="ElementShortName">buffer_ena</obj_property>
+         <obj_property name="ObjectShortName">buffer_ena</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Applys/update_engine/buffer_wea">
+         <obj_property name="ElementShortName">buffer_wea</obj_property>
+         <obj_property name="ObjectShortName">buffer_wea</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Applys/update_engine/buffer_addrb">
+         <obj_property name="ElementShortName">buffer_addrb[18:0]</obj_property>
+         <obj_property name="ObjectShortName">buffer_addrb[18:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Applys/update_engine/buffer_dinb">
+         <obj_property name="ElementShortName">buffer_dinb[31:0]</obj_property>
+         <obj_property name="ObjectShortName">buffer_dinb[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Applys/update_engine/buffer_doutb">
+         <obj_property name="ElementShortName">buffer_doutb[31:0]</obj_property>
+         <obj_property name="ObjectShortName">buffer_doutb[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Applys/update_engine/buffer_enb">
+         <obj_property name="ElementShortName">buffer_enb</obj_property>
+         <obj_property name="ObjectShortName">buffer_enb</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Applys/update_engine/buffer_web">
+         <obj_property name="ElementShortName">buffer_web</obj_property>
+         <obj_property name="ObjectShortName">buffer_web</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Applys/update_engine/flush_start">
+         <obj_property name="ElementShortName">flush_start</obj_property>
+         <obj_property name="ObjectShortName">flush_start</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Applys/update_engine/wb_block_index">
+         <obj_property name="ElementShortName">wb_block_index[11:0]</obj_property>
+         <obj_property name="ObjectShortName">wb_block_index[11:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Applys/update_engine/wb_sm">
+         <obj_property name="ElementShortName">wb_sm[4:0]</obj_property>
+         <obj_property name="ObjectShortName">wb_sm[4:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Applys/update_engine/update_sm">
+         <obj_property name="ElementShortName">update_sm[4:0]</obj_property>
+         <obj_property name="ObjectShortName">update_sm[4:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Applys/update_engine/buffer/addrb">
+         <obj_property name="ElementShortName">addrb[18:0]</obj_property>
+         <obj_property name="ObjectShortName">addrb[18:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Applys/update_engine/buffer/dinb">
+         <obj_property name="ElementShortName">dinb[31:0]</obj_property>
+         <obj_property name="ObjectShortName">dinb[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Applys/update_engine/buffer/doutb">
+         <obj_property name="ElementShortName">doutb[31:0]</obj_property>
+         <obj_property name="ObjectShortName">doutb[31:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group3499">
+      <obj_property name="label">xbar</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/bxbar/io_ddr_in_0_ready">
+         <obj_property name="ElementShortName">io_ddr_in_0_ready</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_in_0_ready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/bxbar/io_ddr_in_0_valid">
+         <obj_property name="ElementShortName">io_ddr_in_0_valid</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_in_0_valid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/bxbar/io_ddr_in_0_bits_tdata">
+         <obj_property name="ElementShortName">io_ddr_in_0_bits_tdata[511:0]</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_in_0_bits_tdata[511:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/bxbar/io_ddr_in_0_bits_tkeep">
+         <obj_property name="ElementShortName">io_ddr_in_0_bits_tkeep[15:0]</obj_property>
+         <obj_property name="ObjectShortName">io_ddr_in_0_bits_tkeep[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/bxbar/arbitrator_io_in_0_ready">
+         <obj_property name="ElementShortName">arbitrator_io_in_0_ready</obj_property>
+         <obj_property name="ObjectShortName">arbitrator_io_in_0_ready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/bxbar/arbitrator_io_in_0_valid">
+         <obj_property name="ElementShortName">arbitrator_io_in_0_valid</obj_property>
+         <obj_property name="ObjectShortName">arbitrator_io_in_0_valid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/bxbar/arbitrator_io_in_0_bits_tdata">
+         <obj_property name="ElementShortName">arbitrator_io_in_0_bits_tdata[511:0]</obj_property>
+         <obj_property name="ObjectShortName">arbitrator_io_in_0_bits_tdata[511:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/bxbar/arbitrator_io_in_0_bits_tkeep">
+         <obj_property name="ElementShortName">arbitrator_io_in_0_bits_tkeep[15:0]</obj_property>
+         <obj_property name="ObjectShortName">arbitrator_io_in_0_bits_tkeep[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/bxbar/arbitrator_io_out_ready">
+         <obj_property name="ElementShortName">arbitrator_io_out_ready</obj_property>
+         <obj_property name="ObjectShortName">arbitrator_io_out_ready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/bxbar/arbitrator_io_out_valid">
+         <obj_property name="ElementShortName">arbitrator_io_out_valid</obj_property>
+         <obj_property name="ObjectShortName">arbitrator_io_out_valid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/bxbar/arbitrator_io_out_bits_tdata">
+         <obj_property name="ElementShortName">arbitrator_io_out_bits_tdata[511:0]</obj_property>
+         <obj_property name="ObjectShortName">arbitrator_io_out_bits_tdata[511:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/bxbar/arbitrator_io_out_bits_tkeep">
+         <obj_property name="ElementShortName">arbitrator_io_out_bits_tkeep[15:0]</obj_property>
+         <obj_property name="ObjectShortName">arbitrator_io_out_bits_tkeep[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/bxbar/io_pe_out_0_ready">
+         <obj_property name="ElementShortName">io_pe_out_0_ready</obj_property>
+         <obj_property name="ObjectShortName">io_pe_out_0_ready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/bxbar/io_pe_out_0_valid">
+         <obj_property name="ElementShortName">io_pe_out_0_valid</obj_property>
+         <obj_property name="ObjectShortName">io_pe_out_0_valid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/bxbar/io_pe_out_0_bits_tdata">
+         <obj_property name="ElementShortName">io_pe_out_0_bits_tdata[511:0]</obj_property>
+         <obj_property name="ObjectShortName">io_pe_out_0_bits_tdata[511:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/bxbar/io_pe_out_0_bits_tkeep">
+         <obj_property name="ElementShortName">io_pe_out_0_bits_tkeep[15:0]</obj_property>
+         <obj_property name="ObjectShortName">io_pe_out_0_bits_tkeep[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/bxbar/io_pe_out_1_bits_tkeep">
+         <obj_property name="ElementShortName">io_pe_out_1_bits_tkeep[15:0]</obj_property>
+         <obj_property name="ObjectShortName">io_pe_out_1_bits_tkeep[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/bxbar/io_pe_out_1_bits_tdata">
+         <obj_property name="ElementShortName">io_pe_out_1_bits_tdata[511:0]</obj_property>
+         <obj_property name="ObjectShortName">io_pe_out_1_bits_tdata[511:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/bxbar/io_pe_out_1_valid">
+         <obj_property name="ElementShortName">io_pe_out_1_valid</obj_property>
+         <obj_property name="ObjectShortName">io_pe_out_1_valid</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/bxbar/io_pe_out_1_ready">
+         <obj_property name="ElementShortName">io_pe_out_1_ready</obj_property>
+         <obj_property name="ObjectShortName">io_pe_out_1_ready</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group5146">
+      <obj_property name="label">edge cache</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/edge_cache/io_in_bits_rdata">
+         <obj_property name="ElementShortName">io_in_bits_rdata[511:0]</obj_property>
+         <obj_property name="ObjectShortName">io_in_bits_rdata[511:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/edge_cache/io_in_bits_rid">
+         <obj_property name="ElementShortName">io_in_bits_rid[5:0]</obj_property>
+         <obj_property name="ObjectShortName">io_in_bits_rid[5:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/edge_cache/io_out_ready">
+         <obj_property name="ElementShortName">io_out_ready</obj_property>
+         <obj_property name="ObjectShortName">io_out_ready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/edge_cache/io_out_valid">
+         <obj_property name="ElementShortName">io_out_valid</obj_property>
+         <obj_property name="ObjectShortName">io_out_valid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/edge_cache/io_out_bits_araddr">
+         <obj_property name="ElementShortName">io_out_bits_araddr[63:0]</obj_property>
+         <obj_property name="ObjectShortName">io_out_bits_araddr[63:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/edge_cache/io_out_bits_arid">
+         <obj_property name="ElementShortName">io_out_bits_arid[5:0]</obj_property>
+         <obj_property name="ObjectShortName">io_out_bits_arid[5:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/edge_cache/io_out_bits_arlen">
+         <obj_property name="ElementShortName">io_out_bits_arlen[7:0]</obj_property>
+         <obj_property name="ObjectShortName">io_out_bits_arlen[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/edge_cache/edge_read_buffer_din">
+         <obj_property name="ElementShortName">edge_read_buffer_din[63:0]</obj_property>
+         <obj_property name="ObjectShortName">edge_read_buffer_din[63:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/edge_cache/edge_read_buffer_wr_en">
+         <obj_property name="ElementShortName">edge_read_buffer_wr_en</obj_property>
+         <obj_property name="ObjectShortName">edge_read_buffer_wr_en</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/edge_cache/edge_read_buffer_empty">
+         <obj_property name="ElementShortName">edge_read_buffer_empty</obj_property>
+         <obj_property name="ObjectShortName">edge_read_buffer_empty</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/edge_cache/edge_read_buffer_dout">
+         <obj_property name="ElementShortName">edge_read_buffer_dout[63:0]</obj_property>
+         <obj_property name="ObjectShortName">edge_read_buffer_dout[63:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/edge_cache/edge_read_buffer_rd_en">
+         <obj_property name="ElementShortName">edge_read_buffer_rd_en</obj_property>
+         <obj_property name="ObjectShortName">edge_read_buffer_rd_en</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/edge_cache/edge_read_buffer_data_count">
+         <obj_property name="ElementShortName">edge_read_buffer_data_count[5:0]</obj_property>
+         <obj_property name="ObjectShortName">edge_read_buffer_data_count[5:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/edge_cache/edge_read_buffer_valid">
+         <obj_property name="ElementShortName">edge_read_buffer_valid</obj_property>
+         <obj_property name="ObjectShortName">edge_read_buffer_valid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/edge_cache/remainning_edges">
+         <obj_property name="ElementShortName">remainning_edges[31:0]</obj_property>
+         <obj_property name="ObjectShortName">remainning_edges[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/bfs_tb/u_BFS/Broadcasts/edge_cache/cache_status">
+         <obj_property name="ElementShortName">cache_status</obj_property>
+         <obj_property name="ObjectShortName">cache_status</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/bfs_tb/u_BFS/Broadcasts/edge_cache/counter">
+         <obj_property name="ElementShortName">counter[31:0]</obj_property>
+         <obj_property name="ObjectShortName">counter[31:0]</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>

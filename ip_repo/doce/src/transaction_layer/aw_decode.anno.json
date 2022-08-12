@@ -1,12 +1,5 @@
 [
   {
-    "class":"firrtl.transforms.CombinationalPath",
-    "sink":"~aw_decode|aw_decode>io_din_channel_ready",
-    "sources":[
-      "~aw_decode|aw_decode>io_din_channel_valid"
-    ]
-  },
-  {
     "class":"firrtl.EmitCircuitAnnotation",
     "emitter":"firrtl.VerilogEmitter"
   },

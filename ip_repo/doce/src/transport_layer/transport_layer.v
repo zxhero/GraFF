@@ -221,7 +221,8 @@ module doce_transport_layer#(
 		.axi_str_tlast_from_router	(axi_str_tlast_from_router),
 		
 		.trans_axis_rxd_tuser		(look_up_rx_tuser),
-		.rx_dst_mac_addr			(rx_dst_mac_addr)
+		.rx_dst_mac_addr			(rx_dst_mac_addr),
+		.doce_mac_addr				(doce_mac_addr_r)
 	);
     
     

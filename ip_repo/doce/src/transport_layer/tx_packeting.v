@@ -18,36 +18,36 @@ module router_out_reg_slice(
   reg [31:0] _RAND_2;
   reg [31:0] _RAND_3;
 `endif // RANDOMIZE_REG_INIT
-  reg [511:0] data_tdata; // @[DoCE.scala 268:21]
-  reg [63:0] data_tkeep; // @[DoCE.scala 268:21]
-  reg  data_tlast; // @[DoCE.scala 268:21]
-  reg  valid; // @[DoCE.scala 269:22]
-  wire  _T = ~valid; // @[DoCE.scala 270:25]
-  assign io_dout_valid = valid; // @[DoCE.scala 276:17]
-  assign io_dout_bits_tdata = data_tdata; // @[DoCE.scala 277:16]
-  assign io_dout_bits_tkeep = data_tkeep; // @[DoCE.scala 277:16]
-  assign io_dout_bits_tlast = data_tlast; // @[DoCE.scala 277:16]
-  assign io_din_ready = io_dout_ready | _T; // @[DoCE.scala 275:33]
+  reg [511:0] data_tdata; // @[DoCE.scala 278:21]
+  reg [63:0] data_tkeep; // @[DoCE.scala 278:21]
+  reg  data_tlast; // @[DoCE.scala 278:21]
+  reg  valid; // @[DoCE.scala 279:22]
+  wire  _T = ~valid; // @[DoCE.scala 280:25]
+  assign io_dout_valid = valid; // @[DoCE.scala 286:17]
+  assign io_dout_bits_tdata = data_tdata; // @[DoCE.scala 287:16]
+  assign io_dout_bits_tkeep = data_tkeep; // @[DoCE.scala 287:16]
+  assign io_dout_bits_tlast = data_tlast; // @[DoCE.scala 287:16]
+  assign io_din_ready = io_dout_ready | _T; // @[DoCE.scala 285:33]
   always @(posedge clock) begin
-    if (reset) begin // @[DoCE.scala 268:21]
-      data_tdata <= 512'h0; // @[DoCE.scala 268:21]
-    end else if (io_dout_ready | ~valid) begin // @[DoCE.scala 270:32]
-      data_tdata <= io_din_bits_tdata; // @[DoCE.scala 271:10]
+    if (reset) begin // @[DoCE.scala 278:21]
+      data_tdata <= 512'h0; // @[DoCE.scala 278:21]
+    end else if (io_dout_ready | ~valid) begin // @[DoCE.scala 280:32]
+      data_tdata <= io_din_bits_tdata; // @[DoCE.scala 281:10]
     end
-    if (reset) begin // @[DoCE.scala 268:21]
-      data_tkeep <= 64'h0; // @[DoCE.scala 268:21]
-    end else if (io_dout_ready | ~valid) begin // @[DoCE.scala 270:32]
-      data_tkeep <= io_din_bits_tkeep; // @[DoCE.scala 271:10]
+    if (reset) begin // @[DoCE.scala 278:21]
+      data_tkeep <= 64'h0; // @[DoCE.scala 278:21]
+    end else if (io_dout_ready | ~valid) begin // @[DoCE.scala 280:32]
+      data_tkeep <= io_din_bits_tkeep; // @[DoCE.scala 281:10]
     end
-    if (reset) begin // @[DoCE.scala 268:21]
-      data_tlast <= 1'h0; // @[DoCE.scala 268:21]
-    end else if (io_dout_ready | ~valid) begin // @[DoCE.scala 270:32]
-      data_tlast <= io_din_bits_tlast; // @[DoCE.scala 271:10]
+    if (reset) begin // @[DoCE.scala 278:21]
+      data_tlast <= 1'h0; // @[DoCE.scala 278:21]
+    end else if (io_dout_ready | ~valid) begin // @[DoCE.scala 280:32]
+      data_tlast <= io_din_bits_tlast; // @[DoCE.scala 281:10]
     end
-    if (reset) begin // @[DoCE.scala 269:22]
-      valid <= 1'h0; // @[DoCE.scala 269:22]
-    end else if (io_dout_ready | ~valid) begin // @[DoCE.scala 270:32]
-      valid <= io_din_valid; // @[DoCE.scala 272:11]
+    if (reset) begin // @[DoCE.scala 279:22]
+      valid <= 1'h0; // @[DoCE.scala 279:22]
+    end else if (io_dout_ready | ~valid) begin // @[DoCE.scala 280:32]
+      valid <= io_din_valid; // @[DoCE.scala 282:11]
     end
   end
 // Register and memory initialization
@@ -116,30 +116,30 @@ module tx_packeting(
   output [63:0]  io_axi_str_to_router_bits_tkeep,
   output         io_axi_str_to_router_bits_tlast
 );
-  wire  router_out_clock; // @[DoCE.scala 293:28]
-  wire  router_out_reset; // @[DoCE.scala 293:28]
-  wire  router_out_io_dout_ready; // @[DoCE.scala 293:28]
-  wire  router_out_io_dout_valid; // @[DoCE.scala 293:28]
-  wire [511:0] router_out_io_dout_bits_tdata; // @[DoCE.scala 293:28]
-  wire [63:0] router_out_io_dout_bits_tkeep; // @[DoCE.scala 293:28]
-  wire  router_out_io_dout_bits_tlast; // @[DoCE.scala 293:28]
-  wire  router_out_io_din_ready; // @[DoCE.scala 293:28]
-  wire  router_out_io_din_valid; // @[DoCE.scala 293:28]
-  wire [511:0] router_out_io_din_bits_tdata; // @[DoCE.scala 293:28]
-  wire [63:0] router_out_io_din_bits_tkeep; // @[DoCE.scala 293:28]
-  wire  router_out_io_din_bits_tlast; // @[DoCE.scala 293:28]
-  wire  _T_1 = io_axis_rd_from_fsm_bits_tkeep[63:48] == 16'h0; // @[DoCE.scala 300:88]
-  wire  _T_2 = io_axis_rd_from_fsm_bits_tlast & _T_1; // @[DoCE.scala 299:41]
-  wire  _T_3 = io_axi_str_to_router_valid & io_axi_str_to_router_ready; // @[DoCE.scala 301:39]
-  wire [383:0] io_axi_str_to_router_bits_tdata_hi = io_axis_rd_from_fsm_bits_tdata[383:0]; // @[DoCE.scala 319:74]
-  wire [127:0] io_axi_str_to_router_bits_tdata_lo = router_out_io_dout_bits_tdata[511:384]; // @[DoCE.scala 320:36]
+  wire  router_out_clock; // @[DoCE.scala 303:28]
+  wire  router_out_reset; // @[DoCE.scala 303:28]
+  wire  router_out_io_dout_ready; // @[DoCE.scala 303:28]
+  wire  router_out_io_dout_valid; // @[DoCE.scala 303:28]
+  wire [511:0] router_out_io_dout_bits_tdata; // @[DoCE.scala 303:28]
+  wire [63:0] router_out_io_dout_bits_tkeep; // @[DoCE.scala 303:28]
+  wire  router_out_io_dout_bits_tlast; // @[DoCE.scala 303:28]
+  wire  router_out_io_din_ready; // @[DoCE.scala 303:28]
+  wire  router_out_io_din_valid; // @[DoCE.scala 303:28]
+  wire [511:0] router_out_io_din_bits_tdata; // @[DoCE.scala 303:28]
+  wire [63:0] router_out_io_din_bits_tkeep; // @[DoCE.scala 303:28]
+  wire  router_out_io_din_bits_tlast; // @[DoCE.scala 303:28]
+  wire  _T_1 = io_axis_rd_from_fsm_bits_tkeep[63:48] == 16'h0; // @[DoCE.scala 310:88]
+  wire  _T_2 = io_axis_rd_from_fsm_bits_tlast & _T_1; // @[DoCE.scala 309:41]
+  wire  _T_3 = io_axi_str_to_router_valid & io_axi_str_to_router_ready; // @[DoCE.scala 311:39]
+  wire [383:0] io_axi_str_to_router_bits_tdata_hi = io_axis_rd_from_fsm_bits_tdata[383:0]; // @[DoCE.scala 329:74]
+  wire [127:0] io_axi_str_to_router_bits_tdata_lo = router_out_io_dout_bits_tdata[511:384]; // @[DoCE.scala 330:36]
   wire [511:0] _io_axi_str_to_router_bits_tdata_T = {io_axi_str_to_router_bits_tdata_hi,
     io_axi_str_to_router_bits_tdata_lo}; // @[Cat.scala 30:58]
-  wire [47:0] io_axi_str_to_router_bits_tkeep_hi = io_axis_rd_from_fsm_bits_tkeep[47:0]; // @[DoCE.scala 321:74]
-  wire [15:0] io_axi_str_to_router_bits_tkeep_lo = router_out_io_dout_bits_tkeep[63:48]; // @[DoCE.scala 322:36]
+  wire [47:0] io_axi_str_to_router_bits_tkeep_hi = io_axis_rd_from_fsm_bits_tkeep[47:0]; // @[DoCE.scala 331:74]
+  wire [15:0] io_axi_str_to_router_bits_tkeep_lo = router_out_io_dout_bits_tkeep[63:48]; // @[DoCE.scala 332:36]
   wire [63:0] _io_axi_str_to_router_bits_tkeep_T = {io_axi_str_to_router_bits_tkeep_hi,
     io_axi_str_to_router_bits_tkeep_lo}; // @[Cat.scala 30:58]
-  router_out_reg_slice router_out ( // @[DoCE.scala 293:28]
+  router_out_reg_slice router_out ( // @[DoCE.scala 303:28]
     .clock(router_out_clock),
     .reset(router_out_reset),
     .io_dout_ready(router_out_io_dout_ready),
@@ -153,19 +153,19 @@ module tx_packeting(
     .io_din_bits_tkeep(router_out_io_din_bits_tkeep),
     .io_din_bits_tlast(router_out_io_din_bits_tlast)
   );
-  assign io_axis_rd_from_fsm_ready = _T_2 ? _T_3 : router_out_io_din_ready; // @[DoCE.scala 300:96 DoCE.scala 298:31]
+  assign io_axis_rd_from_fsm_ready = _T_2 ? _T_3 : router_out_io_din_ready; // @[DoCE.scala 310:96 DoCE.scala 308:31]
   assign io_axi_str_to_router_valid = router_out_io_dout_bits_tlast ? router_out_io_dout_valid :
-    io_axis_rd_from_fsm_valid & router_out_io_dout_valid; // @[DoCE.scala 323:40 DoCE.scala 326:34 DoCE.scala 316:32]
+    io_axis_rd_from_fsm_valid & router_out_io_dout_valid; // @[DoCE.scala 333:40 DoCE.scala 336:34 DoCE.scala 326:32]
   assign io_axi_str_to_router_bits_tdata = router_out_io_dout_bits_tlast ? {{384'd0}, io_axi_str_to_router_bits_tdata_lo
-    } : _io_axi_str_to_router_bits_tdata_T; // @[DoCE.scala 323:40 DoCE.scala 324:39 DoCE.scala 319:37]
+    } : _io_axi_str_to_router_bits_tdata_T; // @[DoCE.scala 333:40 DoCE.scala 334:39 DoCE.scala 329:37]
   assign io_axi_str_to_router_bits_tkeep = router_out_io_dout_bits_tlast ? {{48'd0}, io_axi_str_to_router_bits_tkeep_lo}
-     : _io_axi_str_to_router_bits_tkeep_T; // @[DoCE.scala 323:40 DoCE.scala 325:39 DoCE.scala 321:37]
-  assign io_axi_str_to_router_bits_tlast = router_out_io_dout_bits_tlast | _T_2; // @[DoCE.scala 323:40 DoCE.scala 327:39 DoCE.scala 317:37]
+     : _io_axi_str_to_router_bits_tkeep_T; // @[DoCE.scala 333:40 DoCE.scala 335:39 DoCE.scala 331:37]
+  assign io_axi_str_to_router_bits_tlast = router_out_io_dout_bits_tlast | _T_2; // @[DoCE.scala 333:40 DoCE.scala 337:39 DoCE.scala 327:37]
   assign router_out_clock = clock;
   assign router_out_reset = reset;
-  assign router_out_io_dout_ready = io_axi_str_to_router_valid & io_axi_str_to_router_ready; // @[DoCE.scala 330:60]
-  assign router_out_io_din_valid = _T_2 ? 1'h0 : io_axis_rd_from_fsm_valid; // @[DoCE.scala 300:96 DoCE.scala 297:29]
-  assign router_out_io_din_bits_tdata = _T_2 ? 512'h0 : io_axis_rd_from_fsm_bits_tdata; // @[DoCE.scala 300:96 DoCE.scala 295:34]
-  assign router_out_io_din_bits_tkeep = _T_2 ? 64'h0 : io_axis_rd_from_fsm_bits_tkeep; // @[DoCE.scala 300:96 DoCE.scala 294:34]
-  assign router_out_io_din_bits_tlast = _T_2 ? 1'h0 : io_axis_rd_from_fsm_bits_tlast; // @[DoCE.scala 300:96 DoCE.scala 296:34]
+  assign router_out_io_dout_ready = io_axi_str_to_router_valid & io_axi_str_to_router_ready; // @[DoCE.scala 340:60]
+  assign router_out_io_din_valid = _T_2 ? 1'h0 : io_axis_rd_from_fsm_valid; // @[DoCE.scala 310:96 DoCE.scala 307:29]
+  assign router_out_io_din_bits_tdata = _T_2 ? 512'h0 : io_axis_rd_from_fsm_bits_tdata; // @[DoCE.scala 310:96 DoCE.scala 305:34]
+  assign router_out_io_din_bits_tkeep = _T_2 ? 64'h0 : io_axis_rd_from_fsm_bits_tkeep; // @[DoCE.scala 310:96 DoCE.scala 304:34]
+  assign router_out_io_din_bits_tlast = _T_2 ? 1'h0 : io_axis_rd_from_fsm_bits_tlast; // @[DoCE.scala 310:96 DoCE.scala 306:34]
 endmodule
